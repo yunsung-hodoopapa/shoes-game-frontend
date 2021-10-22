@@ -7,19 +7,13 @@ import {
 } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
 import styled from 'styled-components';
-// import Center from '../../Page/Center/center';
 import Footer from '../../Page/Footer/footer';
 import Header from '../../Page/Header/header';
 import Sidebar from '../../Page/Sidebar/Sidebar';
-import Content_MyPage from '../../Page/Sidebar/Menus/Mypage';
-import Content_Portfolio from '../../Page/Sidebar/Menus/Portfolio';
-import Content_Following from '../../Page/Sidebar/Menus/Following';
-
-const Container = styled.div`
-  display: flex;
-  width: 100%;
-  height: 709px;
-`;
+import Main from '../Menus/Main';
+import MyPage from '../Menus/Mypage';
+import Portfolio from '../Menus/Portfolio';
+import Following from '../Menus/Following';
 
 const Center = styled.div`
   position: absolute;
@@ -39,9 +33,10 @@ function MainPage(props) {
         <Center>
           <Sidebar />
           <Switch>
-            <Route path="/main/my_page" component={Content_MyPage} />
-            <Route path="/main/portfolio" component={Content_Portfolio} />
-            <Route path="/main/following" component={Content_Following} />
+            <Route path="/" component={Main} />
+            <Route path="/my_page" component={MyPage} />
+            <Route path="/portfolio" component={Portfolio} />
+            <Route path="/following" component={Following} />
           </Switch>
         </Center>
         <Footer />

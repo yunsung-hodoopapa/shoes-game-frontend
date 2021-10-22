@@ -5,17 +5,29 @@ import LoginPage from './components/views/LoginPage/LoginPage';
 import RegisterPage from './components/views/RegisterPage/RegisterPage';
 import PublicRoute from './components/AccessControl/PublicRoute';
 import PrivateRoute from './components/AccessControl/PrivateRoute';
+import MyPage from './components/views/Menus/Mypage';
 
 const App = () => {
   return (
     <Router>
       <Switch>
-        <PublicRoute restricted={true} exact path='/' component={LoginPage} />
-        <PublicRoute restricted={true} exact path='/register' component={RegisterPage} />
-        <PublicRoute restricted={false} exact path="/main" component={MainPage} />
+        <PrivateRoute restricted={true} exact path="/" component={MainPage} />
+        <PublicRoute
+          restricted={false}
+          exact
+          path="/register"
+          component={RegisterPage}
+        />
+        <PublicRoute
+          restricted={false}
+          exact
+          path="/login"
+          component={LoginPage}
+        />
+        <PrivateRoute componet={MyPage} exact path="/mypage" />
       </Switch>
     </Router>
   );
-}
+};
 
 export default App;

@@ -28,7 +28,7 @@ const Header = () => {
   }
 
   const reloadPage = () => {
-    window.location = 'http://localhost:3000/main';
+    window.location = 'http://localhost:3000/';
   };
 
   return (

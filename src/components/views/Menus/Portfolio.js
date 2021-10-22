@@ -12,10 +12,10 @@ const ContentsWrap = styled.div`
   align-items: center;
 `;
 
-const Content_Portfolio = () => {
+const Portfolio = () => {
   return (
     <ContentsWrap>Portfolio!</ContentsWrap>
   )
 };
 
-export default Content_Portfolio;
+export default Portfolio;

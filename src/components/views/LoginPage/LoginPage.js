@@ -41,7 +41,7 @@ function LoginPage(props) {
       .then((res) => {
         console.log(res);
         if (res.payload.loginSuccess) {
-          props.history.push('/main');
+          props.history.push('/');
         } else {
           alert(res.payload.message);
         }

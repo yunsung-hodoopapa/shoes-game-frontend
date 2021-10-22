@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const ContentsWrap = styled.div`
   position: absolute;
-  background-color: #C4C4C4;
+  background-color: white;
   width: 1134px
   hight: 709px;
   left: 302px;
@@ -12,10 +12,10 @@ const ContentsWrap = styled.div`
   align-items: center;
 `;
 
-const Content_MyPage = () => {
+const Main = () => {
   return (
-    <ContentsWrap>My Page!</ContentsWrap>
+    <ContentsWrap>Home!</ContentsWrap>
   )
 };
 
-export default Content_MyPage;
+export default Main;

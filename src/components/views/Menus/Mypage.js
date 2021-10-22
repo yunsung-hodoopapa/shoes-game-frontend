@@ -12,8 +12,10 @@ const ContentsWrap = styled.div`
   align-items: center;
 `;
 
-const Content_Following = () => {
-  return <ContentsWrap>Following!!</ContentsWrap>;
+const MyPage = () => {
+  return (
+    <ContentsWrap>My Page!</ContentsWrap>
+  )
 };
 
-export default Content_Following;
+export default MyPage;

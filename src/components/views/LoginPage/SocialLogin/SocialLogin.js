@@ -24,7 +24,7 @@ function SocialLogin() {
       scope,
       success: function (response) {
         Kakao.Auth.setAccessToken(response.access_token);
-        history.push('/main');
+        history.push('/');
 
         const access_token = Kakao.Auth.getAccessToken();
         // console.log(ACCESS_TOKEN);
@@ -51,13 +51,13 @@ function SocialLogin() {
               console.log('complete');
             })
             .then((res) => {
-              let access_token = res.data.access_token;
-              console.log(access_token);
-              let refresh_token = res.headers['refresh-token'];
-              console.log(refresh_token);
-              localStorage.setItem('access_token', access_token);
-              localStorage.setItme('refrech_toekn', refresh_token);
-              history.push('/main');
+              // let access_token = res.body.access_token;
+              // console.log(access_token);
+              // let refresh_token = res.headers['refresh-token'];
+              // console.log(refresh_token);
+              // localStorage.setItem('access_token', access_token);
+              // localStorage.setItme('refrech_toekn', refresh_token);
+              history.push('/');
             })
             .catch((error) => {
               console.error(error);
