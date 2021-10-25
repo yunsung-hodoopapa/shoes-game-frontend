@@ -4,11 +4,10 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  // alignitems: center;
-  width: 100%;
-  // height: 100vh;
+  width: 1038px;
+  height: 455px;
+  background-color: #9E9696;
+
 `;
 
 function LandingPage(props) {

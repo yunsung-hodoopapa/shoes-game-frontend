@@ -1,4 +1,4 @@
-import { REGISTER_USER, LOGIN_USER } from "../actions/types";
+import { REGISTER_USER, LOGIN_USER, KAKAO_LOGIN_USER } from '../actions/types';
 
 export default function (state = {}, action) {
   switch (action.type) {
@@ -6,6 +6,8 @@ export default function (state = {}, action) {
       return { ...state, success: action.payload };
     case LOGIN_USER:
       return { ...state, loginSuccess: action.payload };
+    case KAKAO_LOGIN_USER:
+      return { ...state, socialLoginSuccess: action.payload };
     default:
       return state;
   }

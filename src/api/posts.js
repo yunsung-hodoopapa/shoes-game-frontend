@@ -9,3 +9,8 @@ export const getPostById = async (id) => {
   const response = await axios.get(`/posts/${id}`);
   return response.data;
 };
+
+export const getUsers = async () => {
+  const response = await axios.get('/auth/users');
+  return response.data;
+};
