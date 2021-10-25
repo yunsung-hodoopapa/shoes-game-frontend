@@ -15,4 +15,8 @@ const Footer = () => {
   return <FooterWrap>designed by hodoocoindg</FooterWrap>;
 };
 
+<<<<<<< HEAD
 export default Footer;
+=======
+export default Footer;
+>>>>>>> feature-mainPage

@@ -10,6 +10,10 @@ const HeaderWrap = styled.header`
   height: 143px;
   top: 0;
   left: 0;
+<<<<<<< HEAD:src/components/Page/Header/header.js
+=======
+
+>>>>>>> feature-mainPage:components/Header/header.js
   section {
     display: flex;
     background-color: #E95959;
@@ -44,4 +48,8 @@ const Header = () => {
   );
 };
 
+<<<<<<< HEAD:src/components/Page/Header/header.js
 export default Header;
+=======
+export default Header;
+>>>>>>> feature-mainPage:components/Header/header.js
