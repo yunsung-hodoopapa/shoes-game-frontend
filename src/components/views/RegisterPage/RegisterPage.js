@@ -18,10 +18,10 @@ const Form = styled.form`
 `;
 
 function RegisterPage(props) {
-  const [Email, setEmail] = useState('');
-  const [Password, setPassword] = useState('');
-  const [Name, setName] = useState('');
-  const [ConfirmPassword, setConfirmPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const dispatch = useDispatch();
 
   const onEmailHandler = (e) => {
@@ -38,15 +38,15 @@ function RegisterPage(props) {
   };
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    if (Password === ConfirmPassword) {
+    if (password === confirmPassword) {
       let body = {
-        email: Email,
-        name: Name,
-        password: Password,
+        email: email,
+        name: name,
+        password: password,
       };
       dispatch(registerUser(body)).then((res) => {
         alert('회원가입이 정상적으로 완료되었습니다!');
-        props.history.push('/');
+        props.history.push('/login');
       });
     } else {
       alert('비밀번호가 일치하지 않습니다.');
@@ -56,18 +56,18 @@ function RegisterPage(props) {
     <Container>
       <Form onSubmit={onSubmitHandler}>
         <label>Email</label>
-        <input type="email" value={Email} onChange={onEmailHandler} />
+        <input type="email" value={email} onChange={onEmailHandler} />
 
         <label>Name</label>
-        <input type="name" value={Name} onChange={onNameHandler} />
+        <input type="name" value={name} onChange={onNameHandler} />
 
         <label>Password</label>
-        <input type="password" value={Password} onChange={onPasswordHandler} />
+        <input type="password" value={password} onChange={onPasswordHandler} />
 
         <label>ConfirmPassword</label>
         <input
           type="password"
-          value={ConfirmPassword}
+          value={confirmPassword}
           onChange={onConfirmPasswordHandler}
         />
         <br />

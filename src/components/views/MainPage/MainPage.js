@@ -10,7 +10,7 @@ import styled from 'styled-components';
 import Footer from '../../Page/Footer/footer';
 import Header from '../../Page/Header/header';
 import Sidebar from '../../Page/Sidebar/Sidebar';
-import Main from '../Menus/Main';
+import Main from '../Menus/Main/Main';
 import MyPage from '../Menus/Mypage';
 import Portfolio from '../Menus/Portfolio';
 import Following from '../Menus/Following';

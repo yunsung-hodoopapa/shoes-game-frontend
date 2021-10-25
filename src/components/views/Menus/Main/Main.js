@@ -1,20 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
+import UserInfo from './UserInfo';
 
 const ContentsWrap = styled.div`
   position: absolute;
   background-color: white;
-  width: 1134px
-  hight: 709px;
-  left: 302px;
-  top: 142px;
+  width: 1134px;
+  height: 709px;
+  left: 330px;
+  top: 26px;
   justify-content: center;
   align-items: center;
 `;
 
-const Main = () => {
+const Main = (props) => {
   return (
-    <ContentsWrap>Home!</ContentsWrap>
+    <ContentsWrap>
+      <UserInfo />
+      {/* <ShoesCloset /> */}
+    </ContentsWrap>
   )
 };
 

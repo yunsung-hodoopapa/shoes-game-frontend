@@ -1,10 +1,10 @@
-import { REGISTER_USER, LOGIN_USER } from './types';
+import { REGISTER_USER, LOGIN_USER, KAKAO_LOGIN_USER } from './types';
 import { request } from '../utils/axios';
 
 // const USER_URL = '/auth';
 
-export function registerUser(dataToSubmit) {
-  const data = request('post', '/auth/register', dataToSubmit);
+export async function registerUser(dataToSubmit) {
+  const data = await request('post', '/auth/register', dataToSubmit);
 
   return {
     type: REGISTER_USER,
@@ -12,11 +12,18 @@ export function registerUser(dataToSubmit) {
   };
 }
 
-export function loginUser(dataToSubmit) {
-  const data = request('post', '/auth/login', dataToSubmit);
-
+export async function loginUser(dataToSubmit) {
+  const data = await request('post', '/auth/login', dataToSubmit);
   return {
     type: LOGIN_USER,
+    payload: data,
+  };
+}
+
+export async function socialLoginUser(dataToSubmit) {
+  const data = await request('post', '/auth/kakao', dataToSubmit);
+  return {
+    type: KAKAO_LOGIN_USER,
     payload: data,
   };
 }
