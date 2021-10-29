@@ -10,10 +10,7 @@ const HeaderWrap = styled.header`
   height: 143px;
   top: 0;
   left: 0;
-<<<<<<< HEAD:src/components/Page/Header/header.js
-=======
-
->>>>>>> feature-mainPage:components/Header/header.js
+  
   section {
     display: flex;
     background-color: #E95959;
@@ -23,6 +20,12 @@ const HeaderWrap = styled.header`
     paddingh: 2em 0;
     cursor: grab;
   }
+`;
+
+const Title = styled.div`
+  margin-top: 30px;
+  font-size: 40px;
+  font-weight: 700;
 `;
 const Header = () => {
   function handleSubmit(event) {
@@ -35,21 +38,19 @@ const Header = () => {
   };
 
   return (
-    <HeaderWrap>
-      <Container>
-        <section>
-          <h1 onClick={reloadPage}>
+    <>
+      <HeaderWrap>
+        <Container>
+          <section>
+          <Title onClick={reloadPage}>
             Shoes Game!
-            <Heading> 당신의 신발을 추가해보세요!</Heading>
-          </h1>
-        </section>
-      </Container>
-    </HeaderWrap>
+          <Heading> 당신의 신발을 추가해보세요!</Heading>
+          </Title>
+          </section>
+        </Container>
+      </HeaderWrap>
+    </>
   );
 };
 
-<<<<<<< HEAD:src/components/Page/Header/header.js
 export default Header;
-=======
-export default Header;
->>>>>>> feature-mainPage:components/Header/header.js

@@ -10,7 +10,7 @@ import styled from 'styled-components';
 import Footer from '../../Page/Footer/footer';
 import Header from '../../Page/Header/header';
 import Sidebar from '../../Page/Sidebar/Sidebar';
-import Main from '../Menus/Main/Main';
+import LandingPage from '../LandingPage/LandingPage';
 import MyPage from '../Menus/Mypage';
 import Portfolio from '../Menus/Portfolio';
 import Following from '../Menus/Following';
@@ -33,7 +33,7 @@ function MainPage(props) {
         <Center>
           <Sidebar />
           <Switch>
-            <Route path="/" component={Main} />
+            <Route path="/" component={LandingPage} />
             <Route path="/my_page" component={MyPage} />
             <Route path="/portfolio" component={Portfolio} />
             <Route path="/following" component={Following} />

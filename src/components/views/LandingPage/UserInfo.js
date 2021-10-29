@@ -1,9 +1,10 @@
+import axios from 'axios';
 import React from 'react';
 import styled from 'styled-components';
 
 const ContentsWrap = styled.div`
   display: flex;
-  position: absolute;
+  // position: absolute;
   background-color: #2C0505;
   width: 1039px
   height: 190px;
@@ -67,6 +68,13 @@ const EditButton = styled.button`
 `;
 const BtnWrap = styled.div``;
 
+axios({
+  method: 'get',
+  url : 'http:localhost:3002/auth/users',
+  data: {
+    usename: nickname,
+  }
+})
 const UserInfo = ({ goEdit, userInfo }) => {
   return (
     <ContentsWrap>

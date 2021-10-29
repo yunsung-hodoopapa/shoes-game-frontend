@@ -1,7 +1,5 @@
-import { REGISTER_USER, LOGIN_USER, KAKAO_LOGIN_USER } from './types';
+import { REGISTER_USER, LOGIN_USER, KAKAO_LOGIN_USER, OPEN_MODAL, CLOSE_MODAL, ADD_SHOES } from './types';
 import { request } from '../utils/axios';
-
-// const USER_URL = '/auth';
 
 export async function registerUser(dataToSubmit) {
   const data = await request('post', '/auth/register', dataToSubmit);
@@ -27,3 +25,26 @@ export async function socialLoginUser(dataToSubmit) {
     payload: data,
   };
 }
+
+export const openModal = () => {
+  return {
+    type: OPEN_MODAL,
+  };
+}
+
+export function closeModal() {
+  return {
+    type: CLOSE_MODAL,
+  };
+}
+
+let nextShoesId = 0;
+export const addShoes = (content) => {
+  return {
+    type: ADD_SHOES,
+    payload: {
+      id: ++nextShoesId,
+      content,
+    }
+  };
+};

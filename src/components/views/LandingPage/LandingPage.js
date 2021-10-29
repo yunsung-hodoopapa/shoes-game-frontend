@@ -1,32 +1,31 @@
-import React from 'react';
-import { withRouter } from 'react-router';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import UserInfo from './UserInfo';
+import ShoesCloset from './ShoesCloset';
 
-const Container = styled.div`
+const ContentsWrap = styled.div`
   display: flex;
-  width: 1038px;
-  height: 455px;
-  background-color: #9E9696;
-
+  flex-direction: column;
+  position: relative;
+  background-color: white;
+  width: 1134px;
+  height: 709px;
+  left: 330px;
+  top: 26px;
+  // justify-content: center;
+  // align-items: center;
 `;
 
-function LandingPage(props) {
-  const onClickHandler = () => {};
 
+const LandingPage = (props) =>{
   return (
-    <Container>
-      <h2>시작 페이지</h2>
-      <button
-        style={{
-          width: '100px',
-          height: '40px',
-        }}
-        onClick={onClickHandler}
-      >
-        로그인
-      </button>
-    </Container>
-  );
-}
+    <ContentsWrap>
+      <UserInfo />
+      <ShoesCloset>
+        {props.children}
+      </ShoesCloset>
+    </ContentsWrap>
+  )
+};
 
 export default LandingPage;
