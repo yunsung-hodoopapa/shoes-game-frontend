@@ -27,6 +27,7 @@ const UserPicture = styled.div`
 const UserDetail = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   width: 831px;
   height: 191px;
   color: white;
@@ -40,16 +41,15 @@ const Nickname = styled.span `
   align-items: center;
   font-size: 18px;
   font-weight: 400;
-  margin: 20px 5px;
   strong {
     font-weight: 400;
     color: white;
   }
 `;
 const Email = styled.span`
-  font-size: 16px;
-  font-weight: 600;
-  color: #2c2c2c;
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
 `;
 const EditButton = styled.button`
   position: absolute;
@@ -77,15 +77,13 @@ const UserInfo = ({ goEdit, userInfo }) => {
     <ContentsWrap>
       <UserPicture>
         <div>
-          {/* <img src={userInfo.profileImg} alt='profile_image'/> */}
+          { users.profileImg ? <img src={users.profileImg} alt='profile_image'/> : null }
         </div>
       </UserPicture>
       <UserDetail>
         <Nickname>
           <strong>
             유저네임: {users.name}
-            <br/>
-            메일주소: {users.email}
           </strong>
           <BtnWrap>
             {/* <isAuth?.nickname === userInfo.nickname ? (
@@ -93,7 +91,7 @@ const UserInfo = ({ goEdit, userInfo }) => {
             ) : null} */}
           </BtnWrap>
         </Nickname>
-        {/* <Email>userInfo.email</Email> */}
+        <Email>{users.email}</Email>
         <EditButton> 프로필 수정 </EditButton>
       </UserDetail>
     </ContentsWrap>
