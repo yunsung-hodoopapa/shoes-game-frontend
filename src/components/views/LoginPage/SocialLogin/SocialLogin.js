@@ -85,16 +85,16 @@ function SocialLogin(props) {
           //     console.log(err);
           //   });
           // }
-          //   axios({
-          //     method: 'post',
-          //     url: 'http://localhost:3002/auth/kakao',
-          //     data: {
-          //       'id': email,
-          //       'nickname': profile.nickname,
-          //       'image': profile.profile_image_url,
-          //       'access_token': access_token,
-          //     },
-          //   })
+            // axios({
+            //   method: 'post',
+            //   url: 'http://localhost:3002/auth/kakao',
+            //   data: {
+            //     'id': email,
+            //     'nickname': profile.nickname,
+            //     'image': profile.profile_image_url,
+            //     'access_token': access_token,
+            //   },
+            // })
           //   .then((res) => {
           //     console.log(res);
           //     console.log('complete');

@@ -38,12 +38,12 @@ const UserDetail = styled.div`
 const Nickname = styled.span `
   display: flex;
   align-items: center;
-  font-size: 25px;
-  font-weight: 800;
-  margin-bottom: 25px;
+  font-size: 18px;
+  font-weight: 400;
+  margin: 20px 5px;
   strong {
     font-weight: 400;
-    color: #2e2e2e;
+    color: white;
   }
 `;
 const Email = styled.span`
@@ -52,6 +52,9 @@ const Email = styled.span`
   color: #2c2c2c;
 `;
 const EditButton = styled.button`
+  position: absolute;
+  top: 20px;
+  right: 20px;
   background-color=#fff;
   padding: 6px 6px;
   margin-left: 20px;
@@ -68,6 +71,8 @@ const EditButton = styled.button`
 const BtnWrap = styled.div``;
 
 const UserInfo = ({ goEdit, userInfo }) => {
+  const users = JSON.parse(localStorage.getItem('userInfo'));
+  console.log(users.name);
   return (
     <ContentsWrap>
       <UserPicture>
@@ -77,7 +82,11 @@ const UserInfo = ({ goEdit, userInfo }) => {
       </UserPicture>
       <UserDetail>
         <Nickname>
-          {/* <strong>{userInfo.nickname}</strong> */}
+          <strong>
+            유저네임: {users.name}
+            <br/>
+            메일주소: {users.email}
+          </strong>
           <BtnWrap>
             {/* <isAuth?.nickname === userInfo.nickname ? (
               <EditButton onClick={goEdit}>프로필 편집</EditButton>

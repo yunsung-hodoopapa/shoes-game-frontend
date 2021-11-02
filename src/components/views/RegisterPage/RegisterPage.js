@@ -46,6 +46,7 @@ function RegisterPage(props) {
       };
       dispatch(registerUser(body)).then((res) => {
         alert('회원가입이 정상적으로 완료되었습니다!');
+        window.localStorage.setItem('userInfo', JSON.stringify(body));
         props.history.push('/login');
       });
     } else {

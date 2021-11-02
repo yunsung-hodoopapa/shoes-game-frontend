@@ -43,6 +43,7 @@ function LoginPage(props) {
     };
     dispatch(loginUser(requestBody)).then((res) => {
       if (res.payload.loginSuccess) {
+        localStorage.setItem('userInfo', JSON.stringify(requestBody));
         props.history.push('/');
       } else {
         alert(res.payload.message);

@@ -13,7 +13,7 @@ const ContentsWrap = styled.div`
   align-items: center;
 `;
 
-const Main = (props) => {
+const LandingPage = (props) => {
   return (
     <ContentsWrap>
       <UserInfo />
@@ -22,4 +22,4 @@ const Main = (props) => {
   )
 };
 
-export default Main;
+export default LandingPage;
