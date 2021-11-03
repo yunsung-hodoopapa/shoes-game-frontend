@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router';
 import { useDispatch } from 'react-redux';
-import { loginUser } from '../../../actions/userAction';
+import { loginUser, refreshToken } from '../../../actions/userAction';
 import SocialLogin from './SocialLogin/SocialLogin';
 import styled from 'styled-components';
+import axios from 'axios';
 
 const Container = styled.div`
   display: flex;
@@ -31,6 +32,7 @@ function LoginPage(props) {
     setPassword(e.currentTarget.value);
   };
 
+
   const onSubmitHandler = (e) => {
     e.preventDefault();
     const body = {
@@ -39,7 +41,6 @@ function LoginPage(props) {
     };
     dispatch(loginUser(body))
       .then((res) => {
-        console.log(res);
         if (res.payload.loginSuccess) {
           props.history.push('/main');
         } else {

@@ -8,6 +8,9 @@ export const request = (method, url, data) => {
     url: DOMAIN + url,
     data,
   })
-    .then((res) => res.data)
+    .then((res) => {
+      const { access_token} = res.data;
+      axios.defaults.headers.common['Authorization'] = `Bearer${access_token}`;
+    })
     .catch((err) => console.log(err));
 };
