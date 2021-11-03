@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 
 const ContentsWrap = styled.div`
   display: flex;
@@ -36,7 +37,7 @@ const UserDetail = styled.div`
   }
   margin-left: 50px;
 `;
-const Nickname = styled.span `
+const Nickname = styled.span`
   display: flex;
   align-items: center;
   font-size: 18px;
@@ -68,34 +69,53 @@ const EditButton = styled.button`
     background-color: #efefef;
   }
 `;
+
+const LogoutButtn = styled.button`
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background-color: #fff;
+  padding: 6px 6px;
+  margin-left: 20px;
+  border: solid 1px #bababa;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px
+  &:hover {
+    background-color: #efefef;
+  }
+`;
+
 const BtnWrap = styled.div``;
 
-const UserInfo = ({ goEdit, userInfo }) => {
+const UserInfo = ({onClickHandler}) => {
+
   const users = JSON.parse(localStorage.getItem('userInfo'));
-  console.log(users.name);
+
   return (
     <ContentsWrap>
       <UserPicture>
         <div>
-          { users.profileImg ? <img src={users.profileImg} alt='profile_image'/> : null }
+          {users.img ? <img src={users.img} alt="profile_image" /> : null}
         </div>
       </UserPicture>
       <UserDetail>
         <Nickname>
-          <strong>
-            유저네임: {users.name}
-          </strong>
+          <strong>유저네임: {users.name || users.nickname}</strong>
           <BtnWrap>
             {/* <isAuth?.nickname === userInfo.nickname ? (
               <EditButton onClick={goEdit}>프로필 편집</EditButton>
             ) : null} */}
           </BtnWrap>
         </Nickname>
-        <Email>{users.email}</Email>
+        <Email>{users.email || users.id}</Email>
         <EditButton> 프로필 수정 </EditButton>
+        <LogoutButtn onClick={onClickHandler}>로그아웃하기</LogoutButtn>
       </UserDetail>
     </ContentsWrap>
-  )
+  );
 };
 
 export default UserInfo;

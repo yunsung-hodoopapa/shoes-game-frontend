@@ -41,7 +41,9 @@ function LoginPage(props) {
       email: email,
       password: password,
     };
-    dispatch(loginUser(requestBody)).then((res) => {
+    dispatch(loginUser(requestBody))
+      .then((res) => {
+        console.log(res);
       if (res.payload.loginSuccess) {
         localStorage.setItem('userInfo', JSON.stringify(requestBody));
         props.history.push('/');
@@ -49,9 +51,9 @@ function LoginPage(props) {
         alert(res.payload.message);
       }
     })
-    // .catch((err) => {
-    //   console.log(err);
-    // });
+    .catch((err) => {
+      console.log(err);
+    });
   };
 
   // useEffect(() => {
