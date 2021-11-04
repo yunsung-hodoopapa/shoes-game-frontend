@@ -26,7 +26,11 @@ const LandingPage = (props) => {
   // const user = useSelector((state) => state.user);
 
   const onClickHandler = () => {
-    window.Cookies.set('x_auth')
+
+    localStorage.removeItem('userInfo');
+    props.history.push('/login');
+    // cookies.remove('x_auth');
+
     // dispatch(logoutUser())
     //   .then((res) => {
     //     console.log(res);

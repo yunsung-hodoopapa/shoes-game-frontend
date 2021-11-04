@@ -95,7 +95,8 @@ const UserInfo = ({onClickHandler}) => {
   const users = JSON.parse(localStorage.getItem('userInfo'));
 
   return (
-    <ContentsWrap>
+    <>
+    {!!users && <ContentsWrap>
       <UserPicture>
         <div>
           {users.img ? <img src={users.img} alt="profile_image" /> : null}
@@ -115,6 +116,8 @@ const UserInfo = ({onClickHandler}) => {
         <LogoutButtn onClick={onClickHandler}>로그아웃하기</LogoutButtn>
       </UserDetail>
     </ContentsWrap>
+    }
+  </>
   );
 };
 
