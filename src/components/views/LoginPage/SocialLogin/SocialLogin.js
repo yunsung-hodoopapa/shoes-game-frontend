@@ -38,7 +38,7 @@ function SocialLogin(props) {
 
   const user = useSelector(state => state.user);
 
-  const KakaoLoginClickHandler = () => {
+  const KakaoLoginClickHandler = (props) => {
 
     const scope = 'profile_nickname, profile_image, account_email';
     Kakao.Auth.login({
@@ -66,7 +66,8 @@ function SocialLogin(props) {
               .then((res) => {
                 console.log(res);
                 if (res.payload.socialLoginSuccess) {
-                  props.history.push('/');
+                  localStorage.setItem('userInfo', JSON.stringify(request));
+                  history.push('/');
                 }
               })
               .catch(err => {

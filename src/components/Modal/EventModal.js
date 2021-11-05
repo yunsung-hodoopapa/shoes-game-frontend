@@ -57,6 +57,8 @@ const SubmitButton = styled.button`
 const SizeWrap = styled.div`
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   width: 250px;
   background-color: white;
 `
@@ -64,9 +66,15 @@ const SizeWrap = styled.div`
 const SelectOpt = styled.button`
   width: 30px;
   height: 20px;
-  font-size: 8px;
+  font-size: 11px;
+  margin: 0.5px;
+  border: none;
+  background-color: mint;
 `
-
+const ButtonWrap = styled.div`
+  display: flex;
+  width: 80%;
+`
 
 const sizeList = selectSize;
 
@@ -89,8 +97,10 @@ export default function AddShoesModal({
     setSelectSize(true);
   };
 
-  const onSubmit = (e) => {
+  const onClickOpt = (e) => {
     setSize(e.target.value)
+    setSelectSize(size => !size);
+    console.log(size);
   }
 
   return (
@@ -110,24 +120,30 @@ export default function AddShoesModal({
           placeholder={'Select Your US Size'}
           type='text'
           onClick={onHandleSelect}
-          value={selectSize}
-        >
-          { selectSize ?
+          value={size}
+        />
+        { selectSize ?
+          <>
+            <Label> US Size </Label>
             <SizeWrap>
-              { sizeList.map((size, idx) => (
+              {sizeList.map((size, idx) => (
                 <SelectOpt
                   value={size}
-                  key={size.id}
-                  onclick={onSubmit}
-                />
+                  key={size.idx}
+                  onClick={onClickOpt}
+                > {size}
+                </SelectOpt>
                 ))
               }
             </SizeWrap>
-          : null }
-        </Size>
-        <SubmitButton onClick={onCreate}>등록하기</SubmitButton>
-        <SubmitButton onClick={onUpdate}>업데이트</SubmitButton>
-        <SubmitButton onClick={onRemove}>삭제이트</SubmitButton>
+          </>
+        : null }
+        <br />
+        <ButtonWrap>
+          <SubmitButton onClick={onCreate}>등록하기</SubmitButton>
+          <SubmitButton onClick={onUpdate}>업데이트</SubmitButton>
+          <SubmitButton onClick={onRemove}>삭제이트</SubmitButton>
+        </ButtonWrap>
         {/* <SubmitButton onClick={onModify}>수정하기</SubmitButton> */}
       </Modal>
     </>

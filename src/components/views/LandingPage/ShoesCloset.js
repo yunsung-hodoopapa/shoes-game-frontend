@@ -53,6 +53,7 @@ const ShoesCloset = ({
   // const handleShoesInfo = () => {
   //   setShoesInfo(shoesInfo);
   // };
+
   const [inputValue, setInputValue] = useState({
     shoesName: '',
     shoesSize: '',
@@ -113,7 +114,6 @@ const ShoesCloset = ({
   const onRemove = (id) => {
     setItems(items.filter(item => item.id !== id));
   }
-
 
   // const onModify = (item) => {
   //   setInputValue({

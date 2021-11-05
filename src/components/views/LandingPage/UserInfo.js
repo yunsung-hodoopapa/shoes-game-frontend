@@ -36,7 +36,7 @@ const UserDetail = styled.div`
   }
   margin-left: 50px;
 `;
-const Nickname = styled.span `
+const Nickname = styled.span`
   display: flex;
   align-items: center;
   font-size: 25px;
@@ -68,28 +68,35 @@ const EditButton = styled.button`
 `;
 const BtnWrap = styled.div``;
 
-const UserInfo = ({ goEdit, userInfo }) => {
+const UserInfo = ({ onClickHandler }) => {
+  const users = JSON.parse(localStorage.getItem('userInfo'));
+
   return (
-    <ContentsWrap>
-      <UserPicture>
-        <div>
-          {/* <img src={userInfo.profileImg} alt='profile_image'/> */}
-        </div>
-      </UserPicture>
-      <UserDetail>
-        <Nickname>
-          {/* <strong>{userInfo.nickname}</strong> */}
-          <BtnWrap>
-            {/* <isAuth?.nickname === userInfo.nickname ? (
+    <>
+      {!!users && (
+        <ContentsWrap>
+          <UserPicture>
+            <div>
+              {users.img ? <img src={users.img} alt="profile_image" /> : null}
+            </div>
+          </UserPicture>
+          <UserDetail>
+            <Nickname>
+              <strong>유저네임: {users.name || users.nickname}</strong>
+              <BtnWrap>
+                {/* <isAuth?.nickname === userInfo.nickname ? (
               <EditButton onClick={goEdit}>프로필 편집</EditButton>
             ) : null} */}
-          </BtnWrap>
-        </Nickname>
-        {/* <Email>userInfo.email</Email> */}
-        <EditButton> 프로필 수정 </EditButton>
-      </UserDetail>
-    </ContentsWrap>
-  )
+              </BtnWrap>
+            </Nickname>
+            <Email>{users.email || users.id}</Email>
+            <EditButton> 프로필 수정 </EditButton>
+            {/* <LogoutButton onClick={onClickHandler}>로그아웃하기</LogoutButtn> */}
+          </UserDetail>
+        </ContentsWrap>
+      )}
+    </>
+  );
 };
 
 export default UserInfo;
