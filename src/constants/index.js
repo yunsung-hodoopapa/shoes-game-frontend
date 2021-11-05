@@ -3,7 +3,7 @@ const REDIRECT_URI = 'http://localhost:3000/login';
 
 export const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 export const KAKAO_LOGIN_API_URL = 'http://localhost:3002/auth/kakao';
-
+export const selectSize = '[210, 220, 230, 240, 250, 260, 270, 280, 290, 300]'
 export const testlist = [
   {
     id: 1,

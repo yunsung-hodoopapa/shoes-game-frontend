@@ -68,13 +68,6 @@ const EditButton = styled.button`
 `;
 const BtnWrap = styled.div``;
 
-axios({
-  method: 'get',
-  url : 'http:localhost:3002/auth/users',
-  data: {
-    usename: nickname,
-  }
-})
 const UserInfo = ({ goEdit, userInfo }) => {
   return (
     <ContentsWrap>
