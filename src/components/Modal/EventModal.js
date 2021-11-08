@@ -1,24 +1,13 @@
 import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
 import Modal from './Modal';
+import SearchResult from './SearchResult';
+
 import { AiOutlineClose } from 'react-icons/ai';
 import { selectSize } from '../../constants';
-import { size } from 'lodash';
-
-const Title = styled.input`
-  text-align: center;
-  outline: none;
-  width: 250px;
-  height: 30px;
-  background-color: #ded7d7;
-  // border-radius: 20px;
-  position: relative;
-  font-size: 20px;
-  z-index: 1;
-`;
 
 const Size = styled.input`
-  margin: 40px;
+  margin-top: 40px;
   width: 250px;
   height: 30px;
   text-align: center;
@@ -29,8 +18,13 @@ const Size = styled.input`
 `;
 
 const Label = styled.label`
-  marging: 10px;
+  margin: 10px;
 `;
+
+const SizeLabel = styled.div`
+  margin: 10px;
+  color: white;
+`
 
 const CloseBtnWrap = styled.div`
   display: flex;
@@ -61,7 +55,7 @@ const SizeWrap = styled.div`
   align-items: center;
   width: 250px;
   background-color: white;
-`
+`;
 
 const SelectOpt = styled.button`
   width: 30px;
@@ -70,15 +64,19 @@ const SelectOpt = styled.button`
   margin: 0.5px;
   border: none;
   background-color: mint;
-`
+  &:hover {
+    background: #339af0;
+  }
+`;
 const ButtonWrap = styled.div`
   display: flex;
   width: 80%;
-`
+`;
 
 const sizeList = selectSize;
 
 export default function AddShoesModal({
+  props,
   isModalShown,
   onClickOpenModal,
   onClickCloseModal,
@@ -98,46 +96,36 @@ export default function AddShoesModal({
   };
 
   const onClickOpt = (e) => {
-    setSize(e.target.value)
-    setSelectSize(size => !size);
-    console.log(size);
-  }
+    setSize(e.target.value);
+    setSelectSize((size) => !size);
+  };
 
   return (
     <>
-      <Modal
-        onClickCloseModal={onClickCloseModal}>
+      <Modal onClickCloseModal={onClickCloseModal}>
         <CloseBtnWrap>
           <AiOutlineClose onClick={onClickCloseModal} />
         </CloseBtnWrap>
-        <Title
-          placeholder={'shoes name'}
-          name="shoesName"
-          // onChange={onChange}
-          value={shoesName}
-        />
-        < Size
+        <SearchResult />
+        <Size
           placeholder={'Select Your US Size'}
-          type='text'
+          type="text"
           onClick={onHandleSelect}
-          value={size}
+          defaultValue={size}
         />
-        { selectSize ?
+        {selectSize ? (
           <>
-            <Label> US Size </Label>
+            <SizeLabel> US Size </SizeLabel>
             <SizeWrap>
               {sizeList.map((size, idx) => (
-                <SelectOpt
-                  value={size}
-                  key={size.idx}
-                  onClick={onClickOpt}
-                > {size}
+                <SelectOpt value={size} key={idx} onClick={onClickOpt}>
+                  {' '}
+                  {size}
                 </SelectOpt>
-                ))
-              }
+              ))}
             </SizeWrap>
           </>
-        : null }
+        ) : null}
         <br />
         <ButtonWrap>
           <SubmitButton onClick={onCreate}>등록하기</SubmitButton>

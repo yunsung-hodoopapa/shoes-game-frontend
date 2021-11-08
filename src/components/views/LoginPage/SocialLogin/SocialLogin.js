@@ -22,8 +22,8 @@ const LoginBtn = styled.button`
   align-items: center;
   justify-content: center;
   padding: 4px 0px;
-  border = none;
-  border-radius = 9px;
+  border: none;
+  border-radius: 9px;
   font-size: 14px;
   width: 150px;
   height: 30px;
