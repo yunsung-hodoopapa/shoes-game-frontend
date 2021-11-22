@@ -1,10 +1,14 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import Modal from './Modal';
 import SearchResult from './SearchResult';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 import { AiOutlineClose } from 'react-icons/ai';
 import { selectSize } from '../../constants';
+import NumberFormat from 'react-number-format';
+import { ko } from 'date-fns/esm/locale';
 
 const Size = styled.input`
   margin-top: 40px;
@@ -24,7 +28,7 @@ const Label = styled.label`
 const SizeLabel = styled.div`
   margin: 10px;
   color: white;
-`
+`;
 
 const CloseBtnWrap = styled.div`
   display: flex;
@@ -70,7 +74,9 @@ const SelectOpt = styled.button`
 `;
 const ButtonWrap = styled.div`
   display: flex;
-  width: 80%;
+  justify-content: center;
+  align-items: center;
+  width: 12rem;
 `;
 
 const sizeList = selectSize;
@@ -80,46 +86,90 @@ export default function AddShoesModal({
   isModalShown,
   onClickOpenModal,
   onClickCloseModal,
-  // onChange,
+  inputValue,
+  setInputValue,
+  onChange,
+  // onSubmitHandler,
   onCreate,
-  onUpdate,
-  onRemove,
-  // onModify,
-  shoesName,
-  shoesSize,
+  // onUpdate,
+  // onRemove,
 }) {
-  const [selectSize, setSelectSize] = useState(false);
-  const [size, setSize] = useState('');
+  const [isSizeOptionShowing, setIsSizeOptionShowing] = useState(false);
+  const [keyword, setKeyword] = useState('');
+  const [shoePrice, setShoePrice] = useState('');
+  const [date, setDate] = useState('');
 
   const onHandleSelect = (e) => {
-    setSelectSize(true);
+    setIsSizeOptionShowing(true);
   };
 
-  const onClickOpt = (e) => {
-    setSize(e.target.value);
-    setSelectSize((size) => !size);
+  const getShoesInfo = (params) => {
+    console.log('update...');
+    console.log(params);
+
+    setInputValue({
+      ...inputValue,
+      shoeName: params.shoeName,
+      brand: params.brand,
+      thumbnail: params.thumbnail,
+    });
   };
+
+  const onSizeOptionClick = (e) => {
+    setInputValue({
+      ...inputValue,
+      shoeSize: e.target.value,
+    });
+    setIsSizeOptionShowing((isSizeOptionShowing) => !isSizeOptionShowing);
+  };
+  // console.log(inputValue);
+
+  const onPriceChange = (e) => {
+    setInputValue({
+      ...inputValue,
+      shoePrice: e.target.value,
+    });
+  };
+
+  const onDateChange = (date) => {
+    setDate(date);
+    console.log(date);
+    setInputValue({
+      ...inputValue,
+      buyingDate: date,
+    });
+  };
+  // console.log(inputValue);
 
   return (
     <>
-      <Modal onClickCloseModal={onClickCloseModal}>
+      <Modal
+        onClickCloseModal={onClickCloseModal}
+        // onSubmitHandler={onSubmitHandler}
+      >
         <CloseBtnWrap>
           <AiOutlineClose onClick={onClickCloseModal} />
         </CloseBtnWrap>
-        <SearchResult />
-        <Size
-          placeholder={'Select Your US Size'}
-          type="text"
-          onClick={onHandleSelect}
-          defaultValue={size}
+        <SearchResult
+          placeholder={'findout your item'}
+          keyword={keyword}
+          setKeyword={setKeyword}
+          onChage={onChange}
+          getShoesInfo={getShoesInfo}
         />
-        {selectSize ? (
+        <Size
+          type="text"
+          placeholder={'Select Your US Size'}
+          onClick={onHandleSelect}
+          onChange={onChange}
+          defaultValue={inputValue.shoeSize}
+        />
+        {isSizeOptionShowing ? (
           <>
             <SizeLabel> US Size </SizeLabel>
             <SizeWrap>
-              {sizeList.map((size, idx) => (
-                <SelectOpt value={size} key={idx} onClick={onClickOpt}>
-                  {' '}
+              {sizeList.map((size, id) => (
+                <SelectOpt value={size} key={id} onClick={onSizeOptionClick}>
                   {size}
                 </SelectOpt>
               ))}
@@ -127,10 +177,30 @@ export default function AddShoesModal({
           </>
         ) : null}
         <br />
+        <NumberFormat
+          thousandSeparator={true}
+          type={'text'}
+          prefix={'$'}
+          onChange={onPriceChange}
+          placeholder='구입가격을 입력하세요!'
+          defaultValue={inputValue.shoePrice}
+        />
+        <br />
+        <DatePicker
+          locale={ko}
+          dateFormat="yyyy년 MM월 dd일"
+          selected={date}
+          onChange={onDateChange}
+          placeholderText="구입날짜를 입력하세요!"
+          value={date}
+        />
+        <br />
         <ButtonWrap>
-          <SubmitButton onClick={onCreate}>등록하기</SubmitButton>
-          <SubmitButton onClick={onUpdate}>업데이트</SubmitButton>
-          <SubmitButton onClick={onRemove}>삭제이트</SubmitButton>
+          <SubmitButton onClick={(e) => onCreate(e)}>
+            등록하기
+          </SubmitButton>
+          {/* <SubmitButton onClick={onUpdate}>업데이트</SubmitButton>
+          <SubmitButton onClick={onRemove}>삭제이트</SubmitButton> */}
         </ButtonWrap>
         {/* <SubmitButton onClick={onModify}>수정하기</SubmitButton> */}
       </Modal>

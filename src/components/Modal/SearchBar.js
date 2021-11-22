@@ -1,7 +1,7 @@
 import React from 'react';
 import SearchView from './SearchView';
 import styled from 'styled-components';
-
+import { shoeListLength } from '../../constants';
 
 const SearchWrap = styled.div`
   display: flex;
@@ -9,91 +9,87 @@ const SearchWrap = styled.div`
   justify-content: center;
   align-items: center;
   background-color: #ded7d7;
-`
+`;
 const SearchInput = styled.input`
   text-align: center;
   outline: none;
-  width: 250px;
+  width: 21rem;
   height: 30px;
   background-color: #ded7d7;
   position: relative;
   font-size: 20px;
   z-index: 1;
 `;
-
 const Searchbox = styled.div`
-  width: 290px;
+  width: 23.5rem;
   height: 100px;
   margin-top: 3px;
-  background-color: #F4F0EF;
+  background-color: white;
   overflow-y: scroll;
 `;
-
 const CancelBtn = styled.button`
   height: 30px;
   width: 30px;
   border: none;
   font-size: 15px;
   background: none;
-  animation: ${
-      props => props.length > 0 ? 'active' : 'inactive'
-  };
+  animation: ${(props) => (props.length > 0 ? 'active' : 'inactive')};
   z-index: 1;
 `;
 
-const SearchBar = ({ searchItem, results, updateField }) => {
-
+const SearchBar = ({
+  keyword,
+  results,
+  setResults,
+  updateField,
+  getShoesInfo,
+}) => {
   const updateText = (text) => {
-    updateField('searchItem', text, false);
-    updateField('results', []);
+    updateField('keyword', text, false);
+    // getShoesInfo(shoeInfo);
+    // setResults([]);
   };
 
   const cancelSearch = () => {
-    updateField('searchItem', '');
+    updateField('keyword', '');
   };
 
-  let renderResults;
-  const arr = results['results'];
-
-  if (arr) {
-    // arr에 검색어에 대한 결과가 담기면, SearchView 호출
-    renderResults= arr.map((item) => {
-      return (
-        <SearchView
-          updateText={updateText}
-          shoeName={item.shoeName}
-          brand={item.brand}
-          key={item.urlKey}
-        />
-      );
-    });
-  }
-  // onChang를 사용해 글자를 입력할때마다 updataField호출하고 renderResults를 그린다. 
+  const limitEnglish = (e) => {
+    e.target.value = e.target.value.replace(/[0-9]|[^\!-z\s]/gi, '');
+  };
+  // const arr = results.results; // {} [] -> truthy
+  // if (arr.length) {
+  // arr에 검색어에 대한 결과가 담기면, SearchView 호출
+  const renderResults = results.map((item, index) => {
+    return (
+      <SearchView
+        updateText={updateText}
+        item={item}
+        key={index}
+        getShoesInfo={getShoesInfo}
+      />
+    );
+  });
+  // }
+  // onChang를 사용해 글자를 입력할때마다 updataField호출하고 renderResults를 그린다.
   return (
     <div>
       <SearchWrap>
         <SearchInput
-            placeholder={'Enter Item to be searched'}
-            value={ searchItem || ''}
-            onChange={(e)=> updateField('searchItem', e.target.value)}
+          type={'text'}
+          onKeyDown={limitEnglish}
+          placeholder={'Enter Item to be searched'}
+          value={keyword || ''}
+          onChange={(e) => updateField('keyword', e.target.value)}
         />
-        { searchItem &&
-          <CancelBtn
-          onClick={() => cancelSearch}
-          > x </CancelBtn>
-        }
-        
+        {keyword && <CancelBtn onClick={() => cancelSearch()}> x </CancelBtn>}
       </SearchWrap>
-      { searchItem ?
-        <Searchbox>
-          {renderResults}
-        </Searchbox>
-      : null }
+      {results.length > 0 ? <Searchbox> {renderResults} </Searchbox> : null}
     </div>
   );
-}
+};
 
 // 검색된 아이템의 'shoename'과 'brand'를 출력
-// 결과값을 클릭하면 updateText를 호출해 input에 name을 표시 
+// 결과값을 클릭하면 updateText를 호출해 input에 name을 표시
 
 export default SearchBar;

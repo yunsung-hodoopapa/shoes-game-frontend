@@ -15,8 +15,6 @@ const UserPicture = styled.div`
   width: 160px;
   height: 160px;
   border-radius: 50%;
-  background-color: tomato;
-  color: white;
   justify-content: center;
   align-items: center;
   margin-left: 16px;
@@ -24,6 +22,7 @@ const UserPicture = styled.div`
     width: 150px;
     height: 150px;
   }
+  object-fit: contain;
 `;
 const UserDetail = styled.div`
   display: flex;
@@ -76,13 +75,11 @@ const UserInfo = ({ onClickHandler }) => {
       {!!users && (
         <ContentsWrap>
           <UserPicture>
-            <div>
-              {users.img ? <img src={users.img} alt="profile_image" /> : null}
-            </div>
+            {users.image ? <img src={users.image} alt="profile_image" /> : null}
           </UserPicture>
           <UserDetail>
             <Nickname>
-              <strong>유저네임: {users.name || users.nickname}</strong>
+              <strong> 유저네임: {users.name || users.nickname} </strong>
               <BtnWrap>
                 {/* <isAuth?.nickname === userInfo.nickname ? (
               <EditButton onClick={goEdit}>프로필 편집</EditButton>

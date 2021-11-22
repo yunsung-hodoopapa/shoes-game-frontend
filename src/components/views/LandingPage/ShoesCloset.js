@@ -1,8 +1,9 @@
 import React, { useState, useRef } from 'react';
+import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import EventModal from '../../Modal/EventModal';
-import { testlist } from '../../../constants';
+import { testlist, shoeListLength } from '../../../constants';
 import { openModal, closeModal, addShoes } from '../../../actions/userAction';
 
 const ContentsWrap = styled.div`
@@ -24,43 +25,63 @@ const Box = styled.div`
   text-align: center;
   width: 195px;
   height: 105px;
-  background-color: #c4c4c4;
+  background: no-repeat center;
+  background-image: url(${props => props.thumbnail});
+  background-size: 195px;
   margin: 8px 8px;
+  object-fit: contain;
 `;
+
+const BoxInformation = styled.b`
+  font-size: 13px;
+  color: white;
+  text-shadow: 4px 2px 2px black;
+`
 
 const shoesList = testlist;
 
-const ShoesCloset = ({
-  key,
-  // shoesInfo,
-  // setShoeInfo,
-}) => {
+const ShoesCloset = ({ key }) => {
   const { isModalShown } = useSelector((state) => ({
     isModalShown: state.modal.isModalShown,
-    // shoesName: state.shoesInfo.shoesName,
-    // shoesSize: state.shoesInfo.shoesSize,
   }));
+
+  const [inputValue, setInputValue] = useState({
+    shoeName: '',
+    shoeSize: '',
+    shoePrice: '',
+    buyingDate: '',
+    thumbnail: '',
+    brand: '',
+    id: '',
+  });
+
+  const { shoeName, shoeSize, shoePrice, buyingDate, thumbnail, brand, id } = inputValue; // 비구조화 할당을 통해 값을 추출한다.
+  // 깊은 복사를 통해  name이라는 key값을 가진 value 값을 복사해서 넘긴다.
+  // 1. 아이템이 추가될 빈 배열을 초기값으로 설정한다.
+  const [items, setItems] = useState([]);
+  const [isSummited, setIsSummited] = useState(false);
+
+  // 2. useRef로 할당될 id 값을 지정해준다.
+  const nextId = useRef(1);
 
   const dispatch = useDispatch();
 
   const onClickOpenModal = () => {
     dispatch(openModal());
   };
+
   const onClickCloseModal = () => {
     dispatch(closeModal());
+    setInputValue({
+      shoeName: '',
+      shoeSize: '',
+      shoePrice: '',
+      buyingDate: '',
+      thumbnail: '',
+      brand: '',
+      id: '',
+    });
   };
-
-  // const handleShoesInfo = () => {
-  //   setShoesInfo(shoesInfo);
-  // };
-
-  const [inputValue, setInputValue] = useState({
-    shoesName: '',
-    shoesSize: '',
-    id: '',
-  });
-
-  const { shoesName, shoesSize, id } = inputValue;
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -70,92 +91,87 @@ const ShoesCloset = ({
     });
   };
 
-  const [items, setItems] = useState([
-    testlist
-  ]);
-
-  console.log(items);
-
-  const nextId = useRef(2);
-
-  const onCreate = () => {
-    const newItem = {
+  // 3. onCreate 함수가 실행되었을 때, 빈 배열에 'shoeName', 'shoeSize'를 키값으로 갖는 객체값이 추가된다.
+  const onCreate = (e) => {
+    e.preventDefault();
+    console.log('function operating');
+    const item = {
       id: nextId.current,
-      shoesName: shoesName,
-      shoesSize: shoesSize,
+      shoeName,
+      shoeSize,
+      shoePrice,
+      buyingDate,
+      brand,
+      thumbnail,
     };
-    setItems(items.concat(newItem));
+    setItems([...items, item]);
+    storeHandler(item)
+    // inputValue 값을 다시 초기화시킨다.
     setInputValue({
-      shoesName: '',
-      shoesSize: '',
+      shoeName: '',
+      shoeSize: '',
+      shoePrice: '',
+      buyingDate: '',
+      brand: '',
+      thumbnail: '',
     });
     nextId.current += 1;
-    console.log(items);
     onClickCloseModal();
   };
 
-  const onUpdate = () => {
-    console.log(1);
-    setItems(
-      items.map(item => item.id === id ? { ... item, id: id, shoesName: shoesName, shoesSize: shoesSize} : item)
-    )
-    console.log(items);
-    setInputValue({
-      shoesSize: '',
-      shoesName: '',
-      id: '',
-    })
-    console.log(shoesSize);
-    console.log(shoesName);
-    console.log(id);
-    onClickCloseModal();
-  }
+  console.log(items);
 
-  const onRemove = (id) => {
-    setItems(items.filter(item => item.id !== id));
-  }
+  const storeHandler = (param) => {
+    // 전역에서 관리되는 item 값을 서버로 전달한다.
+    const requestBody = param;
+    console.log(param);
+    try {
+      const request = axios
+        .post('http://localhost:3002/shoes/regist', requestBody)
+        .then((res) => {
+          console.log('store success');
+          console.log(res);
+          // 서버에 저장된 정보를 res로 불러온 후 로컬스토리지에서 관리한다.
+          localStorage.setItem('shoesInfo', JSON.stringify(res));
+          console.log(localStorage);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
-  // const onModify = (item) => {
-  //   setInputValue({
-  //     shoesName: item.shoesName,
-  //     shoesSize: item.shoesSize,
-  //     id: item.id
-  //   })
-  // }
-
-  // const onSubmit = (e) => {
-  //   e.preventDefault();
-  //   onCreate(inputValue);
-  //   setInputValue('');
-  // };
+  const storedShoesInfo = JSON.parse(localStorage.getItem('shoesInfo')).data;
 
   return (
     <>
       <ContentsWrap>
-        {testlist.map((shoes, idx) => (
+        {testlist.map((shoes = {}, index) => (
           <Box
             shoes={shoes}
-            key={shoes.id}
+            key={index}
             onClick={onClickOpenModal}
-            // shoesInfo={inputValue}
+            thumbnail={storedShoesInfo.thumbnail}
           >
-            <b>
-              {shoes.shoesName}
+            <BoxInformation>
+              {storedShoesInfo.shoeName}
               <br />
-              {shoes.shoesSize}
-            </b>
+              {`Size: ${storedShoesInfo.shoeSize}`}
+            </BoxInformation>
           </Box>
         ))}
         {isModalShown ? (
           <EventModal
             isModalShown={isModalShown}
             onClickCloseModal={onClickCloseModal}
-            shoesName={shoesName}
-            shoesSize={shoesSize}
+            inputValue={inputValue}
+            setInputValue={setInputValue}
             onChange={onChange}
             onCreate={onCreate}
-            onUpdate={onUpdate}
-            onRemove={onRemove}
+            // onUpdate={onUpdate}
+            // onRemove={onRemove}
             // onModify={onModify}
           />
         ) : null}
@@ -165,3 +181,34 @@ const ShoesCloset = ({
 };
 
 export default ShoesCloset;
+
+
+  // const onUpdate = () => {
+  //   console.log(1);
+  //   setItems(
+  //     items.map((item) =>
+  //       item.id === id
+  //         ? { ...item, id: id, shoeName: shoeName, shoeSize: shoeSize }
+  //         : item
+  //     )
+  //   );
+  //   console.log(items);
+  //   setInputValue({
+  //     shoeSize: '',
+  //     shoeName: '',
+  //     id: '',
+  //   });
+  //   onClickCloseModal();
+  // };
+
+  // const onRemove = (id) => {
+  //   setItems(items.filter((item) => item.id !== id));
+  // };
+
+  // const onModify = (item) => {
+  //   setInputValue({
+  //     shoesName: item.shoesName,
+  //     shoesSize: item.shoesSize,
+  //     id: item.id
+  //   })
+  // }

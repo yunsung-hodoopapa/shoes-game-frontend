@@ -19,9 +19,9 @@ const ContentsWrap = styled.div`
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  max-height: 300px;
-  width: 20rem;
-  height: 80%;
+  max-height: 400px;
+  width: 25rem;
+  height: 100%;
   padding: 16px;
   background-color: #191F2C;
   border-radius: 10px;
