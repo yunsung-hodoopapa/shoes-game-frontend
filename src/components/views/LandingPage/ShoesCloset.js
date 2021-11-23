@@ -3,8 +3,8 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import EventModal from '../../Modal/EventModal';
-import { testlist, shoeListLength } from '../../../constants';
 import { openModal, closeModal, addShoes } from '../../../actions/userAction';
+import { fillingShoeObject } from '../../../utils';
 
 const ContentsWrap = styled.div`
   display: flex;
@@ -32,14 +32,25 @@ const Box = styled.div`
   object-fit: contain;
 `;
 
+const EmptyBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 195px;
+  height: 105px;
+  background: no-repeat center;
+  background-color: white;
+  background-size: 195px;
+  margin: 8px 8px;
+`
+
 const BoxInformation = styled.b`
   font-size: 13px;
   color: white;
   text-shadow: 4px 2px 2px black;
 `
-
-const shoesList = testlist;
-
 const ShoesCloset = ({ key }) => {
   const { isModalShown } = useSelector((state) => ({
     isModalShown: state.modal.isModalShown,
@@ -130,10 +141,8 @@ const ShoesCloset = ({ key }) => {
         .post('http://localhost:3002/shoes/regist', requestBody)
         .then((res) => {
           console.log('store success');
-          console.log(res);
           // 서버에 저장된 정보를 res로 불러온 후 로컬스토리지에서 관리한다.
-          localStorage.setItem('shoesInfo', JSON.stringify(res));
-          console.log(localStorage);
+          localStorage.setItem('shoesInfo', JSON.stringify(res.data));
         })
         .catch((err) => {
           console.log(err);
@@ -142,25 +151,26 @@ const ShoesCloset = ({ key }) => {
       console.log(err);
     }
   };
-
-  const storedShoesInfo = JSON.parse(localStorage.getItem('shoesInfo')).data;
+  // const storedShoesInfo = JSON.parse(localStorage.getItem('shoesInfo')).data;
+  
+  const storedShoesInfo = JSON.parse(localStorage.getItem('shoesInfo'));
 
   return (
     <>
       <ContentsWrap>
-        {testlist.map((shoes = {}, index) => (
-          <Box
-            shoes={shoes}
+        {fillingShoeObject(storedShoesInfo).map((shoesInfo, index) => (
+          shoesInfo.shoeName ? <Box
+            shoesInfo={shoesInfo}
             key={index}
             onClick={onClickOpenModal}
-            thumbnail={storedShoesInfo.thumbnail}
+            thumbnail={shoesInfo.thumbnail}
           >
             <BoxInformation>
-              {storedShoesInfo.shoeName}
+              {shoesInfo.shoeName}
               <br />
-              {`Size: ${storedShoesInfo.shoeSize}`}
+              {`Size: ${shoesInfo.shoeSize}`}
             </BoxInformation>
-          </Box>
+          </Box> : <EmptyBox />
         ))}
         {isModalShown ? (
           <EventModal

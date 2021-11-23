@@ -1,18 +1,10 @@
-import uuid from 'react-uuid';
 import { shoesInfoHandler } from '../reducers/shoesInfoReducer';
+import { shoeListLength, shoesObject } from '../constants';
 
-// export function formatUserInput(eventId, userInputEvent) {
-//   const {
-//     shoesName,
-//     shoesSize,
-//   } = userInputEvent;
-//   const shoesInfo = {
-//     id: shoesId ? shoesId : uuid(),
-//     shoesName: shoesName,
-//     shoesSize: shoesSize,
-//   };
-//   return shoesInfo;
-// }
-
-// eventTitle => shoesName
-// event => shoesInfo
+export const fillingShoeObject = (param) => {
+  const infoContainer = [...param];
+  for (let i = 0; i < shoeListLength - param.length; i++) {
+    infoContainer.push(shoesObject);
+  }
+  return infoContainer;
+};

@@ -27,12 +27,6 @@ const ResultsThumbnail = styled.td`
   // background-color: tomato;
 `;
 
-const thumbnailWrap = styled.img`
-  width: 100px;
-  height: 60px;
-  object-fit: scale-down;
-`;
-
 const SearchView = ({ index, updateText, item, getShoesInfo }) => {
   const { shoeName, brand, thumbnail } = item;
   const updateShoesInfo = (e) => {
@@ -51,7 +45,7 @@ const SearchView = ({ index, updateText, item, getShoesInfo }) => {
       <tbody>
         <tr key={index}>
           <ResultsThumbnail>
-            <img src={thumbnail} width="100" height="60" />
+            <img src={thumbnail} width="100" height="60" alt='shoes thumbnail' />
           </ResultsThumbnail>
           <ResultsName>{shoeName}</ResultsName>
           <ResultsBrand>{brand}</ResultsBrand>

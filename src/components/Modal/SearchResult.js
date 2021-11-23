@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import SearchBar from './SearchBar';
-import SampleInformation from '../../constants/sample';
 import axios from 'axios';
-import { request } from '../../utils/axios';
 
 const InputWrap = styled.div`
   display: flex;

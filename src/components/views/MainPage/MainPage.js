@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  withRouter,
-} from 'react-router';
+import { Switch, Route, withRouter } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import Footer from '../../Page/Footer/footer';

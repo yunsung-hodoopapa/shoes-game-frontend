@@ -1,7 +1,6 @@
 import React from 'react';
 import SearchView from './SearchView';
 import styled from 'styled-components';
-import { shoeListLength } from '../../constants';
 
 const SearchWrap = styled.div`
   display: flex;
@@ -46,8 +45,7 @@ const SearchBar = ({
 }) => {
   const updateText = (text) => {
     updateField('keyword', text, false);
-    // getShoesInfo(shoeInfo);
-    // setResults([]);
+    setResults([]);
   };
 
   const cancelSearch = () => {
@@ -55,7 +53,7 @@ const SearchBar = ({
   };
 
   const limitEnglish = (e) => {
-    e.target.value = e.target.value.replace(/[0-9]|[^\!-z\s]/gi, '');
+    e.target.value = e.target.value.replace(/[^\!-z\s]/gi, '');
   };
   // const arr = results.results; // {} [] -> truthy
   // if (arr.length) {

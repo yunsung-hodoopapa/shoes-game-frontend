@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Modal from './Modal';
 import SearchResult from './SearchResult';
@@ -6,7 +6,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 import { AiOutlineClose } from 'react-icons/ai';
-import { selectSize } from '../../constants';
+import { SELECTSIZE } from '../../constants';
 import NumberFormat from 'react-number-format';
 import { ko } from 'date-fns/esm/locale';
 
@@ -19,10 +19,6 @@ const Size = styled.input`
   border: nonoe;
   border-bottom: 2px solid #d3959b;
   font-size: 20px;
-`;
-
-const Label = styled.label`
-  margin: 10px;
 `;
 
 const SizeLabel = styled.div`
@@ -79,7 +75,7 @@ const ButtonWrap = styled.div`
   width: 12rem;
 `;
 
-const sizeList = selectSize;
+const sizeList = SELECTSIZE;
 
 export default function AddShoesModal({
   props,
@@ -89,14 +85,11 @@ export default function AddShoesModal({
   inputValue,
   setInputValue,
   onChange,
-  // onSubmitHandler,
   onCreate,
-  // onUpdate,
-  // onRemove,
 }) {
   const [isSizeOptionShowing, setIsSizeOptionShowing] = useState(false);
   const [keyword, setKeyword] = useState('');
-  const [shoePrice, setShoePrice] = useState('');
+  // const [shoePrice, setShoePrice] = useState('');
   const [date, setDate] = useState('');
 
   const onHandleSelect = (e) => {
@@ -104,9 +97,6 @@ export default function AddShoesModal({
   };
 
   const getShoesInfo = (params) => {
-    console.log('update...');
-    console.log(params);
-
     setInputValue({
       ...inputValue,
       shoeName: params.shoeName,
@@ -122,7 +112,6 @@ export default function AddShoesModal({
     });
     setIsSizeOptionShowing((isSizeOptionShowing) => !isSizeOptionShowing);
   };
-  // console.log(inputValue);
 
   const onPriceChange = (e) => {
     setInputValue({
@@ -133,13 +122,11 @@ export default function AddShoesModal({
 
   const onDateChange = (date) => {
     setDate(date);
-    console.log(date);
     setInputValue({
       ...inputValue,
       buyingDate: date,
     });
   };
-  // console.log(inputValue);
 
   return (
     <>
@@ -182,7 +169,7 @@ export default function AddShoesModal({
           type={'text'}
           prefix={'$'}
           onChange={onPriceChange}
-          placeholder='구입가격을 입력하세요!'
+          placeholder="구입가격을 입력하세요!"
           defaultValue={inputValue.shoePrice}
         />
         <br />
@@ -196,9 +183,7 @@ export default function AddShoesModal({
         />
         <br />
         <ButtonWrap>
-          <SubmitButton onClick={(e) => onCreate(e)}>
-            등록하기
-          </SubmitButton>
+          <SubmitButton onClick={(e) => onCreate(e)}>등록하기</SubmitButton>
           {/* <SubmitButton onClick={onUpdate}>업데이트</SubmitButton>
           <SubmitButton onClick={onRemove}>삭제이트</SubmitButton> */}
         </ButtonWrap>
