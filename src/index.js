@@ -18,6 +18,7 @@ const store = createStoreWithMiddleware(
   window.__REDUX_DEVTOOLS_EXTENSION__ &&
   window.__REDUX_DEVTOOLS_EXTENSION__()
 )
+
 console.log(store.getState()); // 스토어의 상태를 확인해봅시다.
 
 ReactDOM.render(

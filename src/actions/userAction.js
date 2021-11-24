@@ -1,4 +1,4 @@
-import { REGISTER_USER, LOGIN_USER, KAKAO_LOGIN_USER, OPEN_MODAL, CLOSE_MODAL, ADD_SHOES } from './types';
+import { REGISTER_USER, LOGIN_USER, KAKAO_LOGIN_USER, OPEN_MODAL, CLOSE_MODAL, ADD_ITEMS } from './types';
 import { request } from '../utils/axios';
 
 export async function registerUser(dataToSubmit) {
@@ -38,13 +38,10 @@ export function closeModal() {
   };
 }
 
-let nextShoesId = 0;
-export const addShoes = (content) => {
+export const addItems = (data) => {
+  console.log(data);
   return {
-    type: ADD_SHOES,
-    payload: {
-      id: ++nextShoesId,
-      content,
-    }
+    type: ADD_ITEMS,
+    items: data
   };
 };

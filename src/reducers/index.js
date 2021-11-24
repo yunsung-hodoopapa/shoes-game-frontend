@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
 import { userReducer } from './userReducer';
 import { handleModalReducer } from './modalReducer';
-import { shoesInfoHandler } from './shoesInfoReducer';
+import { addItemsHandler } from './itemsInfoReducer';
 
 const rootReducer = combineReducers({
   user: userReducer,
   modal: handleModalReducer,
-  shoesInfo: shoesInfoHandler,
+  items: addItemsHandler,
 });
 
 export default rootReducer;
