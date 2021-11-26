@@ -87,11 +87,13 @@ export default function AddShoesModal({
   onChange,
   onCreate,
   onUpdate,
+  onRemove,
 }) {
   const [isSizeOptionShowing, setIsSizeOptionShowing] = useState(false);
   const [keyword, setKeyword] = useState(inputValue.shoeName);
   // const [shoePrice, setShoePrice] = useState('');
   const [date, setDate] = useState('');
+  const [size, setSize] = useState('');
 
   const onHandleSelect = (e) => {
     setIsSizeOptionShowing(true);
@@ -109,9 +111,9 @@ export default function AddShoesModal({
   const onSizeOptionClick = (e) => {
     setInputValue({
       ...inputValue,
-      shoeSize: e.target.value,
+      shoeSize: e.currentTarget.value,
     });
-    setIsSizeOptionShowing((isSizeOptionShowing) => !isSizeOptionShowing);
+    setIsSizeOptionShowing(false);
   };
 
   const onPriceChange = (e) => {
@@ -150,7 +152,7 @@ export default function AddShoesModal({
           placeholder={'Select Your US Size'}
           onClick={onHandleSelect}
           onChange={onChange}
-          defaultValue={inputValue.shoeSize}
+          value={inputValue.shoeSize}
         />
         {isSizeOptionShowing ? (
           <>
@@ -184,11 +186,15 @@ export default function AddShoesModal({
         />
         <br />
         <ButtonWrap>
-          <SubmitButton onClick={(e) => onCreate(e)}>등록하기</SubmitButton>
-          <SubmitButton onClick={(e) => onUpdate(e)}>업데이트</SubmitButton>
-          {/* <SubmitButton onClick={onRemove}>삭제이트</SubmitButton> */}
+          {inputValue.shoeName !== '' ? (
+            <>
+              <SubmitButton onClick={(e) => onUpdate(e)}>수정하기</SubmitButton>
+              <SubmitButton onClick={(e) => onRemove(e)}>삭제하기</SubmitButton>
+            </>
+          ) : (
+            <SubmitButton onClick={(e) => onCreate(e)}>등록하기</SubmitButton>
+          )}
         </ButtonWrap>
-        {/* <SubmitButton onClick={onModify}>수정하기</SubmitButton> */}
       </Modal>
     </>
   );

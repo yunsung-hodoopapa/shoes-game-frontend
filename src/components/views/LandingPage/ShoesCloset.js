@@ -140,6 +140,28 @@ const ShoesCloset = ({ key }) => {
     onClickCloseModal();
   };
 
+  const onRemove = (e) => {
+    e.preventDefault();
+    removeHandler(inputValue);
+    setInputValue({
+      shoeName: '',
+      shoeSize: '',
+      shoePrice: '',
+      buyingDate: '',
+      brand: '',
+      thumbnail: '',
+    });
+    onClickCloseModal();
+  };
+
+  const onModify = (item) => {
+    setInputValue({
+      shoesName: item.shoesName,
+      shoesSize: item.shoesSize,
+      id: item.id,
+    });
+  };
+
   const loadShoesData = () => {
     try {
       console.log('processing');
@@ -200,6 +222,28 @@ const ShoesCloset = ({ key }) => {
       console.log(err);
     }
   };
+
+  const removeHandler = (data) => {
+    const requestBody = data;
+    console.log(data);
+    console.log(data._id);
+    try {
+      const request = axios
+        .delete('http://localhost:3002/shoes/shoesInfo/delete_by_id', data, {withCredentials: true})
+        .then((res) => {
+          console.log(res);
+          console.log('delete success');
+          getItemsHandler(res.data);
+        })
+        .catch((err) => {
+          console.log('error occured');
+          console.log(err);
+        });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   console.log(items);
 
   return (
@@ -232,7 +276,7 @@ const ShoesCloset = ({ key }) => {
             onChange={onChange}
             onCreate={onCreate}
             onUpdate={onUpdate}
-            // onRemove={onRemove}
+            onRemove={onRemove}
             // onModify={onModify}
           />
         ) : null}
@@ -242,15 +286,3 @@ const ShoesCloset = ({ key }) => {
 };
 
 export default ShoesCloset;
-
-// const onRemove = (id) => {
-//   setItems(items.filter((item) => item.id !== id));
-// };
-
-// const onModify = (item) => {
-//   setInputValue({
-//     shoesName: item.shoesName,
-//     shoesSize: item.shoesSize,
-//     id: item.id
-//   })
-// }
