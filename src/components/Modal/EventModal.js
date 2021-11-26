@@ -86,9 +86,10 @@ export default function AddShoesModal({
   setInputValue,
   onChange,
   onCreate,
+  onUpdate,
 }) {
   const [isSizeOptionShowing, setIsSizeOptionShowing] = useState(false);
-  const [keyword, setKeyword] = useState('');
+  const [keyword, setKeyword] = useState(inputValue.shoeName);
   // const [shoePrice, setShoePrice] = useState('');
   const [date, setDate] = useState('');
 
@@ -184,8 +185,8 @@ export default function AddShoesModal({
         <br />
         <ButtonWrap>
           <SubmitButton onClick={(e) => onCreate(e)}>등록하기</SubmitButton>
-          {/* <SubmitButton onClick={onUpdate}>업데이트</SubmitButton>
-          <SubmitButton onClick={onRemove}>삭제이트</SubmitButton> */}
+          <SubmitButton onClick={(e) => onUpdate(e)}>업데이트</SubmitButton>
+          {/* <SubmitButton onClick={onRemove}>삭제이트</SubmitButton> */}
         </ButtonWrap>
         {/* <SubmitButton onClick={onModify}>수정하기</SubmitButton> */}
       </Modal>

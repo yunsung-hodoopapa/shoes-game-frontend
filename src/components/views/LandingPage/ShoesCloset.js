@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
@@ -16,7 +16,6 @@ const ContentsWrap = styled.div`
   height: 495px;
   align-items: center;
 `;
-
 const Box = styled.div`
   display: flex;
   flex-direction: column;
@@ -31,7 +30,6 @@ const Box = styled.div`
   margin: 8px 8px;
   object-fit: contain;
 `;
-
 const EmptyBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -45,7 +43,6 @@ const EmptyBox = styled.div`
   background-size: 195px;
   margin: 8px 8px;
 `;
-
 const BoxInformation = styled.b`
   font-size: 13px;
   color: white;
@@ -73,18 +70,37 @@ const ShoesCloset = ({ key }) => {
 
   const dispatch = useDispatch();
 
-  const onClickOpenModal = () => {
+  const onClickOpenModal = (index) => {
     dispatch(openModal());
+    const item = items[index];
+    if (item) {
+      setInputValue({
+        ...inputValue,
+        shoeName: item.shoeName,
+        shoeSize: item.shoeSize,
+        thumbnail: item.thumbnail,
+        _id: item._id,
+      });
+    }
   };
 
   const onClickCloseModal = () => {
     dispatch(closeModal());
+    setInputValue({
+      ...inputValue,
+      shoeName: '',
+      shoeSize: '',
+      shoePrice: '',
+      buyingDate: '',
+      thumbnail: '',
+      brand: '',
+      id: '',
+    });
   };
 
   const getItemsHandler = (items) => {
-    console.log('operating..');
     dispatch(addItems(items));
-  }
+  };
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -110,20 +126,28 @@ const ShoesCloset = ({ key }) => {
     onClickCloseModal();
   };
 
-  const storeHandler = (param) => {
-    // 전역에서 관리되는 inputvalue 값을 서버로 전달한다.
-    const requestBody = param;
-    console.log(param);
+  const onUpdate = (e) => {
+    e.preventDefault();
+    patchHandler(inputValue);
+    setInputValue({
+      shoeName: '',
+      shoeSize: '',
+      shoePrice: '',
+      buyingDate: '',
+      brand: '',
+      thumbnail: '',
+    });
+    onClickCloseModal();
+  };
+
+  const loadShoesData = () => {
     try {
+      console.log('processing');
       const request = axios
-        .post('http://localhost:3002/shoes/regist', requestBody)
+        .get('http://localhost:3002/shoes/managed-shoesInfo')
         .then((res) => {
-          console.log('store success');
-          // 서버에 저장된 정보를 res로 불러온 후 로컬스토리지에서 관리한다.
-          console.log(res.data);
+          console.log('load Success');
           getItemsHandler(res.data);
-          console.log(items);
-          localStorage.setItem('shoesInfo', JSON.stringify(res.data));
         })
         .catch((err) => {
           console.log(err);
@@ -132,6 +156,52 @@ const ShoesCloset = ({ key }) => {
       console.log(err);
     }
   };
+
+  useEffect(() => {
+    loadShoesData();
+  }, []);
+
+  const storeHandler = (data) => {
+    // 전역에서 관리되는 inputvalue 값을 서버로 전달한다.
+    try {
+      const request = axios
+        .post('http://localhost:3002/shoes/regist', data)
+        .then((res) => {
+          console.log('store success');
+          // 서버에 저장된 정보를 res로 불러온 후 로컬스토리지에서 관리한다.
+          console.log(res);
+          getItemsHandler(res.data);
+          console.log(items);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const patchHandler = (data) => {
+    const requestBody = data;
+    console.log(data);
+    console.log(data._id);
+    try {
+      const request = axios
+        .patch('http://localhost:3002/shoes/shoesInfo', data)
+        .then((res) => {
+          console.log('update success');
+          getItemsHandler(res.data);
+        })
+        .catch((err) => {
+          console.log('error occured');
+          console.log(err);
+        });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  console.log(items);
+
   return (
     <>
       <ContentsWrap>
@@ -139,8 +209,8 @@ const ShoesCloset = ({ key }) => {
           shoesInfo.shoeName ? (
             <Box
               shoesInfo={shoesInfo}
-              index={index}
-              onClick={onClickOpenModal}
+              key={index}
+              onClick={() => onClickOpenModal(index)}
               thumbnail={shoesInfo.thumbnail}
             >
               <BoxInformation>
@@ -150,7 +220,7 @@ const ShoesCloset = ({ key }) => {
               </BoxInformation>
             </Box>
           ) : (
-            <EmptyBox onClick={onClickOpenModal} />
+            <EmptyBox onClick={onClickOpenModal} key={index} />
           )
         )}
         {isModalShown ? (
@@ -161,7 +231,7 @@ const ShoesCloset = ({ key }) => {
             setInputValue={setInputValue}
             onChange={onChange}
             onCreate={onCreate}
-            // onUpdate={onUpdate}
+            onUpdate={onUpdate}
             // onRemove={onRemove}
             // onModify={onModify}
           />
@@ -172,24 +242,6 @@ const ShoesCloset = ({ key }) => {
 };
 
 export default ShoesCloset;
-
-// const onUpdate = () => {
-//   console.log(1);
-//   setItems(
-//     items.map((item) =>
-//       item.id === id
-//         ? { ...item, id: id, shoeName: shoeName, shoeSize: shoeSize }
-//         : item
-//     )
-//   );
-//   console.log(items);
-//   setInputValue({
-//     shoeSize: '',
-//     shoeName: '',
-//     id: '',
-//   });
-//   onClickCloseModal();
-// };
 
 // const onRemove = (id) => {
 //   setItems(items.filter((item) => item.id !== id));
