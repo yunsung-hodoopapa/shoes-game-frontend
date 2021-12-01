@@ -8,25 +8,22 @@ import Cookies from 'js-cookie';
 import { request } from '../../../../utils/axios';
 
 const ContentsWrap = styled.div`
-  position: absolute;
-  background-color: white;
+  display: flex;
+  position: relative;
+  background-color: grey;
   width: 1134px;
   height: 709px;
   left: 330px;
   top: 26px;
-  justify-content: center;
-  align-items: center;
 `;
 
 const LandingPage = (props) => {
-
   // const dispatch = useDispatch();
   const history = useHistory();
 
   // const user = useSelector((state) => state.user);
 
   const onClickHandler = () => {
-
     localStorage.removeItem('userInfo');
     props.history.push('/login');
     // cookies.remove('x_auth');
@@ -46,12 +43,10 @@ const LandingPage = (props) => {
 
   return (
     <ContentsWrap>
-      <UserInfo
-        onClickHandler={onClickHandler}
-      />
+      <UserInfo onClickHandler={onClickHandler} />
       {/* <ShoesCloset /> */}
     </ContentsWrap>
-  )
+  );
 };
 
 export default LandingPage;

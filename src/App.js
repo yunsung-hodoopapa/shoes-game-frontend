@@ -7,6 +7,8 @@ import PublicRoute from './components/AccessControl/PublicRoute';
 import PrivateRoute from './components/AccessControl/PrivateRoute';
 import MyPage from './components/views/Menus/Mypage';
 
+import Portfolio from './components/views/Menus/PortfolioPage/Portfolio';
+
 const App = () => {
   return (
     <Router>
@@ -14,17 +16,10 @@ const App = () => {
         <PrivateRoute restricted={true} exact path="/" component={MainPage} />
         <PublicRoute
           restricted={false}
-          exact
           path="/register"
           component={RegisterPage}
         />
-        <PublicRoute
-          restricted={false}
-          exact
-          path="/login"
-          component={LoginPage}
-        />
-        <PrivateRoute componet={MyPage} exact path="/mypage" />
+        <PublicRoute restricted={false} path="/login" component={LoginPage} />
       </Switch>
     </Router>
   );

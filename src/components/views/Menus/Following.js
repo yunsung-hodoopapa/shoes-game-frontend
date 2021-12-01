@@ -5,7 +5,7 @@ const ContentsWrap = styled.div`
   position: absolute;
   background-color: #C4C4C4;
   width: 1134px
-  hight: 709px;
+  height: 709px;
   left: 302px;
   top: 142px;
   justify-content: center;
