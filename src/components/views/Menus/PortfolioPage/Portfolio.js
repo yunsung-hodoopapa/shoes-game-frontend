@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import PortfolioSummary from './PortfolioSummary';
-import PortfolioBoard from './PortfolioBoard';
+import PortfolioSummary from './PortfolioChart';
 import SearchTable from './SearchTable';
 
 const ContentsWrap = styled.div`
