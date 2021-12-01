@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^12.1.10",
     "async_hooks": "^1.0.0",
     "axios": "^0.23.0",
+    "date-fns": "^2.27.0",
     "http-proxy-middleware": "^0.19.1",
     "js-cookie": "^3.0.1",
     "react": "^17.0.2",

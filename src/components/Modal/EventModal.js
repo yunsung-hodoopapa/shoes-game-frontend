@@ -93,7 +93,6 @@ export default function AddShoesModal({
   const [keyword, setKeyword] = useState(inputValue.shoeName);
   // const [shoePrice, setShoePrice] = useState('');
   const [date, setDate] = useState('');
-  const [size, setSize] = useState('');
 
   const onHandleSelect = (e) => {
     setIsSizeOptionShowing(true);
@@ -182,11 +181,11 @@ export default function AddShoesModal({
           selected={date}
           onChange={onDateChange}
           placeholderText="구입날짜를 입력하세요!"
-          value={date}
+          defaultValue={inputValue.buyingDate}
         />
         <br />
         <ButtonWrap>
-          {inputValue.shoeName !== '' ? (
+          {inputValue._id !== '' ? (
             <>
               <SubmitButton onClick={(e) => onUpdate(e)}>수정하기</SubmitButton>
               <SubmitButton onClick={(e) => onRemove(e)}>삭제하기</SubmitButton>

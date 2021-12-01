@@ -60,7 +60,7 @@ const ShoesCloset = ({ key }) => {
     buyingDate: '',
     thumbnail: '',
     brand: '',
-    id: '',
+    _id: '',
   });
 
   const { shoeName, shoeSize, shoePrice, buyingDate, thumbnail, brand, id } =
@@ -73,12 +73,15 @@ const ShoesCloset = ({ key }) => {
   const onClickOpenModal = (index) => {
     dispatch(openModal());
     const item = items[index];
+
     if (item) {
       setInputValue({
         ...inputValue,
         shoeName: item.shoeName,
         shoeSize: item.shoeSize,
         thumbnail: item.thumbnail,
+        shoePrice: item.shoePrice,
+        buyingDate: new Date(item.buyingDate),
         _id: item._id,
       });
     }
@@ -94,7 +97,7 @@ const ShoesCloset = ({ key }) => {
       buyingDate: '',
       thumbnail: '',
       brand: '',
-      id: '',
+      _id: '',
     });
   };
 
@@ -243,8 +246,7 @@ const ShoesCloset = ({ key }) => {
       console.log(err);
     }
   };
-
-  console.log(items);
+  console.log(inputValue);
 
   return (
     <>
@@ -277,7 +279,6 @@ const ShoesCloset = ({ key }) => {
             onCreate={onCreate}
             onUpdate={onUpdate}
             onRemove={onRemove}
-            // onModify={onModify}
           />
         ) : null}
       </ContentsWrap>
