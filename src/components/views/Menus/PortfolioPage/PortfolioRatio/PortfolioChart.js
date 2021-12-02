@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PortfolioRatio from './PortfoilRatio';
-import PortfolioSummary from './ PortfolioSummary';
+import PortfolioSummary from '../ PortfolioSummary';
 
 const ContentsWrap = styled.div`
   display: flex;

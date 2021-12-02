@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import PortfolioSummary from './PortfolioChart';
-import SearchTable from './SearchTable';
+import PortfolioSummary from './PortfolioRatio/PortfolioChart';
+import SearchTable from './PortfolioTable/SearchTable';
 
 const ContentsWrap = styled.div`
   display: flex;
