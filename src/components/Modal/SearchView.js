@@ -28,7 +28,8 @@ const ResultsThumbnail = styled.td`
 `;
 
 const SearchView = ({ index, updateText, item, getShoesInfo }) => {
-  const { shoeName, brand, thumbnail } = item;
+  console.log(item);
+  const { shoeName, brand, thumbnail, styleID, retailPrice, lowestResellPrice } = item;
   const updateShoesInfo = (e) => {
     e.preventDefault();
     updateText(shoeName);
@@ -40,6 +41,9 @@ const SearchView = ({ index, updateText, item, getShoesInfo }) => {
       brand={brand}
       key={index}
       thumbnail={thumbnail}
+      styleID={styleID}
+      retailPrice={retailPrice}
+      lowestResellPrice={lowestResellPrice}
       onClick={(e) => updateShoesInfo(e)}
     >
       <tbody>

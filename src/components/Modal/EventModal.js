@@ -78,7 +78,6 @@ const ButtonWrap = styled.div`
 const sizeList = SELECTSIZE;
 
 export default function AddShoesModal({
-  props,
   isModalShown,
   onClickOpenModal,
   onClickCloseModal,
@@ -104,6 +103,9 @@ export default function AddShoesModal({
       shoeName: params.shoeName,
       brand: params.brand,
       thumbnail: params.thumbnail,
+      styleID: params.styleID,
+      retailPrice: params.retailPrice,
+      lowestResellPrice: params.lowestResellPrice,
     });
   };
 

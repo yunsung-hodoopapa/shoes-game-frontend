@@ -60,6 +60,9 @@ const ShoesCloset = ({ key }) => {
     buyingDate: '',
     thumbnail: '',
     brand: '',
+    styleID: '',
+    retailPrice: '',
+    lowestResellPrice: '',
     _id: '',
   });
 
@@ -82,6 +85,9 @@ const ShoesCloset = ({ key }) => {
         thumbnail: item.thumbnail,
         shoePrice: item.shoePrice,
         buyingDate: new Date(item.buyingDate),
+        styleID: item.StyleID,
+        retailPrice: item.retailPrice,
+        lowestResellPrice: item.lowestResellPrice,
         _id: item._id,
       });
     }
@@ -97,6 +103,9 @@ const ShoesCloset = ({ key }) => {
       buyingDate: '',
       thumbnail: '',
       brand: '',
+      styleID: '',
+      retailPrice: '',
+      lowestResellPrice: '',
       _id: '',
     });
   };
@@ -123,8 +132,12 @@ const ShoesCloset = ({ key }) => {
       shoeSize: '',
       shoePrice: '',
       buyingDate: '',
-      brand: '',
       thumbnail: '',
+      brand: '',
+      styleID: '',
+      retailPrice: '',
+      lowestResellPrice: '',
+      _id: '',
     });
     onClickCloseModal();
   };
@@ -137,8 +150,12 @@ const ShoesCloset = ({ key }) => {
       shoeSize: '',
       shoePrice: '',
       buyingDate: '',
-      brand: '',
       thumbnail: '',
+      brand: '',
+      styleID: '',
+      retailPrice: '',
+      lowestResellPrice: '',
+      _id: '',
     });
     onClickCloseModal();
   };
@@ -151,8 +168,12 @@ const ShoesCloset = ({ key }) => {
       shoeSize: '',
       shoePrice: '',
       buyingDate: '',
-      brand: '',
       thumbnail: '',
+      brand: '',
+      styleID: '',
+      retailPrice: '',
+      lowestResellPrice: '',
+      _id: '',
     });
     onClickCloseModal();
   };
@@ -167,7 +188,6 @@ const ShoesCloset = ({ key }) => {
 
   const loadShoesData = () => {
     try {
-      console.log('processing');
       const request = axios
         .get('http://localhost:3002/shoes/managed-shoesInfo')
         .then((res) => {
@@ -232,7 +252,9 @@ const ShoesCloset = ({ key }) => {
     console.log(data._id);
     try {
       const request = axios
-        .delete('http://localhost:3002/shoes/shoesInfo/delete_by_id', data, {withCredentials: true})
+        .delete('http://localhost:3002/shoes/shoesInfo/delete_by_id', data, {
+          withCredentials: true,
+        })
         .then((res) => {
           console.log(res);
           console.log('delete success');
@@ -246,7 +268,6 @@ const ShoesCloset = ({ key }) => {
       console.log(err);
     }
   };
-  console.log(inputValue);
 
   return (
     <>
