@@ -14,6 +14,8 @@ function SearchTable() {
     });
   }, []); // Mount 할 때만 실행된다
 
+  // console.log(storedShoesInfo[0].styleID);
+
   function deleteRow (e, index) {
     e.preventDefault();
     const rowData = [...storedShoesInfo];
@@ -26,6 +28,26 @@ function SearchTable() {
   const handleUserInput = useCallback((keyword) => {
     setKeyword(keyword);
   }, [keyword]);
+
+  const getShoePriceHandler = async(params) => {
+    console.log(params);
+    console.log('function ready..');
+    const styleID = storedShoesInfo[0].styleID;
+    let shoeSize = storedShoesInfo[0].shoeSize;
+    console.log(styleID);
+    try {
+      console.log('operating...');
+      const res = await axios.get('http://localhost:3002/shoes/search/price:styleID', {
+        params: { styleID },
+      });
+      const resellPriceObj = res.data;
+      const matchedPrice = resellPriceObj[shoeSize]
+      console.log(matchedPrice);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   return (
     <>
       {/* <H /> */}
@@ -34,7 +56,8 @@ function SearchTable() {
       <ResultTable
         storedShoesInfo={storedShoesInfo}
         keyword={keyword}
-        deleteRow={deleteRow} />
+        deleteRow={deleteRow}
+        getShoePriceHandler={getShoePriceHandler} />
     </>
   );
 }

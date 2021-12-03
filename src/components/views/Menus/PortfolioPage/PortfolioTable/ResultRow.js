@@ -31,6 +31,7 @@ const ResultRow = ({
   shoesInfo,
   index,
   deleteRow,
+  getShoePriceHandler,
 }) => {
   return (
     <Trow key={index}>
@@ -44,7 +45,9 @@ const ResultRow = ({
       </TableData>
       <Td width={'200px'}> {new Date(shoesInfo.buyingDate).toLocaleDateString()}</Td>
       <Td>{shoesInfo.shoePrice}</Td>
-      <Td>준비중</Td>
+      <Td
+        index={index}
+        onClick={(e) => getShoePriceHandler(e.target.index)}> 준비중 </Td>
       <Td>준비중</Td>
       <Td>
         <FaTrash

@@ -42,6 +42,7 @@ const ResultTable = ({
   storedShoesInfo,
   keyword,
   deleteRow,
+  getShoePriceHandler,
 }) => {
   let dataFoRrow = [];
   storedShoesInfo.forEach((shoesInfo) => {
@@ -72,6 +73,7 @@ const ResultTable = ({
                 key={index}
                 index={index}
                 deleteRow={deleteRow}
+                getShoePriceHandler={getShoePriceHandler}
               />
             );
           })}
