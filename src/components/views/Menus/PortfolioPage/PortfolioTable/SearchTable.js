@@ -3,19 +3,10 @@ import styled from 'styled-components'
 import axios from 'axios';
 import ResultTable from './ResultTable';
 
-function SearchTable() {
+function SearchTable({ storedShoesInfo, setStoredShoesInfo}) {
   // 변수 설정
-  const [storedShoesInfo, setStoredShoesInfo] = useState([]);
   const [keyword, setKeyword] = useState('');
   // 변수 초기값
-  useEffect(() => {
-    axios.get('http://localhost:3002/shoes/managed-shoesInfo').then((res) => {
-      setStoredShoesInfo(res.data);
-    });
-  }, []); // Mount 할 때만 실행된다
-
-  // console.log(storedShoesInfo[0].styleID);
-
   function deleteRow (e, index) {
     e.preventDefault();
     const rowData = [...storedShoesInfo];

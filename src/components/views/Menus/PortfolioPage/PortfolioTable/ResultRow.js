@@ -28,8 +28,6 @@ const ShoeNameInTd = styled.div`
 `;
  
 const subtraction = (a, b) => {
-  console.log(a);
-  console.log(b);
   if (a > b) {
     return a - b
   } else {
@@ -53,7 +51,6 @@ const ResultRow = ({
 }) => {
   const conversionShoePrice = Number(shoesInfo.shoePrice.substring(1));
   const conversionResellPrice = Number(shoesInfo.resellPrice);
-  console.log(conversionShoePrice);
   return (
     <Trow key={index}>
       <TableData>

@@ -29,7 +29,7 @@ const options = {
   responsive: false
 }
 
-function PortfolioRatio() {
+function SummeryRatio() {
   return (
     <>
       <h2> 내 포트폴리오 </h2>
@@ -51,4 +51,4 @@ function PortfolioRatio() {
   );
 };
 
-export default PortfolioRatio;
+export default SummeryRatio;

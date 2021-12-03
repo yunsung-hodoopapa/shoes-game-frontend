@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import styled from 'styled-components';
-import PortfolioSummary from './PortfolioRatio/PortfolioChart';
 import SearchTable from './PortfolioTable/SearchTable';
+import Summary from './PortfolioSummary/Summary';
+import axios from 'axios';
+
 
 const ContentsWrap = styled.div`
   display: flex;
@@ -15,10 +17,27 @@ const ContentsWrap = styled.div`
 `;
 
 const Portfolio = (props) => {
+  const [storedShoesInfo, setStoredShoesInfo] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:3002/shoes/managed-shoesInfo').then((res) => {
+      setStoredShoesInfo(res.data);
+    });
+  }, []); // Mount 할 때만 실행된다
+
+  const lengthOfData = storedShoesInfo.length;
+  
   return (
     <ContentsWrap>
-      <PortfolioSummary />
-      <SearchTable> {props.children} </SearchTable>
+      <Summary
+        storedShoesInfo={storedShoesInfo}
+        setStoredShoesInfo={setStoredShoesInfo}
+        lengthOfData={lengthOfData}
+      > {props.children} </Summary>
+      <SearchTable
+        storedShoesInfo={storedShoesInfo}
+        setStoredShoesInfo={setStoredShoesInfo}
+      > {props.children} </SearchTable>
       {/* <PortfolioBoard> {props.children} </PortfolioBoard> */}
     </ContentsWrap>
   )
