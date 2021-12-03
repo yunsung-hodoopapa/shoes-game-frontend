@@ -26,6 +26,24 @@ const ShoeNameInTd = styled.div`
   justify-content: center;
   align-items: center;
 `;
+ 
+const subtraction = (a, b) => {
+  console.log(a);
+  console.log(b);
+  if (a > b) {
+    return a - b
+  } else {
+    return b - a
+  }
+}
+
+function Benefit(props) {
+  return (
+    <Td>
+      {props.benefitResult}
+    </Td>
+  );
+}
 
 const ResultRow = ({
   shoesInfo,
@@ -33,6 +51,9 @@ const ResultRow = ({
   deleteRow,
   getShoePriceHandler,
 }) => {
+  const conversionShoePrice = Number(shoesInfo.shoePrice.substring(1));
+  const conversionResellPrice = Number(shoesInfo.resellPrice);
+  console.log(conversionShoePrice);
   return (
     <Trow key={index}>
       <TableData>
@@ -45,10 +66,10 @@ const ResultRow = ({
       </TableData>
       <Td width={'200px'}> {new Date(shoesInfo.buyingDate).toLocaleDateString()}</Td>
       <Td>{shoesInfo.shoePrice}</Td>
-      <Td
-        index={index}
-        onClick={(e) => getShoePriceHandler(e.target.index)}> 준비중 </Td>
-      <Td>준비중</Td>
+      <Td>{shoesInfo.resellPrice} </Td>
+      <Benefit
+        benefitResult={subtraction(conversionShoePrice, conversionResellPrice)}
+      />
       <Td>
         <FaTrash
           index={index}

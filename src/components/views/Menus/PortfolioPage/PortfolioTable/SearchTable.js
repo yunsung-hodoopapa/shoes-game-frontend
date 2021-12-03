@@ -29,25 +29,6 @@ function SearchTable() {
     setKeyword(keyword);
   }, [keyword]);
 
-  const getShoePriceHandler = async(params) => {
-    console.log(params);
-    console.log('function ready..');
-    const styleID = storedShoesInfo[0].styleID;
-    let shoeSize = storedShoesInfo[0].shoeSize;
-    console.log(styleID);
-    try {
-      console.log('operating...');
-      const res = await axios.get('http://localhost:3002/shoes/search/price:styleID', {
-        params: { styleID },
-      });
-      const resellPriceObj = res.data;
-      const matchedPrice = resellPriceObj[shoeSize]
-      console.log(matchedPrice);
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
   return (
     <>
       {/* <H /> */}
@@ -57,7 +38,7 @@ function SearchTable() {
         storedShoesInfo={storedShoesInfo}
         keyword={keyword}
         deleteRow={deleteRow}
-        getShoePriceHandler={getShoePriceHandler} />
+      />
     </>
   );
 }
