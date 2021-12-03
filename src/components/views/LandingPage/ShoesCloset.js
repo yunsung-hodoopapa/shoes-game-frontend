@@ -62,7 +62,7 @@ const ShoesCloset = ({ key }) => {
     brand: '',
     styleID: '',
     retailPrice: '',
-    lowestResellPrice: '',
+    resellPrice: '',
     _id: '',
   });
 
@@ -87,7 +87,7 @@ const ShoesCloset = ({ key }) => {
         buyingDate: new Date(item.buyingDate),
         styleID: item.StyleID,
         retailPrice: item.retailPrice,
-        lowestResellPrice: item.lowestResellPrice,
+        resellPrice: item.resellPrice,
         _id: item._id,
       });
     }
@@ -105,7 +105,7 @@ const ShoesCloset = ({ key }) => {
       brand: '',
       styleID: '',
       retailPrice: '',
-      lowestResellPrice: '',
+      resellPrice: '',
       _id: '',
     });
   };
@@ -122,11 +122,27 @@ const ShoesCloset = ({ key }) => {
     });
   };
 
+  const getShoePriceHandler = async () => {
+    console.log('function ready..');
+    try {
+      const styleID = inputValue.styleID;
+      const shoeSize = inputValue.shoeSize;
+      const res = await axios.get('http://localhost:3002/shoes/search/price:styleID', {
+        params: { styleID },
+      });
+      const resellPriceObj = res.data;
+      return resellPriceObj[shoeSize]
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   // 3. onCreate 함수가 실행되었을 때, 빈 배열에 'shoeName', 'shoeSize'를 키값으로 갖는 객체값이 추가된다.
-  const onCreate = (e) => {
+  const onCreate = async (e) => {
     e.preventDefault();
     console.log('function operating');
-    storeHandler(inputValue);
+    const resellPrice = await getShoePriceHandler();
+    storeHandler({...inputValue, resellPrice});
     setInputValue({
       shoeName: '',
       shoeSize: '',
@@ -136,7 +152,7 @@ const ShoesCloset = ({ key }) => {
       brand: '',
       styleID: '',
       retailPrice: '',
-      lowestResellPrice: '',
+      resellPrice: '',
       _id: '',
     });
     onClickCloseModal();
@@ -154,7 +170,7 @@ const ShoesCloset = ({ key }) => {
       brand: '',
       styleID: '',
       retailPrice: '',
-      lowestResellPrice: '',
+      resellPrice: '',
       _id: '',
     });
     onClickCloseModal();
@@ -172,7 +188,7 @@ const ShoesCloset = ({ key }) => {
       brand: '',
       styleID: '',
       retailPrice: '',
-      lowestResellPrice: '',
+      resellPrice: '',
       _id: '',
     });
     onClickCloseModal();
@@ -225,6 +241,7 @@ const ShoesCloset = ({ key }) => {
       console.log(err);
     }
   };
+
 
   const patchHandler = (data) => {
     const requestBody = data;
@@ -294,6 +311,7 @@ const ShoesCloset = ({ key }) => {
           <EventModal
             isModalShown={isModalShown}
             onClickCloseModal={onClickCloseModal}
+            getShoePriceHandler={getShoePriceHandler}
             inputValue={inputValue}
             setInputValue={setInputValue}
             onChange={onChange}

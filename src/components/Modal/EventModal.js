@@ -87,6 +87,7 @@ export default function AddShoesModal({
   onCreate,
   onUpdate,
   onRemove,
+  getShoePriceHandler,
 }) {
   const [isSizeOptionShowing, setIsSizeOptionShowing] = useState(false);
   const [keyword, setKeyword] = useState(inputValue.shoeName);
@@ -105,7 +106,7 @@ export default function AddShoesModal({
       thumbnail: params.thumbnail,
       styleID: params.styleID,
       retailPrice: params.retailPrice,
-      lowestResellPrice: params.lowestResellPrice,
+      resellPrice: params.resellPrice,
     });
   };
 
@@ -123,6 +124,8 @@ export default function AddShoesModal({
       shoePrice: e.target.value,
     });
   };
+
+  console.log(inputValue);
 
   const onDateChange = (date) => {
     setDate(date);
