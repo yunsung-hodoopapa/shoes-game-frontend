@@ -14,37 +14,22 @@ const ContentsWrap = styled.div`
 `;
 
 const RatioWrap = styled.div`
-  width: 680px;
+  width: 800px;
   height: 350px;
   margin: 10px 15px 10px 15px;
   background-color: #fbebeb;
 `;
 
-const Summary = ({ lengthOfData, storedShoesInfo, setStoredShoesInfo }) => {
-
-  function getTotalAsset() {
-    let result = 0;
-    storedShoesInfo.forEach((shoesInfo) => {
-      const benefit = Number(shoesInfo.resellPrice);
-      result += benefit
-    });
-    console.log(result);
-    return result;
-  };
-
-  function getTotalShoePrice() {
-    let result = 0;
-    storedShoesInfo.forEach((shoesInfo) => {
-      const shoePrice = Number(shoesInfo.shoePrice.substring(1));
-      result += shoePrice
-    });
-    return result;
-  }
+const Summary = ({ lengthOfData, storedShoesInfo, setStoredShoesInfo,  getTotalAsset, getTotalShoePrice }) => {
 
   return (
     <ContentsWrap>
       <RatioWrap>
-        <SummeryRatio />
+        <SummeryRatio
+          storedShoesInfo={storedShoesInfo}
+          getTotalAsset={getTotalAsset}
+          getTotalShoePrice={getTotalShoePrice}
+        />
       </RatioWrap>
       <SummeryBox
         lengthOfData={lengthOfData} 

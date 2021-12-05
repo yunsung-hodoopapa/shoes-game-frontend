@@ -4,7 +4,7 @@ import styled from "styled-components";
 const SummaryWrap = styled.div`
   display: flex;
   flex-wrap: wrap;
-  width: 380px;
+  width: 334px;
   height: 350px;
   background-color: blue;
 `
@@ -12,15 +12,13 @@ const SectionBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 180px;
-  height: 165px;
+  width: 142px;
+  height: 150px;
   margin: 5px 5px;
   background-color: tomato;
 `
 
-
 function SummeryBox ({ lengthOfData, getTotalAsset, getTotalShoePrice }) {
-
   const AssetBox = (props) => {
     return (
       <>

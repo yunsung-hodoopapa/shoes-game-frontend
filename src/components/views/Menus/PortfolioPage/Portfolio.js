@@ -26,6 +26,25 @@ const Portfolio = (props) => {
   }, []); // Mount 할 때만 실행된다
 
   const lengthOfData = storedShoesInfo.length;
+
+  function getTotalAsset() {
+    let result = 0;
+    storedShoesInfo.forEach((shoesInfo) => {
+      const benefit = Number(shoesInfo.resellPrice);
+      result += benefit
+    });
+    console.log(result);
+    return result;
+  };
+
+  function getTotalShoePrice() {
+    let result = 0;
+    storedShoesInfo.forEach((shoesInfo) => {
+      const shoePrice = Number(shoesInfo.shoePrice.substring(1));
+      result += shoePrice
+    });
+    return result;
+  }
   
   return (
     <ContentsWrap>
@@ -33,6 +52,8 @@ const Portfolio = (props) => {
         storedShoesInfo={storedShoesInfo}
         setStoredShoesInfo={setStoredShoesInfo}
         lengthOfData={lengthOfData}
+        getTotalAsset={getTotalAsset}
+        getTotalShoePrice={getTotalShoePrice}
       > {props.children} </Summary>
       <SearchTable
         storedShoesInfo={storedShoesInfo}
