@@ -1,16 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { withRouter } from 'react-router';
-<<<<<<< HEAD
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../../actions/userAction';
-=======
-import { useDispatch } from 'react-redux';
-import { loginUser, refreshToken } from '../../../actions/userAction';
->>>>>>> master
 import SocialLogin from './SocialLogin/SocialLogin';
 import styled from 'styled-components';
-import axios from 'axios';
 
 const Container = styled.div`
   display: flex;
@@ -41,38 +35,22 @@ function LoginPage(props) {
     setPassword(e.currentTarget.value);
   };
 
-
   const onSubmitHandler = (e) => {
     e.preventDefault();
     const requestBody = {
       email: email,
       password: password,
     };
-    dispatch(loginUser(requestBody))
-      .then((res) => {
-<<<<<<< HEAD
-        console.log(res);
+    dispatch(loginUser(requestBody)).then((res) => {
       if (res.payload.loginSuccess) {
-        localStorage.setItem('userInfo', JSON.stringify(requestBody));
         props.history.push('/');
       } else {
         alert(res.payload.message);
       }
     })
-    .catch((err) => {
-      console.log(err);
-    });
-=======
-        if (res.payload.loginSuccess) {
-          props.history.push('/main');
-        } else {
-          alert(res.payload.message);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
->>>>>>> master
+    // .catch((err) => {
+    //   console.log(err);
+    // });
   };
 
   // useEffect(() => {

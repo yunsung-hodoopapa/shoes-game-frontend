@@ -12,8 +12,8 @@ import Header from '../../Page/Header/header';
 import Sidebar from '../../Page/Sidebar/Sidebar';
 import LandingPage from '../Menus/LandingPage/LandingPage';
 import MyPage from '../Menus/Mypage';
-import Portfolio from '../Menus/Portfolio';
-import Following from '../Menus/Following';
+// import Portfolio from '../Menus/PortfolioPage/Portfolio';
+import Following from '../Menus/FollowingPage/Following';
 
 const Center = styled.div`
   position: absolute;
@@ -33,10 +33,10 @@ function MainPage(props) {
         <Center>
           <Sidebar />
           <Switch>
-            <Route path="/" component={LandingPage} />
-            <Route path="/my_page" component={MyPage} />
-            <Route path="/portfolio" component={Portfolio} />
-            <Route path="/following" component={Following} />
+            <Route exact path="/" component={LandingPage} />
+            <Route path="/menu/my_page" component={MyPage} />
+            {/* <Route path="/menu/portfolio" component={Portfolio} /> */}
+            <Route path="/menu/following" component={Following} />
           </Switch>
         </Center>
         <Footer />
