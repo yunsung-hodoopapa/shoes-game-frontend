@@ -8,9 +8,9 @@ const ItemRatio = ({
   getLabelfromData,
   getRandomRgba,
 }) => {
-  let data = getPricefromData();
-  let labels = getLabelfromData();
-  let backgroundColor = getRandomRgba();
+  const data = getPricefromData();
+  const labels = getLabelfromData();
+  const backgroundColor = getRandomRgba();
 
   const chartData = {
     labels: labels,

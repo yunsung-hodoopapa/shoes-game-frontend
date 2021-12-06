@@ -11,7 +11,7 @@ const Table = styled.table`
 
 const Thead = styled.thead`
   float: left;
-  width: 1134px;
+  width: 1280px;
   border-bottom: 1px solid black;
 `;
 
@@ -19,8 +19,8 @@ const Tbody = styled.tbody`
   overflow-y: auto;
   overflow-x: hidden;
   float: left;
-  width: 1134px;
-  height: 100px;
+  width: 1280px;
+  height: 150px;
 `;
 
 const Th1 = styled.th`
@@ -33,7 +33,7 @@ const Th2 = styled.th`
 
 const Trow = styled.tr`
   display: table;
-  width: 1134px;
+  width: 1280px;
   height: 50px;
   border-bottom: 1px solod grey;
 `;

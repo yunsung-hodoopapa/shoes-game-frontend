@@ -7,40 +7,17 @@ Chart.register(ArcElement, Tooltip, Legend, Title );
 
 const ChatWrap = styled.div`
   display: flex;
+  justify-content: center;
+  align-items: center;
 `
 const SummeryRatio = ({
   storedShoesInfo,
   getTotalAsset,
   getTotalShoePrice,
+  getPricefromData,
+  getResellPricefromData,
+  getLabelfromData,
 }) => {
-
-  function getLabelfromData() {
-    const shoeNamelabels = [];
-    storedShoesInfo.forEach((shoesInfo) => {
-      const shoeName = shoesInfo.shoeName;
-      shoeNamelabels.push(shoeName);
-    })
-    console.log(shoeNamelabels);
-    return shoeNamelabels;
-  }
-
-  function getPricefromData() {
-    const priceData = [];
-    storedShoesInfo.forEach((shoesInfo) => {
-      const shoePrice = Number(shoesInfo.shoePrice.substring(1));
-      priceData.push(shoePrice);
-    })
-    return priceData;
-  }
-
-  function getResellPricefromData() {
-    const resellPriceData = [];
-    storedShoesInfo.forEach((shoesInfo) => {
-      const resellPrice = shoesInfo.resellPrice;
-      resellPriceData.push(resellPrice);
-    })
-    return resellPriceData;
-  }
 
   function getRandomRgba() {
     const rgbaContainer = [];
@@ -56,7 +33,6 @@ const SummeryRatio = ({
 
   return (
     <>
-      <h2> 내 포트폴리오 </h2>
       <ChatWrap>
         <ItemRatio
           getPricefromData={getPricefromData}

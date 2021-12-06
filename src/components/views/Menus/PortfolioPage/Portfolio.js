@@ -10,7 +10,7 @@ const ContentsWrap = styled.div`
   position: relative;
   flex-direction: column;
   background-color: #eaa8a8;
-  width: 1134px;
+  width: 1280px;
   height: 680px;
   left: 320px;
   top: 30px;

@@ -8,7 +8,7 @@ const Td = styled.td`
 `;
 const Trow = styled.tr`
   display: table;
-  width: 1134px;
+  width: 1280px;
   height: 50px;
   border-bottom: 1px solod grey;
 `;
