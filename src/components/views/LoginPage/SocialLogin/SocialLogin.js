@@ -2,7 +2,9 @@ import axios from 'axios';
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { KAKAO_AUTH_URL } from '../../../../constants/index';
+import {
+  KAKAO_AUTH_URL,
+} from '../../../../constants/index';
 import { socialLoginUser } from '../../../../actions/userAction';
 
 import styled from 'styled-components';
@@ -20,8 +22,8 @@ const LoginBtn = styled.button`
   align-items: center;
   justify-content: center;
   padding: 4px 0px;
-  border = none;
-  border-radius = 9px;
+  border: none;
+  border-radius: 9px;
   font-size: 14px;
   width: 150px;
   height: 30px;
@@ -29,14 +31,15 @@ const LoginBtn = styled.button`
   background-color: #fae001;
 `;
 
-
 function SocialLogin(props) {
+  
+  let history = useHistory();
   const dispatch = useDispatch();
-  const history = useHistory();
 
-  const user = useSelector((state) => state.user);
+  const user = useSelector(state => state.user);
 
-  const KakaoLoginClickHandler = () => {
+  const KakaoLoginClickHandler = (props) => {
+
     const scope = 'profile_nickname, profile_image, account_email';
     Kakao.Auth.login({
       scope,
@@ -63,15 +66,14 @@ function SocialLogin(props) {
               .then((res) => {
                 console.log(res);
                 if (res.payload.socialLoginSuccess) {
-                  console.log(request);
                   localStorage.setItem('userInfo', JSON.stringify(request));
                   history.push('/');
                 }
               })
-              .catch((err) => {
+              .catch(err => {
                 console.log(err);
               });
-          },
+          }
           //     .then((res) => {
           //       console.log(res.payload);
           //       if (res.payload) {
@@ -84,16 +86,16 @@ function SocialLogin(props) {
           //     console.log(err);
           //   });
           // }
-          // axios({
-          //   method: 'post',
-          //   url: 'http://localhost:3002/auth/kakao',
-          //   data: {
-          //     'id': email,
-          //     'nickname': profile.nickname,
-          //     'image': profile.profile_image_url,
-          //     'access_token': access_token,
-          //   },
-          // })
+          //   axios({
+          //     method: 'post',
+          //     url: 'http://localhost:3002/auth/kakao',
+          //     data: {
+          //       'id': email,
+          //       'nickname': profile.nickname,
+          //       'image': profile.profile_image_url,
+          //       'access_token': access_token,
+          //     },
+          //   })
           //   .then((res) => {
           //     console.log(res);
           //     console.log('complete');
@@ -132,11 +134,10 @@ function SocialLogin(props) {
   };
 
   useEffect(() => {
-    axios
-      .get('/login')
-      .then((res) => console.log(res))
-      .catch();
-  }, []);
+    axios.get('/login')
+    .then(res => console.log(res))
+    .catch()
+  },[])
 
   return (
     <Container>
