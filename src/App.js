@@ -1,16 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-// import AppHeader from './components/Header/header';
-// import AppCenter from './components/Center/center';
-// import AppFooter from './components/Footer/footer';
-// import AppHome from './components/Page/Home';
-// import AppMypage from './components/Page/Mypage';
-// import AppPortfolio from './components/Page/Portfolio';
-// import AppFollowing from './components/Page/Following';
-// import Sidebar from './components/Sidebar/Sidebar';
-// import SidebarItem from './components/Sidebar/SidebarItem';
-// import Container from './components/Shared/Container';
-import LandingPage from './components/views/LandingPage/LandingPage';
+// import LandingPage from './components/views/LandingPage/LandingPage';
 import LoginPage from './components/views/LoginPage/LoginPage';
 import RegisterPage from './components/views/RegisterPage/RegisterPage';
 import PublicRoute from './components/AccessControl/PublicRoute';
