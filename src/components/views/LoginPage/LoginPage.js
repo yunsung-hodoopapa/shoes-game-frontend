@@ -42,7 +42,8 @@ function LoginPage(props) {
       password: password,
     };
     dispatch(loginUser(requestBody)).then((res) => {
-      if (res.payload.loginSuccess) {
+      console.log(res);
+      if (res) {
         props.history.push('/');
       } else {
         alert(res.payload.message);

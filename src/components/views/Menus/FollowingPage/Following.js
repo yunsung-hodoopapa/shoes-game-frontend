@@ -12,8 +12,6 @@ const ContentsWrap = styled.div`
   width: 1280px;
   height: 680px;
   top: 30px;
-  // justify-content: center;
-  // align-items: center;
 `;
 
 
