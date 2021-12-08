@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-// import LandingPage from './components/views/LandingPage/LandingPage';
+import MainPage from './components/views/MainPage/MainPage';
 import LoginPage from './components/views/LoginPage/LoginPage';
 import RegisterPage from './components/views/RegisterPage/RegisterPage';
 import PublicRoute from './components/AccessControl/PublicRoute';
@@ -10,9 +10,9 @@ const App = () => {
   return (
     <Router>
       <Switch>
-        <PublicRoute restricted={true} exact path='/' component={LoginPage} />
-        <PublicRoute restricted={true} exact path='/register' component={RegisterPage} />
-        <PublicRoute restricted={false} exact path="/main" component={LandingPage} />
+        <PrivateRoute restricted={true} exact path='/' component={MainPage} />
+        <PublicRoute restricted={true} path='/register' component={RegisterPage} />
+        <PublicRoute restricted={false} path="/login" component={LoginPage} />
       </Switch>
     </Router>
   );
