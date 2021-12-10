@@ -35,25 +35,22 @@ function LoginPage(props) {
     setPassword(e.currentTarget.value);
   };
 
-
   const onSubmitHandler = (e) => {
     e.preventDefault();
     const requestBody = {
       email: email,
       password: password,
     };
-    dispatch(loginUser(requestBody))
-      .then((res) => {
-        if (res.payload.loginSuccess) {
-          localStorage.setItem('userInfo', JSON.stringify(requestBody));
-          props.history.push('/');
-        } else {
-          alert(res.payload.message);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    dispatch(loginUser(requestBody)).then((res) => {
+      if (res.payload.loginSuccess) {
+        props.history.push('/');
+      } else {
+        alert(res.payload.message);
+      }
+    })
+    // .catch((err) => {
+    //   console.log(err);
+    // });
   };
 
   // useEffect(() => {

@@ -14,17 +14,15 @@ const App = () => {
         <PrivateRoute restricted={true} exact path="/" component={MainPage} />
         <PublicRoute
           restricted={false}
-          exact
           path="/register"
           component={RegisterPage}
         />
         <PublicRoute
           restricted={false}
-          exact
           path="/login"
           component={LoginPage}
         />
-        <PrivateRoute componet={MyPage} exact path="/mypage" />
+        <PrivateRoute componet={MyPage} path="/mypage" />
       </Switch>
     </Router>
   );

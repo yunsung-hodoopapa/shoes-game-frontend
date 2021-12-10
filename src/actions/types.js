@@ -1,6 +1,4 @@
 export const REGISTER_USER = 'REGISTER_USER';
 export const LOGIN_USER = 'LOGIN_USER';
-export const KAKAO_LOGIN_USER = 'KAKAO_LOGIN_USER';
-export const LOIGN_USER_ERROR = 'LOGIN_USER_ERROR';
+export const KAKAO_LOGIN_USER='KAKAO_LOGIN_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
-

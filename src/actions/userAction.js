@@ -1,12 +1,6 @@
-import {
-  REGISTER_USER,
-  LOGIN_USER,
-  KAKAO_LOGIN_USER,
-  LOGOUT_USER,
-} from './types';
-import { request } from '../utils/axios';
 
-// const USER_URL = '/auth';
+import { REGISTER_USER, LOGIN_USER, KAKAO_LOGIN_USER, LOGOUT_USER } from './types';
+import { request } from '../utils/axios';
 
 export async function registerUser(dataToSubmit) {
   const data = await request('post', '/auth/register', dataToSubmit);

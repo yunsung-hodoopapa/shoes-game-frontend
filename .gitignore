@@ -41,6 +41,7 @@ build/Release
 
 # Dependency directories
 node_modules/
+<<<<<<< HEAD
 jspm_packages/
 
 # Snowpack dependency directory (https://snowpack.dev/)
@@ -122,3 +123,6 @@ dist
 =======
 node_modules/
 >>>>>>> master
+=======
+package-lock.json
+>>>>>>> feature-loginPage
