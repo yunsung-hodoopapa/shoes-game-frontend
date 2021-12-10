@@ -1,16 +1,11 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  withRouter,
-} from 'react-router';
+import { Switch, Route, withRouter } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import Footer from '../../Page/Footer/footer';
 import Header from '../../Page/Header/header';
 import Sidebar from '../../Page/Sidebar/Sidebar';
-import LandingPage from '../Menus/LandingPage/LandingPage';
+import LandingPage from '../LandingPage/LandingPage';
 import MyPage from '../Menus/Mypage';
 // import Portfolio from '../Menus/PortfolioPage/Portfolio';
 import Following from '../Menus/FollowingPage/Following';

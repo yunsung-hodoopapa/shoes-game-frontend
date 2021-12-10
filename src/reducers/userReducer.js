@@ -1,11 +1,6 @@
-import {
-  REGISTER_USER,
-  LOGIN_USER,
-  KAKAO_LOGIN_USER,
-  LOGOUT_USER
-} from '../actions/types';
+import { REGISTER_USER, LOGIN_USER, KAKAO_LOGIN_USER, LOGOUT_USER } from '../actions/types';
 
-export default function (state = {}, action) {
+export const userReducer = (state = {}, action) => {
   switch (action.type) {
     case REGISTER_USER:
       return { ...state, success: action.payload };
@@ -19,3 +14,4 @@ export default function (state = {}, action) {
       return state;
   }
 }
+
