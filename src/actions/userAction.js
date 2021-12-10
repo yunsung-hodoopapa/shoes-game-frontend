@@ -3,7 +3,6 @@ import { request } from '../utils/axios';
 
 export async function registerUser(dataToSubmit) {
   const data = await request('post', '/auth/register', dataToSubmit);
-
   return {
     type: REGISTER_USER,
     payload: data,
@@ -12,6 +11,7 @@ export async function registerUser(dataToSubmit) {
 
 export async function loginUser(dataToSubmit) {
   const data = await request('post', '/auth/login', dataToSubmit);
+  console.log(data);
   return {
     type: LOGIN_USER,
     payload: data,
