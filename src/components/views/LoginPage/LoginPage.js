@@ -25,9 +25,7 @@ function LoginPage(props) {
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
 
-  const user = useSelector((state) => ({
-    user: state.user
-  }));
+  const user = useSelector((state) => state.user);
 
   const onEmailHandler = (e) => {
     setEmail(e.currentTarget.value);
@@ -45,15 +43,15 @@ function LoginPage(props) {
     };
     dispatch(loginUser(requestBody)).then((res) => {
       console.log(res);
-      // if (res.payload.loginSuccess) {
-      //   props.history.push('/');
-      // } else {
-      //   alert(res.payload.message);
-      // }
+      if (res.payload.loginSuccess) {
+        props.history.push('/');
+      } else {
+        alert(res.payload.message);
+      }
     })
-    // .catch((err) => {
-    //   console.log(err);
-    // });
+    .catch((err) => {
+      console.log(err);
+    });
   };
 
   // useEffect(() => {

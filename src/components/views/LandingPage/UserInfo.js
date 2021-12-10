@@ -90,6 +90,7 @@ const LogoutButtn = styled.button`
 const BtnWrap = styled.div``;
 const UserInfo = ({ onClickHandler }) => {
   const users = JSON.parse(localStorage.getItem('userInfo'));
+  console.log(users);
 
   return (
     <>
