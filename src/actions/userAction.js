@@ -1,5 +1,4 @@
-
-import { REGISTER_USER, LOGIN_USER, KAKAO_LOGIN_USER, LOGOUT_USER } from './types';
+import { REGISTER_USER, LOGIN_USER, KAKAO_LOGIN_USER, OPEN_MODAL, CLOSE_MODAL, ADD_ITEMS, LOGOUT_USER } from './types';
 import { request } from '../utils/axios';
 
 export async function registerUser(dataToSubmit) {
@@ -27,10 +26,29 @@ export async function socialLoginUser(dataToSubmit) {
   };
 }
 
-export function logoutUser() {
+export const logoutUser = () => {
   const data = request('post', '/auth/logout');
   return {
     type: LOGOUT_USER,
     payload: data,
   };
 }
+
+export const openModal = () => {
+  return {
+    type: OPEN_MODAL,
+  };
+}
+
+export function closeModal() {
+  return {
+    type: CLOSE_MODAL,
+  };
+}
+
+export const addItems = (data) => {
+  return {
+    type: ADD_ITEMS,
+    items: data
+  };
+};

@@ -1,4 +1,5 @@
-<<<<<<< HEAD
+
+node_modules/
 # Logs
 logs
 *.log
@@ -120,9 +121,13 @@ dist
 .pnp.*
 
 .package-lock.json
+<<<<<<< HEAD
 =======
 node_modules/
 >>>>>>> master
 =======
 package-lock.json
 >>>>>>> feature-loginPage
+=======
+>>>>>>> feature-mainPage
+>>>>>>> feature-closetModal

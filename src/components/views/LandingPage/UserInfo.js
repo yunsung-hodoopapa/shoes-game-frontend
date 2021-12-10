@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 
 const ContentsWrap = styled.div`
   display: flex;
-  position: absolute;
+  // position: absolute;
   background-color: #2C0505;
   width: 1039px
   height: 190px;
@@ -15,8 +15,6 @@ const UserPicture = styled.div`
   width: 160px;
   height: 160px;
   border-radius: 50%;
-  background-color: tomato;
-  color: white;
   justify-content: center;
   align-items: center;
   margin-left: 16px;
@@ -24,6 +22,7 @@ const UserPicture = styled.div`
     width: 150px;
     height: 150px;
   }
+  object-fit: contain;
 `;
 const UserDetail = styled.div`
   display: flex;
@@ -89,35 +88,32 @@ const LogoutButtn = styled.button`
 `;
 
 const BtnWrap = styled.div``;
-
-const UserInfo = ({onClickHandler}) => {
-
+const UserInfo = ({ onClickHandler }) => {
   const users = JSON.parse(localStorage.getItem('userInfo'));
 
   return (
     <>
-    {!!users && <ContentsWrap>
-      <UserPicture>
-        <div>
-          {users.img ? <img src={users.img} alt="profile_image" /> : null}
-        </div>
-      </UserPicture>
-      <UserDetail>
-        <Nickname>
-          <strong>유저네임: {users.name || users.nickname}</strong>
-          <BtnWrap>
-            {/* <isAuth?.nickname === userInfo.nickname ? (
+      {!!users && (
+        <ContentsWrap>
+          <UserPicture>
+            {users.image ? <img src={users.image} alt="profile_image" /> : null}
+          </UserPicture>
+          <UserDetail>
+            <Nickname>
+              <strong> 유저네임: {users.name || users.nickname} </strong>
+              <BtnWrap>
+                {/* <isAuth?.nickname === userInfo.nickname ? (
               <EditButton onClick={goEdit}>프로필 편집</EditButton>
             ) : null} */}
-          </BtnWrap>
-        </Nickname>
-        <Email>{users.email || users.id}</Email>
-        <EditButton> 프로필 수정 </EditButton>
-        <LogoutButtn onClick={onClickHandler}>로그아웃하기</LogoutButtn>
-      </UserDetail>
-    </ContentsWrap>
-    }
-  </>
+              </BtnWrap>
+            </Nickname>
+            <Email>{users.email || users.id}</Email>
+            <EditButton> 프로필 수정 </EditButton>
+            {/* <LogoutButton onClick={onClickHandler}>로그아웃하기</LogoutButtn> */}
+          </UserDetail>
+        </ContentsWrap>
+      )}
+    </>
   );
 };
 

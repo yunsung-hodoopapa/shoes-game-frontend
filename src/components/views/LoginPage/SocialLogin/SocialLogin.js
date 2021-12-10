@@ -67,7 +67,7 @@ function SocialLogin(props) {
                 console.log(res);
                 if (res.payload.socialLoginSuccess) {
                   localStorage.setItem('userInfo', JSON.stringify(request));
-                  props.history.push('/');
+                  history.push('/');
                 }
               })
               .catch(err => {
