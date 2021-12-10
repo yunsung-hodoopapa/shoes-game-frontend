@@ -11,7 +11,6 @@ export async function registerUser(dataToSubmit) {
 
 export async function loginUser(dataToSubmit) {
   const data = await request('post', '/auth/login', dataToSubmit);
-  console.log(data);
   return {
     type: LOGIN_USER,
     payload: data,
