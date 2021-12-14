@@ -107,6 +107,7 @@ export default function AddShoesModal({
       styleID: params.styleID,
       retailPrice: params.retailPrice,
       resellPrice: params.resellPrice,
+      lowestResellPrice: params.lowestResellPrice,
     });
   };
 
@@ -124,8 +125,6 @@ export default function AddShoesModal({
       shoePrice: e.target.value,
     });
   };
-
-  console.log(inputValue);
 
   const onDateChange = (date) => {
     setDate(date);

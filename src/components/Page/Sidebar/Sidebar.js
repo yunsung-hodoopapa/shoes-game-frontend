@@ -31,9 +31,9 @@ function Sidebar() {
   const pathName = useLocation().pathname;
 
   const menus = [
-    { name: '마이 페이지', path: '/main/my_page' },
-    { name: '포트폴리오', path: '/main/portfolio' },
-    { name: '팔로잉', path: '/main/following' },
+    { name: '마이 페이지', path: '/menu/my_page' },
+    { name: '포트폴리오', path: '/menu/portfolio' },
+    { name: '팔로잉', path: '/menu/following' },
   ];
   return (
     <Side>

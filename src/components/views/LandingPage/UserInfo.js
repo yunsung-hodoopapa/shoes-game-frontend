@@ -68,7 +68,6 @@ const EditButton = styled.button`
     background-color: #efefef;
   }
 `;
-
 const LogoutButtn = styled.button`
   position: absolute;
   top: 60px;

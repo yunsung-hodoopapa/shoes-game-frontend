@@ -10,12 +10,7 @@ const InputWrap = styled.div`
   align-items: center;
   wrap: no-wrap;
 `;
-const SearchResult = ({
-  keyword,
-  setKeyword,
-  onChange,
-  getShoesInfo,
-}) => {
+const SearchResult = ({ keyword, setKeyword, getShoesInfo, getFollowShoesInfo }) => {
   const [results, setResults] = useState([]);
 
   //필드를 업데이트 한다.
@@ -39,13 +34,11 @@ const SearchResult = ({
         const res = await axios.get('http://localhost:3002/shoes/search', {
           params: { keyword },
         });
-        console.log(res);
         if (res?.status === 200) {
           const { data } = res;
           let results = data.filter((item) =>
             matchName(item.shoeName, keyword)
           );
-
           // results = [{}, {}, {}]...
           setResults(results);
         } else {

@@ -7,7 +7,6 @@ import Header from '../../Page/Header/header';
 import Sidebar from '../../Page/Sidebar/Sidebar';
 import LandingPage from '../LandingPage/LandingPage';
 import MyPage from '../Menus/Mypage';
-// import Portfolio from '../Menus/PortfolioPage/Portfolio';
 import Following from '../Menus/FollowingPage/Following';
 
 const Center = styled.div`
@@ -30,7 +29,6 @@ function MainPage(props) {
           <Switch>
             <Route exact path="/" component={LandingPage} />
             <Route path="/menu/my_page" component={MyPage} />
-            {/* <Route path="/menu/portfolio" component={Portfolio} /> */}
             <Route path="/menu/following" component={Following} />
           </Switch>
         </Center>

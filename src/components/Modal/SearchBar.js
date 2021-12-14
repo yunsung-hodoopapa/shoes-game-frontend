@@ -42,6 +42,7 @@ const SearchBar = ({
   setResults,
   updateField,
   getShoesInfo,
+  getFollowShoesInfo,
 }) => {
   const updateText = (text) => {
     updateField('keyword', text, false);

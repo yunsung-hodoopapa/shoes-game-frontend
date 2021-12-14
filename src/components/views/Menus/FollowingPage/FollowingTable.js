@@ -4,14 +4,15 @@ import styled from "styled-components";
 const Table = styled.table`
   width: 100%;
   height: 600px;
-  background-color: white;
+  background-color: #9e9696;
   border-collapse: collapse;
 `;
 
 const Thead = styled.thead`
   float: left;
   width: 1280px;
-  height: 150px;
+  height: 50px;
+  background-color: white;
   border-bottom: 1px solid black;
 `;
 
