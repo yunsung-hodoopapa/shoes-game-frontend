@@ -5,6 +5,7 @@ import {
   openModal,
   closeModal,
   addItems,
+  addFollowItems,
 } from '../../../../actions/userAction';
 import { fillingShoeObject } from '../../../../utils';
 import styled from 'styled-components';
@@ -38,12 +39,7 @@ const EditButton = styled.button`
   }
 `;
 
-const FollowingHeader = () => {
-  const [storedShoeInfo, setStoredShoeInfo] = useState([]);
-  const { isModalShown, items } = useSelector((state) => ({
-    isModalShown: state.modal.isModalShown,
-  }));
-
+const FollowingHeader = ({ getFollowItemHandler, storeHandler, isModalShown }) => {
   const [inputValue, setInputValue] = useState({
     shoeName: '',
     shoeSize: '',
@@ -55,6 +51,11 @@ const FollowingHeader = () => {
     resellPrice: {},
     lowestResellPrice: '',
     _id: '',
+  });
+
+  const [selectedOpt, setSelectedOpt] = useState({
+    resellPrice: '',
+    shoeSize: '',
   });
 
   const dispatch = useDispatch();
@@ -77,11 +78,15 @@ const FollowingHeader = () => {
       lowestResellPrice: '',
       _id: '',
     });
+    setSelectedOpt({
+      resellPrice: '',
+      shoeSize: '',
+    });
   };
 
   const getShoePriceHandler = async () => {
     if (inputValue.shoeName === '') {
-      return {}
+      return {};
     }
     console.log('function ready..');
     try {
@@ -103,20 +108,20 @@ const FollowingHeader = () => {
     }
   };
 
-  const getFollowItemHandler = (items) => {
-    dispatch(addItems(items));
-  };
 
   const onCreate = async (e) => {
     e.preventDefault();
     console.log('function operating');
     // const resellPrice = await getShoePriceHandler();
-    // storeHandler({ ...inputValue, resellPrice });
+    storeHandler({
+      ...inputValue,
+      resellPrice: selectedOpt.resellPrice,
+      shoeSize: selectedOpt.shoeSize,
+    });
     setInputValue({
       shoeName: '',
       shoeSize: '',
       shoePrice: '',
-      buyingDate: '',
       thumbnail: '',
       brand: '',
       styleID: '',
@@ -124,6 +129,10 @@ const FollowingHeader = () => {
       resellPrice: {},
       lowestResellPrice: '',
       _id: '',
+    });
+    setSelectedOpt({
+      resellPrice: '',
+      shoeSize: '',
     });
     onClickCloseModal();
   };
@@ -157,25 +166,6 @@ const FollowingHeader = () => {
     setResellPrice();
   }, [inputValue.shoeName]);
 
-  const storeHandler = (data) => {
-    // 전역에서 관리되는 inputvalue 값을 서버로 전달한다.
-    try {
-      const request = axios
-        .post('http://localhost:3002/shoes/regist/following', data)
-        .then((res) => {
-          console.log('store success');
-          // 서버에 저장된 정보를 res로 불러온 후 로컬스토리지에서 관리한다.
-          console.log(res);
-          getFollowItemHandler(res.data);
-          console.log(items);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
   const getShoesInfo = (params) => {
     setInputValue({
@@ -204,6 +194,8 @@ const FollowingHeader = () => {
           setInputValue={setInputValue}
           onCreate={onCreate}
           getShoesInfo={getShoesInfo}
+          selectedOpt={selectedOpt}
+          setSelectedOpt={setSelectedOpt}
         />
       ) : null}
     </HeaderWrap>

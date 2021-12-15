@@ -5,3 +5,5 @@ export const KAKAO_LOGIN_USER = 'KAKAO_LOGIN_USER';
 export const OPEN_MODAL = 'OPEN_MODAL';
 export const CLOSE_MODAL = 'CLOSE_MODAL';
 export const ADD_ITEMS = 'ADD_ITEMS';
+export const ADD_FOllOW_ITEMS = 'ADD_FOllOW_ITEMS';
+export const REMOVE_ITEM = 'REMOVE_ITEM';

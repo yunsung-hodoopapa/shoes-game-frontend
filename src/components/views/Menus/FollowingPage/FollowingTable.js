@@ -1,5 +1,10 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
+import { shoeListLength } from '../../../../constants';
+import FollowingResultRow from './FollowingResultRow';
+import { removeItem } from '../../../../actions/userAction';
 
 const Table = styled.table`
   width: 100%;
@@ -39,7 +44,24 @@ const Trow = styled.tr`
   border-bottom: 1px solod grey;
 `;
 
-const FollowingTable = () => {
+const FollowingTable = ({ items, storedShoesInfo, setStoredShoesInfo }) => {
+  console.log(items);
+  let dataForRow = [];
+  items.forEach((shoesInfo) => {
+    dataForRow.push(shoesInfo);
+  });
+  const dispatch = useDispatch();
+
+  const onRemove = (param) => {
+    dispatch(removeItem(param));
+    // console.log('here');
+    // console.log(params);
+    // setStoredShoesInfo(
+    //   items.filter((shoesInfo) => shoesInfo._id !== params)
+    // );
+  };
+
+
   return (
     <>
       <Table>
@@ -51,10 +73,20 @@ const FollowingTable = () => {
             <Th2>삭제하기</Th2>
           </Trow>
         </Thead>
-        <Tbody />
+        <Tbody>
+          {dataForRow.map((shoesInfo, index) => {
+            return (
+              <FollowingResultRow
+                shoesInfo={shoesInfo}
+                key={shoesInfo._id}
+                onRemove={() => onRemove(shoesInfo._id)}
+              />
+            );
+          })}
+        </Tbody>
       </Table>
     </>
-  )
+  );
 };
 
 export default FollowingTable;

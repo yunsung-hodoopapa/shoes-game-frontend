@@ -1,4 +1,4 @@
-import { REGISTER_USER, LOGIN_USER, KAKAO_LOGIN_USER, OPEN_MODAL, CLOSE_MODAL, ADD_ITEMS, LOGOUT_USER } from './types';
+import { REGISTER_USER, LOGIN_USER, KAKAO_LOGIN_USER, OPEN_MODAL, CLOSE_MODAL, ADD_ITEMS, LOGOUT_USER, ADD_FOllOW_ITEMS, REMOVE_ITEM } from './types';
 import { request } from '../utils/axios';
 
 export async function registerUser(dataToSubmit) {
@@ -50,4 +50,18 @@ export const addItems = (data) => {
     type: ADD_ITEMS,
     items: data
   };
-};
+}
+
+export const addFollowItems = (data) => {
+  return {
+    type: ADD_FOllOW_ITEMS,
+    items: data
+  };
+}
+
+export const removeItem = (_id) => {
+  return {
+    type: REMOVE_ITEM,
+    _id
+  }
+}

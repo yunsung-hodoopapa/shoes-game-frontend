@@ -2,6 +2,9 @@ import React, { useMemo, useState } from 'react';
 import styled from 'styled-components';
 // import Select from 'react-select';
 
+const SelectBoxWrapper = styled.div`
+  display: flex;
+`;
 const SelectBox = styled.select`
   text-align: center;
   width : 200px;
@@ -28,11 +31,14 @@ const SelectBox = styled.select`
     color: #222;
     outline: none;
   }
-`
+`;
 
-const Option = styled.option`
-
-`
+const IconSVG = styled.svg`
+  margin-left: -28px;
+  align-self: center;
+  width: 24px;
+  height: 24px;
+`;
 
 const FollowingItemSelect = ({
   inputValue,
@@ -41,40 +47,52 @@ const FollowingItemSelect = ({
   selectedOpt,
   handleSelectOpt,
 }) => {
-  const trasformedResellObj = Object.entries(inputValue.resellPrice).map((pricePerSize) => {
-    return {size: +pricePerSize[0], resellPrice: pricePerSize[1]}
-  });
+  const transformedResellObj = Object.entries(inputValue.resellPrice).map(
+    (pricePerSize) => {
+      return { size: pricePerSize[0], resellPrice: pricePerSize[1] };
+    }
+  );
 
-  const Select = () => {
+  const Select = ({ handleSelectOpt }) => {
     return (
-      <div>
-        <SelectBox
-          onChange={handleSelectOpt}
-          value={selectedOpt}
-        >
-          {trasformedResellObj.map((item, index) => (
+      <SelectBoxWrapper>
+        <SelectBox onChange={handleSelectOpt} value={selectedOpt.shoeSize}>
+          {transformedResellObj.map((item, index) => (
             <option
-              value={item.resellPrice}
+              value={item.size}
               key={index}
-              label={`size ${item.size} / ${item.resellPrice}$`}>
-              {/* {item} */}
-            </option>
+              label={`size ${item.size} / ${item.resellPrice}$`}
+            ></option>
           ))}
         </SelectBox>
-      </div>
-    )
-  }
+        <IconSVG
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmls="http://www.w3.org/2000/svg"
+        >
+          <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M10 14L16 6H4L10 14Z"
+            fill="#1A1A1A"
+          />
+        </IconSVG>
+      </SelectBoxWrapper>
+    );
+  };
 
   return (
     <div>
-      { keyword && inputValue.shoeName && trasformedResellObj.length > 0 ? (
+      {keyword && inputValue.shoeName && transformedResellObj.length > 0 ? (
         <>
           <div> Default Select </div>
-          <Select/>
+          <Select handleSelectOpt={handleSelectOpt} />
         </>
-      ) : null }
+      ) : null}
     </div>
   );
-}
+};
 
 export default FollowingItemSelect;

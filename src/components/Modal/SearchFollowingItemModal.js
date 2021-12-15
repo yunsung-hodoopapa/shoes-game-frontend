@@ -44,15 +44,18 @@ export default function SearchFollowingItemModal({
   onCreate,
   getShoePriceHandler,
   getShoesInfo,
-  selecteOpt
+  selectedOpt,
+  setSelectedOpt,
 }) {
   const [keyword, setKeyword] = useState(inputValue.shoeName);
-  const [selectedOpt, setSelectedOpt] = useState('');
 
   const handleSelectOpt = (e) => {
-    setSelectedOpt(e.target.value);
+    setSelectedOpt({
+      ...selectedOpt,
+      resellPrice: inputValue.resellPrice[e.target.value],
+      shoeSize: e.target.value,
+    });
   };
-  console.log(selectedOpt);
 
   return (
     <>

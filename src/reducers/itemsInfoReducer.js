@@ -1,4 +1,4 @@
-import { ADD_ITEMS } from '../actions/types';
+import { ADD_FOLLOW_ITEMS, ADD_ITEMS, ADD_FOllOW_ITEMS, REMOVE_ITEM } from '../actions/types';
 
 // 초기상태 선언
 const initialState = {
@@ -13,6 +13,16 @@ export const addItemsHandler = (state = initialState, action) => {
         ...state,
         items: action.items,
       };
+    case ADD_FOllOW_ITEMS:
+      return {
+        ...state,
+        items: action.items,
+      }
+    case REMOVE_ITEM:
+      return {
+        ...state,
+        items: state.items.filter(item => item._id !== action._id)
+      }
     default:
       return state
   }
