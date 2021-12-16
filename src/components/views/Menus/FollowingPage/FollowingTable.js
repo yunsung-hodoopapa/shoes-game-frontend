@@ -44,7 +44,7 @@ const Trow = styled.tr`
   border-bottom: 1px solod grey;
 `;
 
-const FollowingTable = ({ items, storedShoesInfo, setStoredShoesInfo }) => {
+const FollowingTable = ({ items, removeHandler, storedShoesInfo, setStoredShoesInfo }) => {
   console.log(items);
   let dataForRow = [];
   items.forEach((shoesInfo) => {
@@ -53,7 +53,9 @@ const FollowingTable = ({ items, storedShoesInfo, setStoredShoesInfo }) => {
   const dispatch = useDispatch();
 
   const onRemove = (param) => {
+    console.log(param);
     dispatch(removeItem(param));
+    removeHandler(param);
     // console.log('here');
     // console.log(params);
     // setStoredShoesInfo(

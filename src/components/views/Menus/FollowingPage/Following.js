@@ -44,6 +44,28 @@ const Following = (props) => {
     }
   };
 
+  const removeHandler = (data) => {
+    const requestBody = data;
+    console.log(data);
+    try {
+      const request = axios
+        .delete('http://localhost:3002/shoes/shoesInfo/following/delete_by_id', { data : {data}}, {
+          withCredentials: true,
+        })
+        .then((res) => {
+          console.log(res);
+          console.log('delete success');
+          getFollowItemHandler(res.data);
+        })
+        .catch((err) => {
+          console.log('error occured');
+          console.log(err);
+        });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
     loadFollowingShoesData();
   }, []);
@@ -82,6 +104,7 @@ const Following = (props) => {
         <div style={{height: '20px'}}></div>
         <FollowingTable
           items={items}
+          removeHandler={removeHandler}
           storedShoesInfo={storedShoesInfo}
           setStoredShoesInfo={setStoredShoesInfo}
         >{props.child}</FollowingTable>
