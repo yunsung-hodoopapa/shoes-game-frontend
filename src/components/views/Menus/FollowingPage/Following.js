@@ -18,7 +18,6 @@ const ContentsWrap = styled.div`
 `;
 
 const Following = (props) => {
-
   const dispatch = useDispatch();
 
   const { isModalShown, items } = useSelector((state) => ({
@@ -32,7 +31,7 @@ const Following = (props) => {
     try {
       const request = axios
         .get('http://localhost:3002/shoes/managed-shoesInfo/following')
-        .then( (res) => {
+        .then((res) => {
           console.log(res);
           getFollowItemHandler(res.data);
         })
@@ -49,9 +48,13 @@ const Following = (props) => {
     console.log(data);
     try {
       const request = axios
-        .delete('http://localhost:3002/shoes/shoesInfo/following/delete_by_id', { data : {data}}, {
-          withCredentials: true,
-        })
+        .delete(
+          'http://localhost:3002/shoes/following/delete',
+          { data: { data } },
+          {
+            withCredentials: true,
+          }
+        )
         .then((res) => {
           console.log(res);
           console.log('delete success');
@@ -100,17 +103,20 @@ const Following = (props) => {
         <FollowingHeader
           isModalShown={isModalShown}
           getFollowItemHandler={getFollowItemHandler}
-          storeHandler={storeHandler}/>
-        <div style={{height: '20px'}}></div>
+          storeHandler={storeHandler}
+        />
+        <div style={{ height: '20px' }}></div>
         <FollowingTable
           items={items}
           removeHandler={removeHandler}
           storedShoesInfo={storedShoesInfo}
           setStoredShoesInfo={setStoredShoesInfo}
-        >{props.child}</FollowingTable>
+        >
+          {props.child}
+        </FollowingTable>
       </ContentsWrap>
     </>
-  )
+  );
 };
 
 export default Following;

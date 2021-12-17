@@ -32,6 +32,7 @@ const FollowingResultRow = ({
   key,
   onRemove,
 }) => {
+  console.log(shoesInfo);
   // console.log(shoesInfo.lowestResellPrice.stockX);
   return (
     <Trow key={shoesInfo._id}>
@@ -44,7 +45,7 @@ const FollowingResultRow = ({
         </ShoeNameInTd>
       </TableData>
       <Td>{shoesInfo.resellPrice}</Td>
-      {/* <Td>{shoesInfo.lowestResellPrice.stockX} </Td> */}
+      <Td>{shoesInfo.lowestResellPrice} </Td>
       <Td>
         <FaTrash
           id={shoesInfo._id}

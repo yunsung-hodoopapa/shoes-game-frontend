@@ -59,9 +59,9 @@ export const addFollowItems = (data) => {
   };
 }
 
-export const removeItem = (_id) => {
+export const removeItem = (data) => {
   return {
     type: REMOVE_ITEM,
-    _id
+    items: data
   }
 }
