@@ -18,6 +18,7 @@ const ContentsWrap = styled.div`
 
 const Portfolio = (props) => {
   const [storedShoesInfo, setStoredShoesInfo] = useState([]);
+  const [checkItems, setCheckItems] = useState([]);
 
   useEffect(() => {
     axios.get('http://localhost:3002/shoes/managed-shoesInfo').then((res) => {
@@ -45,12 +46,22 @@ const Portfolio = (props) => {
     });
     return result;
   }
+
+  function deleteRow (e, index) {
+    e.preventDefault();
+    const rowData = [...storedShoesInfo];
+    rowData.splice(index, 1);
+    setStoredShoesInfo(rowData);
+    // removeHandler(id);
+  }
   
   return (
     <ContentsWrap>
       <Summary
         storedShoesInfo={storedShoesInfo}
         setStoredShoesInfo={setStoredShoesInfo}
+        checkItems={checkItems}
+        setCheckItems={setCheckItems}
         lengthOfData={lengthOfData}
         getTotalAsset={getTotalAsset}
         getTotalShoePrice={getTotalShoePrice}
@@ -58,6 +69,8 @@ const Portfolio = (props) => {
       <SearchTable
         storedShoesInfo={storedShoesInfo}
         setStoredShoesInfo={setStoredShoesInfo}
+        checkItems={checkItems}
+        setCheckItems={setCheckItems}
       > {props.children} </SearchTable>
       {/* <PortfolioBoard> {props.children} </PortfolioBoard> */}
     </ContentsWrap>

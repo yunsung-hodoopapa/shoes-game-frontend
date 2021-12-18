@@ -21,15 +21,21 @@ const RatioWrap = styled.div`
   align-items: center;
 `;
 
-const Summary = ({ lengthOfData, storedShoesInfo, setStoredShoesInfo,  getTotalAsset, getTotalShoePrice }) => {
-
+const Summary = ({
+  lengthOfData,
+  storedShoesInfo,
+  setStoredShoesInfo,
+  checkItems,
+  setCheckItems,
+  getTotalAsset,
+  getTotalShoePrice,
+}) => {
   function getLabelfromData() {
     const shoeNamelabels = [];
     storedShoesInfo.forEach((shoesInfo) => {
       const shoeName = shoesInfo.shoeName;
       shoeNamelabels.push(shoeName);
-    })
-    console.log(shoeNamelabels);
+    });
     return shoeNamelabels;
   }
 
@@ -38,16 +44,16 @@ const Summary = ({ lengthOfData, storedShoesInfo, setStoredShoesInfo,  getTotalA
     storedShoesInfo.forEach((shoesInfo) => {
       const shoePrice = Number(shoesInfo.shoePrice.substring(1));
       priceData.push(shoePrice);
-    })
+    });
     return priceData;
   }
 
   function getResellPricefromData() {
     const resellPriceData = [];
     storedShoesInfo.forEach((shoesInfo) => {
-      const resellPrice = shoesInfo.resellPrice;
+      const resellPrice = Number(shoesInfo.resellPrice);
       resellPriceData.push(resellPrice);
-    })
+    });
     return resellPriceData;
   }
   return (
@@ -64,7 +70,7 @@ const Summary = ({ lengthOfData, storedShoesInfo, setStoredShoesInfo,  getTotalA
         />
       </RatioWrap>
       <ChartRatio
-        storedShoesInfo={lengthOfData} 
+        storedShoesInfo={lengthOfData}
         getTotalAsset={getTotalAsset}
         getTotalShoePrice={getTotalShoePrice}
         getPricefromData={getPricefromData}

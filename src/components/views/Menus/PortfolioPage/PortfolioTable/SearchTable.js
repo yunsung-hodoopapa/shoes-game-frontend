@@ -1,24 +1,25 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
-import styled from 'styled-components'
+import styled from 'styled-components';
 import axios from 'axios';
 import ResultTable from './ResultTable';
 
-function SearchTable({ storedShoesInfo, setStoredShoesInfo}) {
+function SearchTable({
+  storedShoesInfo,
+  setStoredShoesInfo,
+  checkItems,
+  setCheckItems,
+}) {
   // 변수 설정
   const [keyword, setKeyword] = useState('');
   // 변수 초기값
-  function deleteRow (e, index) {
-    e.preventDefault();
-    const rowData = [...storedShoesInfo];
-    rowData.splice(index, 1);
-    setStoredShoesInfo(rowData);
-    // removeHandler(id);
-  }
 
   //이벤트 등록
-  const handleUserInput = useCallback((keyword) => {
-    setKeyword(keyword);
-  }, [keyword]);
+  const handleUserInput = useCallback(
+    (keyword) => {
+      setKeyword(keyword);
+    },
+    [keyword]
+  );
 
   return (
     <>
@@ -28,7 +29,8 @@ function SearchTable({ storedShoesInfo, setStoredShoesInfo}) {
       <ResultTable
         storedShoesInfo={storedShoesInfo}
         keyword={keyword}
-        deleteRow={deleteRow}
+        checkItems={checkItems}
+        setCheckItems={setCheckItems}
       />
     </>
   );

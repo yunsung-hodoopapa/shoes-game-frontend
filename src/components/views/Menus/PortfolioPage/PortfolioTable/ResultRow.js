@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { FaTrash } from 'react-icons/fa'
 
 const Td = styled.td`
-  width: 150px;
+  width: 130px;
   text-align: center;
 `;
 const Trow = styled.tr`
@@ -18,7 +18,7 @@ const TableData = styled.td`
 `;
 
 const ShoeNameInTd = styled.div`
-  width: 280px;
+  width: 300px;
   height: 60px;
   margin-left: 15px;
   display: inline-block;
@@ -26,7 +26,7 @@ const ShoeNameInTd = styled.div`
   justify-content: center;
   align-items: center;
 `;
- 
+
 const subtraction = (a, b) => {
   if (a > b) {
     return a - b
@@ -46,13 +46,14 @@ function Benefit(props) {
 const ResultRow = ({
   shoesInfo,
   index,
-  deleteRow,
-  getShoePriceHandler,
+  handleSingleCheck,
+  checkItems,
+  setCheckItems,
 }) => {
   const conversionShoePrice = Number(shoesInfo.shoePrice.substring(1));
   const conversionResellPrice = Number(shoesInfo.resellPrice);
   return (
-    <Trow key={index}>
+    <Trow key={shoesInfo._id}>
       <TableData>
         <img src={shoesInfo.thumbnail} width={'100'} height={'60'} display={'inline-block'} />
         <ShoeNameInTd>
@@ -68,11 +69,15 @@ const ResultRow = ({
         benefitResult={subtraction(conversionShoePrice, conversionResellPrice)}
       />
       <Td>
-        <FaTrash
-          index={index}
-          id={shoesInfo._id}
-          onClick={(e) => deleteRow(e, e.target.index)}
-        />
+        <div>
+          {/* <span> */}
+            <input
+              type={'checkbox'}
+              onChange={(e) => handleSingleCheck(e.target.checked, shoesInfo._id)}
+              checked={checkItems.includes(shoesInfo._id) ? true : false}
+            />
+          {/* </span> */}
+        </div>
       </Td>
     </Trow>
   );
