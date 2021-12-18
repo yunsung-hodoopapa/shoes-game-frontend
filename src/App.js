@@ -9,6 +9,8 @@ import MyPage from './components/views/Menus/Mypage';
 import ModalWrapper from './components/Modal/ModalContainer';
 import Loading from './components/LoadingSpinner/LoadingPage';
 
+import Portfolio from './components/views/Menus/PortfolioPage/Portfolio';
+
 const App = () => {
   return (
     <Router>

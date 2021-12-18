@@ -4,11 +4,12 @@ import { isLogin } from '../../utils/isLogin';
 
 const PublicRoute = ({ restricted, component: Component, ...rest }) => {
   return (
-    <Route {...rest} render={ props => (
-      isLogin() && restricted ?
-        <Redirect to="/" />
-        : <Component {...props} /> 
-    )} />
+    <Route
+      {...rest}
+      render={(props) =>
+        isLogin() && restricted ? <Redirect to="/" /> : <Component {...props} />
+      }
+    />
   );
 };
 
