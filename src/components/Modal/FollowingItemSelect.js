@@ -1,5 +1,9 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
+import Loading from '../LoadingSpinner/LoadingPage';
+import Spinner from '../LoadingSpinner/LoadingSpinner';
+
 // import Select from 'react-select';
 
 const SelectBoxWrapper = styled.div`
@@ -47,6 +51,7 @@ const FollowingItemSelect = ({
   selectedOpt,
   handleSelectOpt,
 }) => {
+  console.log(inputValue.resellPrice);
   const transformedResellObj = Object.entries(inputValue.resellPrice).map(
     (pricePerSize) => {
       return { size: pricePerSize[0], resellPrice: pricePerSize[1] };
@@ -85,7 +90,7 @@ const FollowingItemSelect = ({
 
   return (
     <div>
-      {keyword && inputValue.shoeName && transformedResellObj.length > 0 ? (
+      {inputValue.styleID && inputValue.resellPrice ? (
         <>
           <div> Default Select </div>
           <Select handleSelectOpt={handleSelectOpt} />

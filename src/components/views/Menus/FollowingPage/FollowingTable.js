@@ -44,8 +44,12 @@ const Trow = styled.tr`
   border-bottom: 1px solod grey;
 `;
 
-const FollowingTable = ({ items, removeHandler, storedShoesInfo, setStoredShoesInfo }) => {
-  console.log(items);
+const FollowingTable = ({
+  items,
+  removeHandler,
+  storedShoesInfo,
+  setStoredShoesInfo,
+}) => {
   let dataForRow = [];
   items.forEach((shoesInfo) => {
     dataForRow.push(shoesInfo);
@@ -53,16 +57,9 @@ const FollowingTable = ({ items, removeHandler, storedShoesInfo, setStoredShoesI
   const dispatch = useDispatch();
 
   const onRemove = (param) => {
-    console.log(param);
     dispatch(removeItem(param));
     removeHandler(param);
-    // console.log('here');
-    // console.log(params);
-    // setStoredShoesInfo(
-    //   items.filter((shoesInfo) => shoesInfo._id !== params)
-    // );
   };
-
 
   return (
     <>

@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
-import styled from "styled-components";
-import { FaTrash } from 'react-icons/fa'
+import React, { useEffect } from 'react';
+import styled from 'styled-components';
+import { FaTrash } from 'react-icons/fa';
 
 const Td = styled.td`
   width: 150px;
@@ -27,33 +27,33 @@ const ShoeNameInTd = styled.div`
   align-items: center;
 `;
 
-const FollowingResultRow = ({
-  shoesInfo,
-  key,
-  onRemove,
-}) => {
-  console.log(shoesInfo);
-  // console.log(shoesInfo.lowestResellPrice.stockX);
+const FollowingResultRow = ({ shoesInfo, key, onRemove }) => {
   return (
-    <Trow key={shoesInfo._id}>
-      <TableData>
-        <img src={shoesInfo.thumbnail} width={'100'} height={'60'} display={'inline-block'} />
-        <ShoeNameInTd>
-          {shoesInfo.shoeName}
-          <br />
-          {shoesInfo.shoeSize}
-        </ShoeNameInTd>
-      </TableData>
-      <Td>{shoesInfo.resellPrice}</Td>
-      <Td>{shoesInfo.lowestResellPrice} </Td>
-      <Td>
-        <FaTrash
-          id={shoesInfo._id}
-          onClick={onRemove}
-        />
-      </Td>
-    </Trow>
-  )
-}
+    <>
+      {shoesInfo ? (
+        <Trow key={shoesInfo._id}>
+          <TableData>
+            <img
+              src={shoesInfo.thumbnail}
+              width={'100'}
+              height={'60'}
+              display={'inline-block'}
+            />
+            <ShoeNameInTd>
+              {shoesInfo.shoeName}
+              <br />
+              {shoesInfo.shoeSize}
+            </ShoeNameInTd>
+          </TableData>
+          <Td>{shoesInfo.resellPrice}</Td>
+          <Td>{shoesInfo.lowestResellPrice} </Td>
+          <Td>
+            <FaTrash id={shoesInfo._id} onClick={onRemove} />
+          </Td>
+        </Trow>
+      ) : null}
+    </>
+  );
+};
 
 export default FollowingResultRow;

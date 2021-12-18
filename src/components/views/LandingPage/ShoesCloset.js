@@ -3,8 +3,14 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import EventModal from '../../Modal/EventModal';
-import { openModal, closeModal, addItems } from '../../../actions/userAction';
+import {
+  openModal,
+  closeModal,
+  addItems,
+  isLoaded,
+} from '../../../actions/userAction';
 import { fillingShoeObject } from '../../../utils';
+import Loading from '../../LoadingSpinner/LoadingPage';
 
 const ContentsWrap = styled.div`
   display: flex;
@@ -49,9 +55,10 @@ const BoxInformation = styled.b`
   text-shadow: 4px 2px 2px black;
 `;
 const ShoesCloset = ({ key }) => {
-  const { isModalShown, items } = useSelector((state) => ({
+  const { isModalShown, items, isDataLoaded } = useSelector((state) => ({
     isModalShown: state.modal.isModalShown,
     items: state.items.items,
+    isDataLoaded: state.items.isDataLoaded,
   }));
   const [inputValue, setInputValue] = useState({
     shoeName: '',
@@ -110,10 +117,6 @@ const ShoesCloset = ({ key }) => {
     });
   };
 
-  const getItemsHandler = (items) => {
-    dispatch(addItems(items));
-  };
-
   const onChange = (e) => {
     const { name, value } = e.target;
     setInputValue({
@@ -127,22 +130,25 @@ const ShoesCloset = ({ key }) => {
     try {
       const styleID = inputValue.styleID;
       const shoeSize = inputValue.shoeSize;
-      const res = await axios.get('http://localhost:3002/shoes/search/price:styleID', {
-        params: { styleID },
-      });
+      const res = await axios.get(
+        'http://localhost:3002/shoes/search/price:styleID',
+        {
+          params: { styleID },
+        }
+      );
       const resellPriceObj = res.data;
-      return resellPriceObj[shoeSize]
+      return resellPriceObj[shoeSize];
     } catch (err) {
       console.log(err);
     }
-  }
+  };
 
   // 3. onCreate 함수가 실행되었을 때, 빈 배열에 'shoeName', 'shoeSize'를 키값으로 갖는 객체값이 추가된다.
   const onCreate = async (e) => {
     e.preventDefault();
     console.log('function operating');
     const resellPrice = await getShoePriceHandler();
-    storeHandler({...inputValue, resellPrice});
+    storeHandler({ ...inputValue, resellPrice });
     setInputValue({
       shoeName: '',
       shoeSize: '',
@@ -202,7 +208,13 @@ const ShoesCloset = ({ key }) => {
     });
   };
 
+  const getItemsHandler = (items) => {
+    dispatch(addItems(items));
+    dispatch(isLoaded(true));
+  };
+
   const loadShoesData = () => {
+    dispatch(isLoaded(false));
     try {
       const request = axios
         .get('http://localhost:3002/shoes/managed-shoesInfo')
@@ -241,7 +253,6 @@ const ShoesCloset = ({ key }) => {
       console.log(err);
     }
   };
-
 
   const patchHandler = (data) => {
     const requestBody = data;
@@ -289,22 +300,26 @@ const ShoesCloset = ({ key }) => {
   return (
     <>
       <ContentsWrap>
-        {fillingShoeObject(items).map((shoesInfo, index) =>
-          shoesInfo.shoeName ? (
-            <Box
-              shoesInfo={shoesInfo}
-              key={index}
-              onClick={() => onClickOpenModal(index)}
-              thumbnail={shoesInfo.thumbnail}
-            >
-              <BoxInformation>
-                {shoesInfo.shoeName}
-                <br />
-                {`Size: ${shoesInfo.shoeSize}`}
-              </BoxInformation>
-            </Box>
-          ) : (
-            <EmptyBox onClick={onClickOpenModal} key={index} />
+        {!isDataLoaded ? (
+          <Loading />
+        ) : (
+          fillingShoeObject(items).map((shoesInfo, index) =>
+            shoesInfo.shoeName ? (
+              <Box
+                shoesInfo={shoesInfo}
+                key={index}
+                onClick={() => onClickOpenModal(index)}
+                thumbnail={shoesInfo.thumbnail}
+              >
+                <BoxInformation>
+                  {shoesInfo.shoeName}
+                  <br />
+                  {`Size: ${shoesInfo.shoeSize}`}
+                </BoxInformation>
+              </Box>
+            ) : (
+              <EmptyBox onClick={onClickOpenModal} key={index} />
+            )
           )
         )}
         {isModalShown ? (

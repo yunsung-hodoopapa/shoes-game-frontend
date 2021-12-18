@@ -2,9 +2,10 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { addFollowItems } from '../../../../actions/userAction';
+import { addFollowItems, isLoaded } from '../../../../actions/userAction';
 import FollowingHeader from './FollowingHeader';
 import FollowingTable from './FollowingTable';
+import Loading from '../../../LoadingSpinner/LoadingPage';
 
 const ContentsWrap = styled.div`
   display: flex;
@@ -20,20 +21,29 @@ const ContentsWrap = styled.div`
 const Following = (props) => {
   const dispatch = useDispatch();
 
-  const { isModalShown, items } = useSelector((state) => ({
+  const { isModalShown, items, isDataLoaded } = useSelector((state) => ({
     isModalShown: state.modal.isModalShown,
     items: state.items.items,
+    isDataLoaded: state.items.isDataLoaded,
   }));
+
+  // const [loading, setLoading] = useState(true);
 
   const [storedShoesInfo, setStoredShoesInfo] = useState([]);
 
+  const getFollowItemHandler = async (items) => {
+    await dispatch(addFollowItems(items));
+  };
+
   const loadFollowingShoesData = () => {
     try {
+      dispatch(isLoaded(false));
+      console.log(isDataLoaded);
       const request = axios
         .get('http://localhost:3002/shoes/managed-shoesInfo/following')
         .then((res) => {
-          console.log(res);
           getFollowItemHandler(res.data);
+          // dispatch(isLoaded(true));
         })
         .catch((err) => {
           console.log(err);
@@ -69,10 +79,6 @@ const Following = (props) => {
     }
   };
 
-  useEffect(() => {
-    loadFollowingShoesData();
-  }, []);
-
   const storeHandler = (data) => {
     // 전역에서 관리되는 inputvalue 값을 서버로 전달한다.
     try {
@@ -93,9 +99,9 @@ const Following = (props) => {
     }
   };
 
-  const getFollowItemHandler = async (items) => {
-    await dispatch(addFollowItems(items));
-  };
+  useEffect(() => {
+    loadFollowingShoesData();
+  }, []);
 
   return (
     <>
@@ -104,16 +110,21 @@ const Following = (props) => {
           isModalShown={isModalShown}
           getFollowItemHandler={getFollowItemHandler}
           storeHandler={storeHandler}
+          isDataLoaded={isDataLoaded}
         />
         <div style={{ height: '20px' }}></div>
-        <FollowingTable
-          items={items}
-          removeHandler={removeHandler}
-          storedShoesInfo={storedShoesInfo}
-          setStoredShoesInfo={setStoredShoesInfo}
-        >
-          {props.child}
-        </FollowingTable>
+        {isDataLoaded ? (
+          <FollowingTable
+            items={items}
+            removeHandler={removeHandler}
+            storedShoesInfo={storedShoesInfo}
+            setStoredShoesInfo={setStoredShoesInfo}
+          >
+            {props.child}
+          </FollowingTable>
+        ) : (
+          <Loading />
+        )}
       </ContentsWrap>
     </>
   );

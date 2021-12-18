@@ -10,7 +10,7 @@ const InputWrap = styled.div`
   align-items: center;
   wrap: no-wrap;
 `;
-const SearchResult = ({ keyword, setKeyword, getShoesInfo, getFollowShoesInfo }) => {
+const SearchResult = ({ keyword, setKeyword, getShoesInfo }) => {
   const [results, setResults] = useState([]);
 
   //필드를 업데이트 한다.
@@ -85,36 +85,6 @@ const SearchResult = ({ keyword, setKeyword, getShoesInfo, getFollowShoesInfo })
       />
     </InputWrap>
   );
-
-  // const items = SampleInformation.filter((data) => {
-  //   if (searchItem === '') {
-  //     return data
-  //   } else if (data.shoeName.toLowerCase().includes(searchItem.toLowerCase())) {
-  //     return data
-  //   }
-  // }).map((data, key) => {
-  //   <div key={key}>
-  //     <p> {data.shoeName} </p>
-  //     <p> {data.brand} </p>
-  //     <img src={data.thumbnail} />
-  //   </div>
-  // })
-
-  // return (
-  //   <InputWrap>
-  //     <Title
-  //       defaultValue={searchItem}
-  //       type='text'
-  //       placeholder={'Enter Item to be searched'}
-  //       onChange={onSubmitSearch}
-  //     />
-  //     {searchItem ?
-  //       <Searchbox>
-  //         {items}
-  //       </Searchbox>
-  //     : null }
-  //   </InputWrap>
-  // );
 };
 
 export default SearchResult;

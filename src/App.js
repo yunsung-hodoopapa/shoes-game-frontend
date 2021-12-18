@@ -7,6 +7,7 @@ import PublicRoute from './components/AccessControl/PublicRoute';
 import PrivateRoute from './components/AccessControl/PrivateRoute';
 import MyPage from './components/views/Menus/Mypage';
 import ModalWrapper from './components/Modal/ModalContainer';
+import Loading from './components/LoadingSpinner/LoadingPage';
 
 const App = () => {
   return (
@@ -18,12 +19,9 @@ const App = () => {
           path="/register"
           component={RegisterPage}
         />
-        <PublicRoute
-          restricted={false}
-          path="/login"
-          component={LoginPage}
-        />
+        <PublicRoute restricted={false} path="/login" component={LoginPage} />
         <PrivateRoute componet={MyPage} path="/mypage" />
+        <PrivateRoute component={Loading} path="/loading" />
       </Switch>
     </Router>
   );

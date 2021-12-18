@@ -1,5 +1,7 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
+import { closeModal } from '../../actions/userAction';
 
 const Background = styled.div`
   position: fixed;
@@ -7,9 +9,9 @@ const Background = styled.div`
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: rgba(0,0,0,0.50);
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 100;
-`
+`;
 const ContentsWrap = styled.div`
   display: flex;
   flex-direction: column;
@@ -23,22 +25,21 @@ const ContentsWrap = styled.div`
   width: 25rem;
   height: 100%;
   padding: 16px;
-  background-color: #191F2C;
+  background-color: #191f2c;
   border-radius: 10px;
   text-align: center;
   z-index: 1000;
 `;
 
-
-export default function Modal({ children, onClickCloseModal }) {
+export default function Modal({ children }) {
   const PreventModalOff = (e) => {
     e.stopPropagation();
-  }
+  };
+  const dispatch = useDispatch();
+
   return (
-    <Background onClick={onClickCloseModal}>
-      <ContentsWrap onClick={PreventModalOff}>
-        {children}
-      </ContentsWrap>
+    <Background onClick={() => dispatch(closeModal())}>
+      <ContentsWrap onClick={PreventModalOff}>{children}</ContentsWrap>
     </Background>
   );
 }

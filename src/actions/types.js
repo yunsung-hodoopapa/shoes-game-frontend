@@ -7,3 +7,4 @@ export const CLOSE_MODAL = 'CLOSE_MODAL';
 export const ADD_ITEMS = 'ADD_ITEMS';
 export const ADD_FOllOW_ITEMS = 'ADD_FOllOW_ITEMS';
 export const REMOVE_ITEM = 'REMOVE_ITEM';
+export const LOADED = 'LOADED';
