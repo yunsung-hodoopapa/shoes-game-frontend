@@ -1,4 +1,3 @@
-import { shoesInfoHandler } from '../reducers/itemsInfoReducer';
 import { shoeListLength, shoesObject } from '../constants';
 
 export const fillingShoeObject = (param) => {

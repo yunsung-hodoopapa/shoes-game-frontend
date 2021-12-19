@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import ResultRow from './ResultRow';
 
@@ -8,13 +8,11 @@ const Table = styled.table`
   background-color: white;
   border-collapse: collapse;
 `;
-
 const Thead = styled.thead`
   float: left;
   width: 1280px;
   border-bottom: 1px solid black;
 `;
-
 const Tbody = styled.tbody`
   overflow-y: auto;
   overflow-x: hidden;
@@ -22,7 +20,6 @@ const Tbody = styled.tbody`
   width: 1280px;
   height: 150px;
 `;
-
 const Th1 = styled.th`
   width: 400px;
 `;
@@ -30,7 +27,6 @@ const Th2 = styled.th`
   width: 130px;
   text-align: center;
 `;
-
 const Trow = styled.tr`
   display: table;
   width: 1280px;
@@ -41,7 +37,6 @@ const Trow = styled.tr`
 const ResultTable = ({
   storedShoesInfo,
   keyword,
-  deleteRow,
   getShoePriceHandler,
   checkItems,
   setCheckItems,
@@ -75,10 +70,6 @@ const ResultTable = ({
   const handleChange = (e) => {
     setCheckItems([]);
   };
-  console.log(checkItems);
-  console.log(dataFoRrow.length);
-
-  console.log(checkItems);
 
   return (
     <>
@@ -96,8 +87,6 @@ const ResultTable = ({
                   <input
                     type={'checkBox'}
                     onChange={(e) => handleAllCheck(e.target.checked)}
-                    // checkItems의 객수와 불러오는 데이터가 같을 때, 전체 선택을 활성화
-                    // 하나라도 빼면 체크박스를 해제한다.
                     checked={
                       checkItems.length === dataFoRrow.length ? true : false
                     }
@@ -114,6 +103,7 @@ const ResultTable = ({
                 dataFoRrow={dataFoRrow}
                 shoesInfo={shoesInfo}
                 index={index}
+                key={shoesInfo._id}
                 getShoePriceHandler={getShoePriceHandler}
                 checkItems={checkItems}
                 setCheckItems={setCheckItems}

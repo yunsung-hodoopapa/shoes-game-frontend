@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import SearchFollowingItemModal from '../../../Modal/SearchFollowingItemModal';
-import { openModal, closeModal } from '../../../../actions/userAction';
+import { openModal } from '../../../../actions/userAction';
 import styled from 'styled-components';
 
 const HeaderWrap = styled.div`
@@ -32,7 +32,7 @@ const EditButton = styled.button`
   }
 `;
 
-const FollowingHeader = ({ getFollowItemHandler, storeHandler }) => {
+const FollowingHeader = ({ storeHandler }) => {
   const { isModalShown } = useSelector((state) => ({
     isModalShown: state.modal.isModalShown,
   }));

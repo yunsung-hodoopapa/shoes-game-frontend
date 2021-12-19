@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
@@ -54,7 +54,7 @@ const BoxInformation = styled.b`
   color: white;
   text-shadow: 4px 2px 2px black;
 `;
-const ShoesCloset = ({ key }) => {
+const ShoesCloset = () => {
   const { isModalShown, items, isDataLoaded } = useSelector((state) => ({
     isModalShown: state.modal.isModalShown,
     items: state.items.items,
@@ -72,11 +72,6 @@ const ShoesCloset = ({ key }) => {
     resellPrice: '',
     _id: '',
   });
-
-  const { shoeName, shoeSize, shoePrice, buyingDate, thumbnail, brand, id } =
-    inputValue; // 비구조화 할당을 통해 값을 추출한다.
-  // 깊은 복사를 통해  name이라는 key값을 가진 value 값을 복사해서 넘긴다.
-  // 1. 아이템이 추가될 빈 배열을 초기값으로 설정한다.
 
   const dispatch = useDispatch();
 
@@ -200,14 +195,6 @@ const ShoesCloset = ({ key }) => {
     onClickCloseModal();
   };
 
-  const onModify = (item) => {
-    setInputValue({
-      shoesName: item.shoesName,
-      shoesSize: item.shoesSize,
-      id: item.id,
-    });
-  };
-
   const getItemsHandler = (items) => {
     dispatch(addItems(items));
     dispatch(isLoaded(true));
@@ -216,7 +203,7 @@ const ShoesCloset = ({ key }) => {
   const loadShoesData = () => {
     dispatch(isLoaded(false));
     try {
-      const request = axios
+      axios
         .get('http://localhost:3002/shoes/managed-shoesInfo')
         .then((res) => {
           console.log('load Success');
@@ -235,16 +222,12 @@ const ShoesCloset = ({ key }) => {
   }, []);
 
   const storeHandler = (data) => {
-    // 전역에서 관리되는 inputvalue 값을 서버로 전달한다.
     try {
-      const request = axios
+      axios
         .post('http://localhost:3002/shoes/regist', data)
         .then((res) => {
           console.log('store success');
-          // 서버에 저장된 정보를 res로 불러온 후 로컬스토리지에서 관리한다.
-          console.log(res);
           getItemsHandler(res.data);
-          console.log(items);
         })
         .catch((err) => {
           console.log(err);
@@ -255,11 +238,8 @@ const ShoesCloset = ({ key }) => {
   };
 
   const patchHandler = (data) => {
-    const requestBody = data;
-    console.log(data);
-    console.log(data._id);
     try {
-      const request = axios
+      axios
         .patch('http://localhost:3002/shoes/shoesInfo', data)
         .then((res) => {
           console.log('update success');
@@ -275,11 +255,8 @@ const ShoesCloset = ({ key }) => {
   };
 
   const removeHandler = (data) => {
-    const requestBody = data;
-    console.log(data);
-    console.log(data._id);
     try {
-      const request = axios
+      axios
         .delete('http://localhost:3002/shoes/shoesInfo/delete_by_id', data, {
           withCredentials: true,
         })

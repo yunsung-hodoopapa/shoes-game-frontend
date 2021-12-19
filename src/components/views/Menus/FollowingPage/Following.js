@@ -27,8 +27,6 @@ const Following = (props) => {
     isDataLoaded: state.items.isDataLoaded,
   }));
 
-  // const [loading, setLoading] = useState(true);
-
   const [storedShoesInfo, setStoredShoesInfo] = useState([]);
 
   const getFollowItemHandler = async (items) => {
@@ -38,8 +36,7 @@ const Following = (props) => {
   const loadFollowingShoesData = () => {
     try {
       dispatch(isLoaded(false));
-      console.log(isDataLoaded);
-      const request = axios
+      axios
         .get('http://localhost:3002/shoes/managed-shoesInfo/following')
         .then((res) => {
           getFollowItemHandler(res.data);
@@ -54,10 +51,8 @@ const Following = (props) => {
   };
 
   const removeHandler = (data) => {
-    const requestBody = data;
-    console.log(data);
     try {
-      const request = axios
+      axios
         .delete(
           'http://localhost:3002/shoes/following/delete',
           { data: { data } },
@@ -82,7 +77,7 @@ const Following = (props) => {
   const storeHandler = (data) => {
     // 전역에서 관리되는 inputvalue 값을 서버로 전달한다.
     try {
-      const request = axios
+      axios
         .post('http://localhost:3002/shoes/regist/following', data)
         .then((res) => {
           console.log('store success');

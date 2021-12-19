@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import styled from 'styled-components';
 import {
@@ -26,25 +26,13 @@ const ChartWrap = styled.div`
   height: 350px;
   background-color: #fbebeb;
 `;
-const SectionBox = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 142px;
-  height: 150px;
-  margin: 5px 5px;
-  background-color: tomato;
-`;
+
 const ChartRatio = ({
-  storedShoesInfo,
-  getTotalAsset,
-  getTotalShoePrice,
   getPricefromData,
   getResellPricefromData,
   getLabelfromData,
 }) => {
   const priceData = getPricefromData();
-  const lables = getLabelfromData();
   const resellPriceData = getResellPricefromData();
 
   const sumOfBuyingCost = priceData.reduce((sum, currValue) => {

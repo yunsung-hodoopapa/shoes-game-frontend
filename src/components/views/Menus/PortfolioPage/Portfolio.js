@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import SearchTable from './PortfolioTable/SearchTable';
 import Summary from './PortfolioSummary/Summary';
 import axios from 'axios';
-
 
 const ContentsWrap = styled.div`
   display: flex;
@@ -24,7 +23,7 @@ const Portfolio = (props) => {
     axios.get('http://localhost:3002/shoes/managed-shoesInfo').then((res) => {
       setStoredShoesInfo(res.data);
     });
-  }, []); // Mount 할 때만 실행된다
+  }, []);
 
   const lengthOfData = storedShoesInfo.length;
 
@@ -32,29 +31,21 @@ const Portfolio = (props) => {
     let result = 0;
     storedShoesInfo.forEach((shoesInfo) => {
       const benefit = Number(shoesInfo.resellPrice);
-      result += benefit
+      result += benefit;
     });
     console.log(result);
     return result;
-  };
+  }
 
   function getTotalShoePrice() {
     let result = 0;
     storedShoesInfo.forEach((shoesInfo) => {
       const shoePrice = Number(shoesInfo.shoePrice.substring(1));
-      result += shoePrice
+      result += shoePrice;
     });
     return result;
   }
 
-  function deleteRow (e, index) {
-    e.preventDefault();
-    const rowData = [...storedShoesInfo];
-    rowData.splice(index, 1);
-    setStoredShoesInfo(rowData);
-    // removeHandler(id);
-  }
-  
   return (
     <ContentsWrap>
       <Summary
@@ -65,16 +56,21 @@ const Portfolio = (props) => {
         lengthOfData={lengthOfData}
         getTotalAsset={getTotalAsset}
         getTotalShoePrice={getTotalShoePrice}
-      > {props.children} </Summary>
+      >
+        {' '}
+        {props.children}{' '}
+      </Summary>
       <SearchTable
         storedShoesInfo={storedShoesInfo}
         setStoredShoesInfo={setStoredShoesInfo}
         checkItems={checkItems}
         setCheckItems={setCheckItems}
-      > {props.children} </SearchTable>
-      {/* <PortfolioBoard> {props.children} </PortfolioBoard> */}
+      >
+        {' '}
+        {props.children}{' '}
+      </SearchTable>{' '}
     </ContentsWrap>
-  )
+  );
 };
 
 export default Portfolio;

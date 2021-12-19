@@ -5,15 +5,14 @@ import Heading from '../../views/Shared/Heading';
 
 const HeaderWrap = styled.header`
   position: absolute;
-  background-color: #E95959;
+  background-color: #e95959;
   width: 100%;
   height: 143px;
   top: 0;
   left: 0;
-  
   section {
     display: flex;
-    background-color: #E95959;
+    background-color: #e95959;
     text-align: center;
     align-items: center;
     justify-content: space-between;
@@ -28,12 +27,8 @@ const Title = styled.div`
   font-weight: 700;
 `;
 const Header = () => {
-  function handleSubmit(event) {
-    event.preventDefault();
-    window.scrollTo(0, 0);
-  }
 
-  const reloadPage = () => {
+  const reloadPageHandler = () => {
     window.location = 'http://localhost:3000/';
   };
 
@@ -42,10 +37,10 @@ const Header = () => {
       <HeaderWrap>
         <Container>
           <section>
-          <Title onClick={reloadPage}>
-            Shoes Game!
-          <Heading> 당신의 신발을 추가해보세요!</Heading>
-          </Title>
+            <Title onClick={reloadPageHandler}>
+              Shoes Game!
+              <Heading> 당신의 신발을 추가해보세요!</Heading>
+            </Title>
           </section>
         </Container>
       </HeaderWrap>

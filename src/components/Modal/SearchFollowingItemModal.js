@@ -5,7 +5,6 @@ import Modal from './Modal';
 import SearchResult from './SearchResult';
 import FollowingItemSelect from './FollowingItemSelect';
 import { AiOutlineClose } from 'react-icons/ai';
-import Following from '../views/Menus/FollowingPage/Following';
 import Loading from '../LoadingSpinner/LoadingPage';
 import { closeModal, isLoaded } from '../../actions/userAction';
 import axios from 'axios';
@@ -40,8 +39,7 @@ const ButtonWrap = styled.div`
 `;
 
 export default function SearchFollowingItemModal({ storeHandler }) {
-  const { isModalShown, items, isDataLoaded } = useSelector((state) => ({
-    isModalShown: state.modal.isModalShown,
+  const { items, isDataLoaded } = useSelector((state) => ({
     items: state.items.items,
     isDataLoaded: state.items.isDataLoaded,
   }));
@@ -79,18 +77,6 @@ export default function SearchFollowingItemModal({ storeHandler }) {
     });
   };
 
-  // 1. 인풋벨류 네임이 갱신되면 setResellPrice 함수를 실행시킨다.
-
-  // const setResellPrice = async () => {
-  //   console.log('loading');
-  //   setInputValue({
-  //     ...inputValue,
-  //     resellPrice: await getShoePriceHandler(),
-  //   });
-  // };
-
-  // 2. 이 함수는 인풋벨류의 shoeName이 갱신되지 않으면 실행되지 않는다.
-  // 인풋벨류에 업데이트된 styleID를 기반으로 리셀 가격 객체를 받아온다.
   const getShoePriceHandler = async (params) => {
     if (inputValue.shoeName === '') {
       console.log('empty');
@@ -100,7 +86,7 @@ export default function SearchFollowingItemModal({ storeHandler }) {
     try {
       const styleID = inputValue.styleID;
       // const shoeSize = inputValue.shoeSize;
-      const res = await axios
+      await axios
         .get('http://localhost:3002/shoes/search/price:styleID', {
           params: { styleID },
         })
@@ -121,8 +107,6 @@ export default function SearchFollowingItemModal({ storeHandler }) {
     }
   };
 
-  // 3.  이 함수는 selectedOption의 값을 받아와서 리셀프라이스와 사이즈를 갱신시킨다.
-
   const handleSelectOpt = (e) => {
     setSelectedOpt({
       ...selectedOpt,
@@ -130,8 +114,6 @@ export default function SearchFollowingItemModal({ storeHandler }) {
       shoeSize: e.target.value,
     });
   };
-
-  // 4. 온 크레이트 함수는 인풋 벨류를 최종 갈무리 하고 업데이트하는 역할을 한다.
 
   const onCreate = async (e) => {
     e.preventDefault();
@@ -163,9 +145,6 @@ export default function SearchFollowingItemModal({ storeHandler }) {
   useEffect(() => {
     getShoePriceHandler();
   }, [inputValue.styleID]);
-
-  console.log(items);
-  console.log(inputValue.resellPrice);
 
   return (
     <>

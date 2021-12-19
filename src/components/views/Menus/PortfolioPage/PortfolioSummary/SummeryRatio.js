@@ -1,34 +1,40 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import ItemRatio from './ItemRatio';
 import ProfitRatio from './ProfitRatio';
 import { Chart, ArcElement, Tooltip, Legend, Title } from 'chart.js';
-Chart.register(ArcElement, Tooltip, Legend, Title );
+Chart.register(ArcElement, Tooltip, Legend, Title);
 
 const ChatWrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`
+`;
 const SummeryRatio = ({
   storedShoesInfo,
-  getTotalAsset,
-  getTotalShoePrice,
   getPricefromData,
   getResellPricefromData,
   getLabelfromData,
 }) => {
-
   function getRandomRgba() {
     const rgbaContainer = [];
-    const o = Math.round
-    const r = Math.random
+    const o = Math.round;
+    const r = Math.random;
     const s = 255;
-    for(let i = 0; i < storedShoesInfo.length; i++) {
-      const rgba = 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
+    for (let i = 0; i < storedShoesInfo.length; i++) {
+      const rgba =
+        'rgba(' +
+        o(r() * s) +
+        ',' +
+        o(r() * s) +
+        ',' +
+        o(r() * s) +
+        ',' +
+        r().toFixed(1) +
+        ')';
       rgbaContainer.push(rgba);
     }
-  return rgbaContainer;
+    return rgbaContainer;
   }
 
   return (
@@ -42,7 +48,7 @@ const SummeryRatio = ({
         <ProfitRatio
           getResellPricefromData={getResellPricefromData}
           getRandomRgba={getRandomRgba}
-          getLabelfromData={getLabelfromData} 
+          getLabelfromData={getLabelfromData}
         />
       </ChatWrap>
     </>

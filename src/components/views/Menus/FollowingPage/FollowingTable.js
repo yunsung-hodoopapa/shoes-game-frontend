@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
-import { shoeListLength } from '../../../../constants';
+import { useDispatch } from 'react-redux';
 import FollowingResultRow from './FollowingResultRow';
 import { removeItem } from '../../../../actions/userAction';
 
@@ -44,16 +42,12 @@ const Trow = styled.tr`
   border-bottom: 1px solod grey;
 `;
 
-const FollowingTable = ({
-  items,
-  removeHandler,
-  storedShoesInfo,
-  setStoredShoesInfo,
-}) => {
-  let dataForRow = [];
+const FollowingTable = ({ items, removeHandler }) => {
+  const dataForRow = [];
   items.forEach((shoesInfo) => {
     dataForRow.push(shoesInfo);
   });
+
   const dispatch = useDispatch();
 
   const onRemove = (param) => {
@@ -73,7 +67,7 @@ const FollowingTable = ({
           </Trow>
         </Thead>
         <Tbody>
-          {dataForRow.map((shoesInfo, index) => {
+          {dataForRow.map((shoesInfo) => {
             return (
               <FollowingResultRow
                 shoesInfo={shoesInfo}

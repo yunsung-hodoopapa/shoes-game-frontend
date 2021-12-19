@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 import { withRouter } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../../actions/userAction';
@@ -25,7 +24,9 @@ function LoginPage(props) {
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
 
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => ({
+    user: state.user,
+  }));
 
   const onEmailHandler = (e) => {
     setEmail(e.currentTarget.value);
@@ -43,7 +44,6 @@ function LoginPage(props) {
     };
     dispatch(loginUser(requestBody))
       .then((res) => {
-        console.log(res);
         if (res.payload.loginSuccess) {
           localStorage.setItem('userInfo', JSON.stringify(res));
           props.history.push('/');

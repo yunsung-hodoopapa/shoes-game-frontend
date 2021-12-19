@@ -1,6 +1,5 @@
-import React from "react";
-import styled from "styled-components";
-import { FaTrash } from 'react-icons/fa'
+import React from 'react';
+import styled from 'styled-components';
 
 const Td = styled.td`
   width: 130px;
@@ -29,18 +28,14 @@ const ShoeNameInTd = styled.div`
 
 const subtraction = (a, b) => {
   if (a > b) {
-    return a - b
+    return a - b;
   } else {
-    return b - a
+    return b - a;
   }
-}
+};
 
 function Benefit(props) {
-  return (
-    <Td>
-      {props.benefitResult}
-    </Td>
-  );
+  return <Td>{props.benefitResult}</Td>;
 }
 
 const ResultRow = ({
@@ -55,14 +50,23 @@ const ResultRow = ({
   return (
     <Trow key={shoesInfo._id}>
       <TableData>
-        <img src={shoesInfo.thumbnail} width={'100'} height={'60'} display={'inline-block'} />
+        <img
+          src={shoesInfo.thumbnail}
+          width={'100'}
+          height={'60'}
+          display={'inline-block'}
+          alt='shoes thumbnail'
+        />
         <ShoeNameInTd>
           {shoesInfo.shoeName}
           <br />
           {shoesInfo.shoeSize}
         </ShoeNameInTd>
       </TableData>
-      <Td width={'200px'}> {new Date(shoesInfo.buyingDate).toLocaleDateString()}</Td>
+      <Td width={'200px'}>
+        {' '}
+        {new Date(shoesInfo.buyingDate).toLocaleDateString()}
+      </Td>
       <Td>{shoesInfo.shoePrice}</Td>
       <Td>{shoesInfo.resellPrice} </Td>
       <Benefit
@@ -70,17 +74,15 @@ const ResultRow = ({
       />
       <Td>
         <div>
-          {/* <span> */}
-            <input
-              type={'checkbox'}
-              onChange={(e) => handleSingleCheck(e.target.checked, shoesInfo._id)}
-              checked={checkItems.includes(shoesInfo._id) ? true : false}
-            />
-          {/* </span> */}
+          <input
+            type={'checkbox'}
+            onChange={(e) => handleSingleCheck(e.target.checked, shoesInfo._id)}
+            checked={checkItems.includes(shoesInfo._id) ? true : false}
+          />
         </div>
       </Td>
     </Trow>
   );
-}
+};
 
 export default ResultRow;

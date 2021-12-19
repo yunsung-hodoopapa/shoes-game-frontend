@@ -1,10 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
 import styled from 'styled-components';
-import Loading from '../LoadingSpinner/LoadingPage';
-import Spinner from '../LoadingSpinner/LoadingSpinner';
-
-// import Select from 'react-select';
 
 const SelectBoxWrapper = styled.div`
   display: flex;

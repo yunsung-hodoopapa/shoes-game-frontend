@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { FaTrash } from 'react-icons/fa';
 
@@ -38,6 +38,7 @@ const FollowingResultRow = ({ shoesInfo, key, onRemove }) => {
               width={'100'}
               height={'60'}
               display={'inline-block'}
+              alt='shoes thumnail'
             />
             <ShoeNameInTd>
               {shoesInfo.shoeName}

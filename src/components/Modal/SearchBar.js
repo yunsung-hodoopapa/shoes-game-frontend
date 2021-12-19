@@ -56,9 +56,7 @@ const SearchBar = ({
   const limitEnglish = (e) => {
     e.target.value = e.target.value.replace(/[^\!-z\s]/gi, '');
   };
-  // const arr = results.results; // {} [] -> truthy
-  // if (arr.length) {
-  // arr에 검색어에 대한 결과가 담기면, SearchView 호출
+
   const renderResults = results.map((item, index) => {
     return (
       <SearchView
@@ -69,8 +67,7 @@ const SearchBar = ({
       />
     );
   });
-  // }
-  // onChang를 사용해 글자를 입력할때마다 updataField호출하고 renderResults를 그린다.
+
   return (
     <div>
       <SearchWrap>
@@ -87,8 +84,5 @@ const SearchBar = ({
     </div>
   );
 };
-
-// 검색된 아이템의 'shoename'과 'brand'를 출력
-// 결과값을 클릭하면 updateText를 호출해 input에 name을 표시
 
 export default SearchBar;

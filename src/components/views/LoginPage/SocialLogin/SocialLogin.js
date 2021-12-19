@@ -2,9 +2,7 @@ import axios from 'axios';
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  KAKAO_AUTH_URL,
-} from '../../../../constants/index';
+import { KAKAO_AUTH_URL } from '../../../../constants/index';
 import { socialLoginUser } from '../../../../actions/userAction';
 
 import styled from 'styled-components';
@@ -16,7 +14,6 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
 `;
-
 const LoginBtn = styled.button`
   display: flex;
   align-items: center;
@@ -35,10 +32,11 @@ function SocialLogin(props) {
   let history = useHistory();
   const dispatch = useDispatch();
 
-  const user = useSelector(state => state.user);
+  const user = useSelector((state) => ({
+    user: state.user,
+  }));
 
   const KakaoLoginClickHandler = (props) => {
-
     const scope = 'profile_nickname, profile_image, account_email';
     Kakao.Auth.login({
       scope,
@@ -69,10 +67,10 @@ function SocialLogin(props) {
                   history.push('/');
                 }
               })
-              .catch(err => {
+              .catch((err) => {
                 console.log(err);
               });
-          }
+          },
           //     .then((res) => {
           //       console.log(res.payload);
           //       if (res.payload) {
@@ -112,49 +110,22 @@ function SocialLogin(props) {
     });
   };
 
-  const KakaoLogoutClickHandler = () => {
-    if (Kakao.Auth.getAccessToken()) {
-      Kakao.API.request({
-        // 로그아웃하고
-        url: '/vi/user/unlink',
-        success: function (authObj) {
-          console.log('authObj');
-        },
-        fail: function (error) {
-          console.log(error);
-        },
-      });
-      // // 토큰 삭제
-      Kakao.Auth.setAccessToken(undefined);
-      // // 유저 정보도 삭제
-      // const userInfoElem = document.querySelector('#userInfo')
-      // if (userInfoElem) userInfoElem.value = ''
-    }
-  };
-
   useEffect(() => {
-    axios.get('/login')
-    .then(res => console.log(res))
-    .catch()
-  },[])
+    axios
+      .get('/login')
+      .then((res) => console.log(res))
+      .catch();
+  }, []);
 
   return (
     <Container>
       <LoginBtn
         href={KAKAO_AUTH_URL}
-        // token={process.env.KAKAO_JAVASCRIPT_KEY}
         id="kakaoLogin"
         onClick={KakaoLoginClickHandler}
-        // onSuccess={oAuthLoginHandler}
-        // onFail={console.error}
       >
         카카오 계정으로 로그인
-        {/* <img src="https://developers.kakao.com/tool/resource/static/img/button/login/full/ko/kakao_login_medium_narrow.png"></img> */}
       </LoginBtn>
-      {/* <button id="kakaoLogout" onClick={kakaoLogoutClickHandler}>
-        카카오 로그아웃
-      </button>{' '} */}
-      {/* <input id='userInfo' value=''></input> */}
     </Container>
   );
 }
