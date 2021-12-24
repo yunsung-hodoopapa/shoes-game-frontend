@@ -11,6 +11,7 @@ import {
 } from '../../../actions/userAction';
 import { fillingShoeObject } from '../../../utils';
 import Loading from '../../LoadingSpinner/LoadingPage';
+import { SERVER_URL } from '../../../constants/index';
 
 const ContentsWrap = styled.div`
   display: flex;
@@ -125,12 +126,9 @@ const ShoesCloset = () => {
     try {
       const styleID = inputValue.styleID;
       const shoeSize = inputValue.shoeSize;
-      const res = await axios.get(
-        'http://localhost:3002/shoes/search/price:styleID',
-        {
-          params: { styleID },
-        }
-      );
+      const res = await axios.get(`${SERVER_URL}/shoes/search/price:styleID`, {
+        params: { styleID },
+      });
       const resellPriceObj = res.data;
       return resellPriceObj[shoeSize];
     } catch (err) {
@@ -204,7 +202,7 @@ const ShoesCloset = () => {
     dispatch(isLoaded(false));
     try {
       axios
-        .get('http://localhost:3002/shoes/managed-shoesInfo')
+        .get(`${SERVER_URL}/shoes/managed-shoesInfo`)
         .then((res) => {
           console.log('load Success');
           getItemsHandler(res.data);
@@ -224,7 +222,7 @@ const ShoesCloset = () => {
   const storeHandler = (data) => {
     try {
       axios
-        .post('http://localhost:3002/shoes/regist', data)
+        .post(`${SERVER_URL}/shoes/regist`, data)
         .then((res) => {
           console.log('store success');
           getItemsHandler(res.data);
@@ -240,7 +238,7 @@ const ShoesCloset = () => {
   const patchHandler = (data) => {
     try {
       axios
-        .patch('http://localhost:3002/shoes/shoesInfo', data)
+        .patch(`${SERVER_URL}/shoes/shoesInfo`, data)
         .then((res) => {
           console.log('update success');
           getItemsHandler(res.data);
@@ -257,7 +255,7 @@ const ShoesCloset = () => {
   const removeHandler = (data) => {
     try {
       axios
-        .delete('http://localhost:3002/shoes/shoesInfo/delete_by_id', data, {
+        .delete(`${SERVER_URL}/shoes/shoesInfo/delete_by_id`, data, {
           withCredentials: true,
         })
         .then((res) => {

@@ -7,6 +7,7 @@ import FollowingItemSelect from './FollowingItemSelect';
 import { AiOutlineClose } from 'react-icons/ai';
 import Loading from '../LoadingSpinner/LoadingPage';
 import { closeModal, isLoaded } from '../../actions/userAction';
+import { SERVER_URL } from '../../constants/index';
 import axios from 'axios';
 
 const CloseBtnWrap = styled.div`
@@ -87,7 +88,7 @@ export default function SearchFollowingItemModal({ storeHandler }) {
       const styleID = inputValue.styleID;
       // const shoeSize = inputValue.shoeSize;
       await axios
-        .get('http://localhost:3002/shoes/search/price:styleID', {
+        .get(`${SERVER_URL}/shoes/search/price:styleID`, {
           params: { styleID },
         })
         .then((res) => {

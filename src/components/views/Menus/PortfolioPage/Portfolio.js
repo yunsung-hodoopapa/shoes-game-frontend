@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import SearchTable from './PortfolioTable/SearchTable';
 import Summary from './PortfolioSummary/Summary';
+import { SERVER_URL } from '../../../../constants/index';
 import axios from 'axios';
 
 const ContentsWrap = styled.div`
@@ -20,7 +21,7 @@ const Portfolio = (props) => {
   const [checkItems, setCheckItems] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3002/shoes/managed-shoesInfo').then((res) => {
+    axios.get(`${SERVER_URL}/shoes/managed-shoesInfo`).then((res) => {
       setStoredShoesInfo(res.data);
     });
   }, []);

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import SearchBar from './SearchBar';
 import axios from 'axios';
+import { SERVER_URL } from '../../constants/index';
 
 const InputWrap = styled.div`
   display: flex;
@@ -31,7 +32,7 @@ const SearchResult = ({ keyword, setKeyword, getShoesInfo }) => {
     // restful 한 api 인가 고민하기
     try {
       if (keyword.length > 3) {
-        const res = await axios.get('http://localhost:3002/shoes/search', {
+        const res = await axios.get(`${SERVER_URL}/shoes/search`, {
           params: { keyword },
         });
         if (res?.status === 200) {

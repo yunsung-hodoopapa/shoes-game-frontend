@@ -6,6 +6,7 @@ import { addFollowItems, isLoaded } from '../../../../actions/userAction';
 import FollowingHeader from './FollowingHeader';
 import FollowingTable from './FollowingTable';
 import Loading from '../../../LoadingSpinner/LoadingPage';
+import { SERVER_URL } from '../../../../constants/index';
 
 const ContentsWrap = styled.div`
   display: flex;
@@ -37,7 +38,7 @@ const Following = (props) => {
     try {
       dispatch(isLoaded(false));
       axios
-        .get('http://localhost:3002/shoes/managed-shoesInfo/following')
+        .get(`${SERVER_URL}/shoes/managed-shoesInfo/following`)
         .then((res) => {
           getFollowItemHandler(res.data);
           // dispatch(isLoaded(true));
@@ -54,7 +55,7 @@ const Following = (props) => {
     try {
       axios
         .delete(
-          'http://localhost:3002/shoes/following/delete',
+          `${SERVER_URL}/shoes/following/delete`,
           { data: { data } },
           {
             withCredentials: true,
@@ -78,7 +79,7 @@ const Following = (props) => {
     // 전역에서 관리되는 inputvalue 값을 서버로 전달한다.
     try {
       axios
-        .post('http://localhost:3002/shoes/regist/following', data)
+        .post(`${SERVER_URL}/shoes/regist/following`, data)
         .then((res) => {
           console.log('store success');
           // 서버에 저장된 정보를 res로 불러온 후 로컬스토리지에서 관리한다.

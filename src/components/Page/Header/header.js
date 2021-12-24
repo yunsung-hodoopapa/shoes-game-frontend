@@ -29,7 +29,7 @@ const Title = styled.div`
 const Header = () => {
 
   const reloadPageHandler = () => {
-    window.location = 'http://localhost:3000/';
+    window.location = 'http:/shoesgame.app/';
   };
 
   return (
