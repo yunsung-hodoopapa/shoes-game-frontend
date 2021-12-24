@@ -5,8 +5,6 @@ const DOMAIN = `${SERVER_URL}`;
 
 axios.defaults.withCredentials = true; // 쿠키 데이터를 주고받는다.
 export const request = (method, url, data) => {
-  console.log(DOMAIN);
-
   return (
     axios({
       method,
