@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { SERVER_URL } from '../constants';
 
-const DOMAIN = `${SERVER_URL}:3002`;
+const DOMAIN = `${SERVER_URL}`;
 
 axios.defaults.withCredentials = true; // 쿠키 데이터를 주고받는다.
 export const request = (method, url, data) => {
