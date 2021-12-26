@@ -1,6 +1,6 @@
 const CLIENT_ID = '4afea3c0a35ab1e701ff8dddfe94e41f';
 const REDIRECT_URI = 'https://shoesgame.app/login';
-export const SERVER_URL = 'https://shoesgame.click';
+export const SERVER_URL = 'http://3.16.107.44';
 // export const SERVER_URL = 'http://localhost:3002';
 export const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 export const KAKAO_LOGIN_API_URL = `${SERVER_URL}/kakao`;
