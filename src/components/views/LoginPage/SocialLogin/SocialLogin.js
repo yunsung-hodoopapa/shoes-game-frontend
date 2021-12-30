@@ -110,12 +110,12 @@ function SocialLogin(props) {
     });
   };
 
-  useEffect(() => {
-    axios
-      .get('/login')
-      .then((res) => console.log(res))
-      .catch();
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get('/login')
+  //     .then((res) => console.log(res))
+  //     .catch();
+  // }, []);
 
   return (
     <Container>
