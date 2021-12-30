@@ -62,6 +62,7 @@ function SocialLogin(props) {
             dispatch(socialLoginUser(request))
               .then((res) => {
                 console.log(res);
+                console.log(res.cookie);
                 if (res.payload.socialLoginSuccess) {
                   localStorage.setItem('userInfo', JSON.stringify(request));
                   history.push('/');
