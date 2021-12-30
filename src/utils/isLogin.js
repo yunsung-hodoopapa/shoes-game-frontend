@@ -1,3 +1,3 @@
-import Cookies from 'js-cookie';
+// import Cookies from 'js-cookie';
 
-export const isLogin = () => !!Cookies.get('x_auth');
+export const isLogin = () => !!localStorage.getItem('user_info');

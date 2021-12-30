@@ -61,7 +61,6 @@ function SocialLogin(props) {
             };
             dispatch(socialLoginUser(request))
               .then((res) => {
-                console.log(res);
                 const setCookie = res.headers.get('set-cookie');
                 console.log(setCookie);
                 // setCookie.cookie('x_auth', setCookie);
