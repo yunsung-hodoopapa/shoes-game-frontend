@@ -61,8 +61,6 @@ function SocialLogin(props) {
             };
             dispatch(socialLoginUser(request))
               .then((res) => {
-                const setCookie = res.headers.get('set-cookie');
-                console.log(setCookie);
                 // setCookie.cookie('x_auth', setCookie);
                 if (res.payload.socialLoginSuccess) {
                   localStorage.setItem('userInfo', JSON.stringify(request));
