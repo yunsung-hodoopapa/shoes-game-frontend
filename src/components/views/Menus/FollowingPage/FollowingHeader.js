@@ -8,9 +8,9 @@ const HeaderWrap = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 1280px;
+  width: 90.125em;
   height: 100px;
-  border: 1px solid tomato;
+  background-color: #ccd9d3;
 `;
 
 const HeaderTag = styled.h2`

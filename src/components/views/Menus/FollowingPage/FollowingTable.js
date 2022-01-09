@@ -5,40 +5,39 @@ import FollowingResultRow from './FollowingResultRow';
 import { removeItem } from '../../../../actions/userAction';
 
 const Table = styled.table`
-  width: 100%;
-  height: 600px;
-  background-color: #9e9696;
+  width: 90.125em;
+  height: 12.25em;
+  background-color: #e6ece9;
   border-collapse: collapse;
 `;
 
 const Thead = styled.thead`
   float: left;
-  width: 1280px;
-  height: 50px;
-  background-color: white;
-  border-bottom: 1px solid black;
+  width: 90.125em;
+  background-color: #ccd9d3;
+  border-bottom: 1px solid #336851;
 `;
 
 const Tbody = styled.tbody`
   overflow-y: auto;
   overflow-x: hidden;
   float: left;
-  width: 1280px;
-  height: 450px;
+  width: 90.125em;
+  height: 28.125em;
 `;
 
 const Th1 = styled.th`
-  width: 400px;
+  width: 25em;
 `;
 const Th2 = styled.th`
-  width: 150px;
+  width: 9.375em;
   text-align: center;
 `;
 
 const Trow = styled.tr`
   display: table;
-  width: 1280px;
-  height: 50px;
+  width: 90.125em;
+  height: 3.125em;
   border-bottom: 1px solod grey;
 `;
 

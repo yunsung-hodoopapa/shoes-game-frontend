@@ -1,5 +1,6 @@
 import React from 'react';
 import { Pie } from 'react-chartjs-2';
+import { colorContainer } from '../../../../../constants';
 import { Chart, ArcElement, Tooltip, Legend, Title } from 'chart.js';
 Chart.register(ArcElement, Tooltip, Legend, Title );
 
@@ -8,9 +9,9 @@ const ProfitRatio = ({
   getLabelfromData,
   getRandomRgba,
 }) => {
-  let data = getResellPricefromData();
-  let labels = getLabelfromData();
-  let backgroundColor = getRandomRgba();
+  const data = getResellPricefromData();
+  const labels = getLabelfromData();
+  const backgroundColor = getRandomRgba();
 
   const chartData = {
     labels: labels,
@@ -18,7 +19,7 @@ const ProfitRatio = ({
         data: data,
         borderWidth: 1,
         hoverBorderWidth: 2,
-        backgroundColor: backgroundColor,
+        backgroundColor: colorContainer,
         borderColor: ['rgba(120, 122, 134, 0.8)'],
         fill: true,
         hoverOffset: 3,

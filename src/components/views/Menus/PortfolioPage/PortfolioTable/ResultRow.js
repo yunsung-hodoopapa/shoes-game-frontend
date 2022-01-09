@@ -2,28 +2,43 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Td = styled.td`
-  width: 130px;
+  width: 8.1em;
   text-align: center;
 `;
 const Trow = styled.tr`
   display: table;
-  width: 1280px;
-  height: 50px;
+  width: 90.125em;
+  height: 3.1em;
   border-bottom: 1px solod grey;
 `;
 const TableData = styled.td`
-  width: 400px;
-  height: 50px;
+  width: 25em;
+  height: 3.1em;
 `;
 
+const ShoesTumbnail = styled.div`
+  display: inline-block;
+  margin-left: 10px;
+  margin-top: 10px;
+  width: 9.3em;
+  height: 5.6em;
+  img {
+    width: 9.3em;
+    height: 5.6em;
+    display: inline-block;
+  }
+  object-fit: contain;
+`
+
 const ShoeNameInTd = styled.div`
-  width: 300px;
-  height: 60px;
-  margin-left: 15px;
+  width: 18.75em;
+  height: 3.75em;
+  margin-left: 1em;
   display: inline-block;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-image: url(${(props) => props.thumbnail});
 `;
 
 const subtraction = (a, b) => {
@@ -50,13 +65,13 @@ const ResultRow = ({
   return (
     <Trow key={shoesInfo._id}>
       <TableData>
-        <img
-          src={shoesInfo.thumbnail}
-          width={'100'}
-          height={'60'}
-          display={'inline-block'}
-          alt='shoes thumbnail'
-        />
+        <ShoesTumbnail>
+          <img
+            src={shoesInfo.thumbnail}
+            display={'inline-block'}
+            alt='shoes thumbnail'
+          />
+        </ShoesTumbnail>
         <ShoeNameInTd>
           {shoesInfo.shoeName}
           <br />

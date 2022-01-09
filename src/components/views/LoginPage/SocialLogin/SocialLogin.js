@@ -1,5 +1,4 @@
-import axios from 'axios';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { KAKAO_AUTH_URL } from '../../../../constants/index';
@@ -14,6 +13,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
 const LoginBtn = styled.button`
   display: flex;
   align-items: center;
@@ -29,7 +29,7 @@ const LoginBtn = styled.button`
 `;
 
 function SocialLogin(props) {
-  let history = useHistory();
+  const history = useHistory();
   const dispatch = useDispatch();
 
   const user = useSelector((state) => ({
@@ -109,13 +109,6 @@ function SocialLogin(props) {
       },
     });
   };
-
-  // useEffect(() => {
-  //   axios
-  //     .get('/login')
-  //     .then((res) => console.log(res))
-  //     .catch();
-  // }, []);
 
   return (
     <Container>

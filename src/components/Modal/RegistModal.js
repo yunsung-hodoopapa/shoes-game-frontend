@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import { withRouter } from 'react-router';
-import { useDispatch } from 'react-redux';
-import { registerUser } from '../../../actions/userAction';
 import styled from 'styled-components';
+import Modal from './Modal';
+import { useDispatch, useSelector } from 'react-redux';
+import { AiOutlineClose } from 'react-icons/ai';
+import { closeModal, registerUser } from '../../actions/userAction';
 
 const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100vh;
+  // height: 100vh;
 `;
 
 const Form = styled.form`
@@ -17,7 +18,24 @@ const Form = styled.form`
   flex-direction: Column;
 `;
 
-function RegisterPage(props) {
+const CloseBtnWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  right: -40px;
+  top: 0px;
+  background-color: #dcdcdc;
+  border: none;
+  border-radius: 50%;
+  :hover {
+    background-color: #d3959b;
+  }
+`;
+
+function RegisterModal(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
@@ -36,25 +54,36 @@ function RegisterPage(props) {
   const onConfirmPasswordHandler = (e) => {
     setConfirmPassword(e.currentTarget.value);
   };
+
+  const onClickCloseModal = (e) => {
+    e.preventDefault();
+    dispatch(closeModal());
+  };
+
   const onSubmitHandler = (e) => {
     e.preventDefault();
     if (password === confirmPassword) {
-      let body = {
+      const body = {
         email: email,
         name: name,
         password: password,
       };
       dispatch(registerUser(body)).then((res) => {
         alert('회원가입이 정상적으로 완료되었습니다!');
+        console.log(res);
         window.localStorage.setItem('userInfo', JSON.stringify(body));
-        props.history.push('/');
       });
     } else {
       alert('비밀번호가 일치하지 않습니다.');
     }
+    // dispatch(closeModal());
   };
+
   return (
-    <Container>
+    <Modal>
+      <CloseBtnWrap>
+        <AiOutlineClose onClick={onClickCloseModal} />
+      </CloseBtnWrap>
       <Form onSubmit={onSubmitHandler}>
         <label>Email</label>
         <input type="email" value={email} onChange={onEmailHandler} />
@@ -74,8 +103,8 @@ function RegisterPage(props) {
         <br />
         <button type="submit">회원가입</button>
       </Form>
-    </Container>
+    </Modal>
   );
 }
 
-export default withRouter(RegisterPage);
+export default RegisterModal;

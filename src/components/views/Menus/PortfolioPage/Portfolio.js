@@ -3,18 +3,8 @@ import styled from 'styled-components';
 import SearchTable from './PortfolioTable/SearchTable';
 import Summary from './PortfolioSummary/Summary';
 import { SERVER_URL } from '../../../../constants/index';
+import Layout from '../../../Layout/Layout';
 import axios from 'axios';
-
-const ContentsWrap = styled.div`
-  display: flex;
-  position: relative;
-  flex-direction: column;
-  background-color: #eaa8a8;
-  width: 1280px;
-  height: 680px;
-  left: 320px;
-  top: 30px;
-`;
 
 const Portfolio = (props) => {
   const [storedShoesInfo, setStoredShoesInfo] = useState([]);
@@ -34,7 +24,6 @@ const Portfolio = (props) => {
       const benefit = Number(shoesInfo.resellPrice);
       result += benefit;
     });
-    console.log(result);
     return result;
   }
 
@@ -48,7 +37,7 @@ const Portfolio = (props) => {
   }
 
   return (
-    <ContentsWrap>
+    <Layout>
       <Summary
         storedShoesInfo={storedShoesInfo}
         setStoredShoesInfo={setStoredShoesInfo}
@@ -70,7 +59,7 @@ const Portfolio = (props) => {
         {' '}
         {props.children}{' '}
       </SearchTable>{' '}
-    </ContentsWrap>
+    </Layout>
   );
 };
 

@@ -4,33 +4,35 @@ import styled from 'styled-components';
 
 const SearchWrap = styled.div`
   display: flex;
+  width: 18.125em;
+  height: 2.4em;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
-  background-color: #ded7d7;
+  background-color: #ffffff;
 `;
 const SearchInput = styled.input`
   text-align: center;
   outline: none;
-  width: 21rem;
-  height: 30px;
-  background-color: #ded7d7;
-  position: relative;
-  font-size: 20px;
+  width: 14.55em;
+  height: 1.9em;
+  background-color: #fffff;
+  border: none;
+  font-size: 1em;
   z-index: 1;
 `;
 const Searchbox = styled.div`
-  width: 23.5rem;
-  height: 100px;
+  width: 18.125em;
+  height: 6.25em;
   margin-top: 3px;
-  background-color: white;
+  background-color: #ffffff;
   overflow-y: scroll;
 `;
 const CancelBtn = styled.button`
-  height: 30px;
-  width: 30px;
+  height: 1em;
+  width: 1em;
   border: none;
-  font-size: 15px;
+  font-size: 1em;
   background: none;
   animation: ${(props) => (props.length > 0 ? 'active' : 'inactive')};
   z-index: 1;

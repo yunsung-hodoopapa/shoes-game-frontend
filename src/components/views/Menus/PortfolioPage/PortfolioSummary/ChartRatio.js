@@ -24,7 +24,7 @@ const ChartWrap = styled.div`
   flex-wrap: wrap;
   width: 340px;
   height: 350px;
-  background-color: #fbebeb;
+  background-color: #ffffff;
 `;
 
 const ChartRatio = ({

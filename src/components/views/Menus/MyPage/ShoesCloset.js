@@ -2,25 +2,23 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import EventModal from '../../Modal/EventModal';
+import EventModal from '../../../Modal/EventModal';
 import {
   openModal,
   closeModal,
   addItems,
   isLoaded,
-} from '../../../actions/userAction';
-import { fillingShoeObject } from '../../../utils';
-import Loading from '../../LoadingSpinner/LoadingPage';
-import { SERVER_URL } from '../../../constants/index';
+} from '../../../../actions/userAction';
+import { fillingShoeObject } from '../../../../utils';
+import Loading from '../../../LoadingSpinner/LoadingPage';
+import { SERVER_URL } from '../../../../constants/index';
 
 const ContentsWrap = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  // position: absolute;
-  background-color: #9e9696;
-  width: 1134px;
-  height: 495px;
+  background-color: #99b3a8;
+  width: 90.125em;
   align-items: center;
 `;
 const Box = styled.div`
@@ -29,12 +27,12 @@ const Box = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-  width: 195px;
-  height: 105px;
+  width: 15em;
+  height: 7em;
   background: no-repeat center;
   background-image: url(${(props) => props.thumbnail});
-  background-size: 195px;
-  margin: 8px 8px;
+  background-size: 15em;
+  margin: 4px 8px;
   object-fit: contain;
 `;
 const EmptyBox = styled.div`
@@ -43,12 +41,11 @@ const EmptyBox = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-  width: 195px;
-  height: 105px;
+  width: 15em;
+  height: 7em;
   background: no-repeat center;
   background-color: white;
-  background-size: 195px;
-  margin: 8px 8px;
+  margin: 4px 8px;
 `;
 const BoxInformation = styled.b`
   font-size: 13px;

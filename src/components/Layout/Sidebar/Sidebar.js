@@ -4,34 +4,29 @@ import styled from 'styled-components';
 import SidebarItem from './SidebarItem';
 
 const Side = styled.div`
-  position: absolute;
-  width: 303px;
-  height: 707px;
-  left: 0px;
-  top: 144px
-  background-color: #C4C4C4;
-  // display: flex;
-  // flex-direction: column;
+  display: flex;
+  width: 18.75em;
+  height: 43.75em;
   align-items: center;
   justify-content: center;
 `;
 
 const Menu = styled.div`
-  margin-top: 30px;
-  width: 303px;
-  background-color: #C4C4C4;
   display: flex;
   flex-direction: column;
-  border: 2px solid black;
+  height: 40.5em;
+  width: 18.25em;
+  background-color: #ffffff;
+  border: 0.5em solid #017865;
   justify-content: center;
   align-items: center;
 `;
-function Sidebar() {
 
+const Sidebar = () => {
   const pathName = useLocation().pathname;
 
   const menus = [
-    { name: '마이 페이지', path: '/menu/my_page' },
+    { name: '마이 페이지', path: '/menu/mypage' },
     { name: '포트폴리오', path: '/menu/portfolio' },
     { name: '팔로잉', path: '/menu/following' },
   ];
@@ -42,13 +37,17 @@ function Sidebar() {
           return (
             <NavLink
               exact
-              style={{ color: 'black', textDecoration: 'none' }}
+              style={{
+                color: '#004225',
+                fontSize: '1.8em',
+                textDecoration: 'none',
+              }}
               to={menu.path}
               key={index}
             >
               <SidebarItem
                 menu={menu}
-                isActive={pathName === menu.path ? true : false }
+                isActive={pathName === menu.path ? true : false}
               />
             </NavLink>
           );
@@ -56,6 +55,6 @@ function Sidebar() {
       </Menu>
     </Side>
   );
-}
+};
 
 export default Sidebar;

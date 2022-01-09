@@ -1,29 +1,27 @@
 import React from 'react';
+import GlobalStyle from '../src/static/fonts/fonts'
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
-import MainPage from './components/views/MainPage/MainPage';
 import LoginPage from './components/views/LoginPage/LoginPage';
 import RegisterPage from './components/views/RegisterPage/RegisterPage';
 import PublicRoute from './components/AccessControl/PublicRoute';
 import PrivateRoute from './components/AccessControl/PrivateRoute';
-import MyPage from './components/views/Menus/Mypage';
 import Loading from './components/LoadingSpinner/LoadingPage';
+import LandingPage from './components/views/Menus/LandingPage';
+import MyPage from './components/views/Menus/MyPage/MyPage'
 import Portfolio from './components/views/Menus/PortfolioPage/Portfolio';
-import Following from './components/views/Menus/FollowingPage/Following';
+import FollowingPage from './components/views/Menus/FollowingPage/FollowingPage';
 
 const App = () => {
   return (
     <Router>
+      <GlobalStyle />
       <Switch>
-        <PrivateRoute restricted={true} exact path="/" component={MainPage} />
-        <PublicRoute
-          restricted={false}
-          path="/register"
-          component={RegisterPage}
-        />
-        <PublicRoute restricted={false} path="/login" component={LoginPage} />
-        <PrivateRoute restricted={true} componet={MyPage} path="/mypage" />
+        <PrivateRoute restricted={true} component={LandingPage} exact path="/" />
+        <PrivateRoute restricted={true} component={MyPage} path="/menu/mypage" />
         <PrivateRoute restricted={true} component={Portfolio} path="/menu/portfolio" />
-        <PrivateRoute restricted={true} component={Following} ptath="/menu/following" />
+        <PrivateRoute restricted={true} component={FollowingPage} path="/menu/following" />
+        <PublicRoute restricted={false} path="/login" component={LoginPage} />
+        {/* <PublicRoute restricted={false} path="/register" component={RegisterPage}/> */}
         <PrivateRoute component={Loading} path="/loading" />
       </Switch>
     </Router>

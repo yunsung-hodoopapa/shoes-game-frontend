@@ -5,13 +5,15 @@ const SelectBoxWrapper = styled.div`
   display: flex;
 `;
 const SelectBox = styled.select`
-  text-align: center;
-  width : 200px;
-  font-size: 1rem;
+  width: 18.125em;
+  height: 1.9em;
+
+  font-size: 1em;
   font-weight: 400;
   line-height: 1.5;
   color: #444;
   background-color: #fff;
+  text-align: center;
 
   border: 1px; solid #aaa;
   border-radius: 0.5em;
@@ -87,7 +89,7 @@ const FollowingItemSelect = ({
     <div>
       {inputValue.styleID && inputValue.resellPrice ? (
         <>
-          <div> Default Select </div>
+          <br />
           <Select handleSelectOpt={handleSelectOpt} />
         </>
       ) : null}

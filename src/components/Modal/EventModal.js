@@ -12,11 +12,11 @@ import { ko } from 'date-fns/esm/locale';
 
 const Size = styled.input`
   margin-top: 40px;
-  width: 250px;
+  width: 14.35em;
   height: 30px;
   text-align: center;
   outline: none;
-  border: nonoe;
+  border: none;
   border-bottom: 2px solid #d3959b;
   font-size: 20px;
 `;
@@ -43,9 +43,20 @@ const CloseBtnWrap = styled.div`
   }
 `;
 
+const ButtonWrap = styled.div`
+  display: flex;
+  width: 17.5em
+  align-items: center;
+`;
+
 const SubmitButton = styled.button`
-  width: 150px;
-  height: 30px;
+  width: 5em;
+  height: 2em;
+  border: none;
+  background: none;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
 `;
 
 const SizeWrap = styled.div`
@@ -53,7 +64,7 @@ const SizeWrap = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  width: 250px;
+  width: 17.5em;
   background-color: white;
 `;
 
@@ -68,12 +79,7 @@ const SelectOpt = styled.button`
     background: #339af0;
   }
 `;
-const ButtonWrap = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 12rem;
-`;
+
 
 const sizeList = SELECTSIZE;
 
@@ -138,7 +144,6 @@ export default function AddShoesModal({
     <>
       <Modal
         onClickCloseModal={onClickCloseModal}
-        // onSubmitHandler={onSubmitHandler}
       >
         <CloseBtnWrap>
           <AiOutlineClose onClick={onClickCloseModal} />
@@ -173,6 +178,7 @@ export default function AddShoesModal({
         <NumberFormat
           thousandSeparator={true}
           type={'text'}
+          width={'250'}
           prefix={'$'}
           onChange={onPriceChange}
           placeholder="구입가격을 입력하세요!"

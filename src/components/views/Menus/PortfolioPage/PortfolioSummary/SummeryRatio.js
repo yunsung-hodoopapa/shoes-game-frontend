@@ -20,7 +20,7 @@ const SummeryRatio = ({
     const rgbaContainer = [];
     const o = Math.round;
     const r = Math.random;
-    const s = 255;
+    const s = 180;
     for (let i = 0; i < storedShoesInfo.length; i++) {
       const rgba =
         'rgba(' +

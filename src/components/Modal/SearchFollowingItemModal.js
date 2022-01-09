@@ -28,8 +28,13 @@ const CloseBtnWrap = styled.div`
 `;
 
 const SubmitButton = styled.button`
-  width: 150px;
-  height: 30px;
+  width: 5em;
+  height: 2em;
+  border: none;
+  background: none;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
 `;
 
 const ButtonWrap = styled.div`

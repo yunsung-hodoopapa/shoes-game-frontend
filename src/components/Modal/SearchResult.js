@@ -6,6 +6,7 @@ import { SERVER_URL } from '../../constants/index';
 
 const InputWrap = styled.div`
   display: flex;
+  width: 12.55em;
   flex-direction: column;
   justify-content: center;
   align-items: center;

@@ -14,7 +14,7 @@ const Spinner = () => {
         size={100}
         height="40px"
         width="12px"
-        color="#6b5ce7"
+        color="#ccd9d3"
         radius="8px"
       />
     </FlexBox>

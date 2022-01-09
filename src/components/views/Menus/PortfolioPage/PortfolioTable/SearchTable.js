@@ -1,5 +1,12 @@
 import React, { useState, useCallback } from 'react';
+import styled from 'styled-components';
 import ResultTable from './ResultTable';
+
+const InputWrap = styled.div`
+  display: flex;
+  width: 90.125em;
+  justify-content: flex-end;
+`;
 
 function SearchTable({ storedShoesInfo, checkItems, setCheckItems }) {
   const [keyword, setKeyword] = useState('');
@@ -13,7 +20,7 @@ function SearchTable({ storedShoesInfo, checkItems, setCheckItems }) {
 
   return (
     <>
-      <SearchBar keyword={keyword} onUserInput={handleUserInput} />
+      <ItemSearchBar keyword={keyword} onUserInput={handleUserInput} />
       <div style={{ height: '10px' }}></div>
       <ResultTable
         storedShoesInfo={storedShoesInfo}
@@ -25,19 +32,19 @@ function SearchTable({ storedShoesInfo, checkItems, setCheckItems }) {
   );
 }
 
-function SearchBar(props) {
+function ItemSearchBar(props) {
   const onChange = (e) => {
     props.onUserInput(e.target.value);
   };
   return (
-    <div>
+    <InputWrap>
       <input
         type={'text'}
         placeholder={'Search'}
         onChange={onChange}
         value={props.keyword}
       />
-    </div>
+    </InputWrap>
   );
 }
 

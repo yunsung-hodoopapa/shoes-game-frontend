@@ -9,6 +9,18 @@ export const SELECTSIZE = [
   5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 12.5,
 ];
 
+export const colorContainer = [
+  '#19553b',
+  '#336851',
+  '#4d7b66',
+  '#668e7c',
+  '#80a192',
+  '#b1dd9e',
+  '#315e26',
+  '#7a9f79',
+  '#acd1af',
+];
+
 export const shoeListLength = 20;
 
 export const shoesObject = {

@@ -1,18 +1,20 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import Container from '../../views/Shared/Container';
-import Heading from '../../views/Shared/Heading';
+import Container from '../Shared/Container';
+import Heading from '../Shared/Heading';
 
 const HeaderWrap = styled.header`
   position: absolute;
-  background-color: #e95959;
+  background-color: #004225;
   width: 100%;
-  height: 143px;
+  height: 9em;
   top: 0;
   left: 0;
   section {
     display: flex;
-    background-color: #e95959;
+    background-color: #004225;
+    color: #fee6ca;
     text-align: center;
     align-items: center;
     justify-content: space-between;
@@ -22,14 +24,15 @@ const HeaderWrap = styled.header`
 `;
 
 const Title = styled.div`
-  margin-top: 30px;
-  font-size: 40px;
+  margin-top: 1.3em;
+  font-size: 2em;
   font-weight: 700;
 `;
 const Header = () => {
+  const history =  useHistory();
 
   const reloadPageHandler = () => {
-    window.location = 'https:/shoesgame.app/';
+    history.push('/');
   };
 
   return (

@@ -3,23 +3,22 @@ import styled from 'styled-components';
 
 const ContentsWrap = styled.div`
   display: flex;
-  // position: absolute;
-  background-color: #2C0505;
-  width: 1039px
-  height: 190px;
+  background-color: #e6ece9;
+  width: 90.125em;
+  height: 43.25em;
   justify-content: center;
   align-items: center;
 `;
+
 const UserPicture = styled.div`
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  justify-content: center;
-  align-items: center;
-  margin-left: 16px;
+  width: 10em;
+  height: 10em;
+  background-position: 50% 50%;
+  background-size: cover;
   img {
-    width: 150px;
-    height: 150px;
+    width: 10em;
+    height: 10em;
+    border-radius: 50%;
   }
   object-fit: contain;
 `;
@@ -27,13 +26,13 @@ const UserDetail = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 831px;
-  height: 191px;
+  width: 51.9em;
+  height: 11.8em;
   color: white;
   button {
-    width: 150px;
+    width: 10em;
   }
-  margin-left: 50px;
+  margin-left: 3em;
 `;
 const Nickname = styled.span`
   display: flex;
@@ -41,19 +40,20 @@ const Nickname = styled.span`
   font-size: 18px;
   font-weight: 400;
   strong {
-    font-weight: 400;
-    color: white;
+    font-weight: 600;
+    color: black;
   }
 `;
 const Email = styled.span`
   font-size: 18px;
-  font-weight: 700;
-  color: white;
+  font-weight: 600;
+  color: black;
 `;
+
+const ButtonWrap = styled.div`
+`
+
 const EditButton = styled.button`
-  position: absolute;
-  top: 20px;
-  right: 20px;
   background-color=#fff;
   padding: 6px 6px;
   margin-left: 20px;
@@ -68,9 +68,6 @@ const EditButton = styled.button`
   }
 `;
 const LogoutButtn = styled.button`
-  position: absolute;
-  top: 60px;
-  right: 20px;
   background-color: #fff;
   padding: 6px 6px;
   margin-left: 20px;
@@ -100,7 +97,7 @@ const UserInfo = ({ onClickHandler }) => {
           </UserPicture>
           <UserDetail>
             <Nickname>
-              <strong> 유저네임: {users.name || users.nickname} </strong>
+              <strong> {users.name || users.nickname}</strong>
               <BtnWrap>
                 {/* <isAuth?.nickname === userInfo.nickname ? (
               <EditButton onClick={goEdit}>프로필 편집</EditButton>
@@ -108,9 +105,11 @@ const UserInfo = ({ onClickHandler }) => {
               </BtnWrap>
             </Nickname>
             <Email>{users.email || users.id}</Email>
+          </UserDetail>
+          <ButtonWrap>
             <EditButton> 프로필 수정 </EditButton>
             <LogoutButtn onClick={onClickHandler}>로그아웃하기</LogoutButtn>
-          </UserDetail>
+          </ButtonWrap>
         </ContentsWrap>
       )}
     </>

@@ -5,19 +5,19 @@ import ChartRatio from './ChartRatio';
 
 const ContentsWrap = styled.div`
   display: flex;
-  background-color: black;
-  width: 1280px;
-  height: 390px;
-  margin-bottom: 20px;
+  background-color: #e6ece9;
+  width: 90.125em;
+  height: 24.3em;
+  margin-bottom: 2em;
   justify-content: center;
   align-items: center;
 `;
 
 const RatioWrap = styled.div`
-  width: 900px;
-  height: 350px;
-  margin: 10px 15px 10px 15px;
-  background-color: #fbebeb;
+  width: 66em;
+  height: 22em;
+  margin: 10px 10px;
+  background-color: #ffffff;
   align-items: center;
 `;
 

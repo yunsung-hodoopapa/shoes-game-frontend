@@ -3,34 +3,35 @@ import styled from 'styled-components';
 import ResultRow from './ResultRow';
 
 const Table = styled.table`
-  width: 100%;
-  height: 200px;
-  background-color: white;
+  width: 90.125em;
+  height: 12.25em;
   border-collapse: collapse;
 `;
 const Thead = styled.thead`
   float: left;
-  width: 1280px;
-  border-bottom: 1px solid black;
+  width: 90.125em;
+  background-color: #ccd9d3;
+  border-bottom: 1px solid #336851;
 `;
 const Tbody = styled.tbody`
   overflow-y: auto;
   overflow-x: hidden;
+  background-color: #e6ece9;
   float: left;
-  width: 1280px;
-  height: 150px;
+  width: 90.125em;
+  height: 9.3em;
 `;
 const Th1 = styled.th`
-  width: 400px;
+  width: 25em;
 `;
 const Th2 = styled.th`
-  width: 130px;
+  width: 8.1em;
   text-align: center;
 `;
 const Trow = styled.tr`
   display: table;
-  width: 1280px;
-  height: 50px;
+  width: 90.125em;
+  height: 3em;
   border-bottom: 1px solod grey;
 `;
 

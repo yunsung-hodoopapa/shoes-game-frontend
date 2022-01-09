@@ -1,29 +1,27 @@
 import React from 'react';
 import { Pie } from 'react-chartjs-2';
 import { Chart, ArcElement, Tooltip, Legend, Title } from 'chart.js';
-Chart.register(ArcElement, Tooltip, Legend, Title );
+import { colorContainer } from '../../../../../constants';
+Chart.register(ArcElement, Tooltip, Legend, Title);
 
-const ItemRatio = ({
-  getPricefromData,
-  getLabelfromData,
-  getRandomRgba,
-}) => {
+const ItemRatio = ({ getPricefromData, getLabelfromData, getRandomRgba }) => {
   const data = getPricefromData();
   const labels = getLabelfromData();
   const backgroundColor = getRandomRgba();
 
   const chartData = {
     labels: labels,
-    datasets: [{
+    datasets: [
+      {
         data: data,
         borderWidth: 1,
         hoverBorderWidth: 2,
-        backgroundColor: backgroundColor,
+        backgroundColor: colorContainer,
         borderColor: ['rgba(120, 122, 134, 0.8)'],
         fill: true,
         hoverOffset: 3,
       },
-    ]
+    ],
   };
 
   const options = {
@@ -45,24 +43,24 @@ const ItemRatio = ({
         position: 'left',
         align: 'end',
         labels: {
-          boxWidth : 7,
+          boxWidth: 7,
           boxHeight: 6,
-          font : {
-            size: 6
-          }
-        }
-      }
+          font: {
+            size: 6,
+          },
+        },
+      },
     },
-  }
+  };
   return (
     <>
       <Pie
-          data={chartData}
-          options={options}
-          style={{height: '200px', width: '400px'}} 
-        />
+        data={chartData}
+        options={options}
+        style={{ height: '200px', width: '400px' }}
+      />
     </>
-  )
-}
+  );
+};
 
 export default ItemRatio;
