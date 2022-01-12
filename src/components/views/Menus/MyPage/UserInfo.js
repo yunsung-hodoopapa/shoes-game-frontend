@@ -1,4 +1,7 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { logoutUser } from '../../../../actions/userAction';
 import styled from 'styled-components';
 
 const ContentsWrap = styled.div`
@@ -50,8 +53,7 @@ const Email = styled.span`
   color: black;
 `;
 
-const ButtonWrap = styled.div`
-`
+const ButtonWrap = styled.div``;
 
 const EditButton = styled.button`
   background-color=#fff;
@@ -84,31 +86,53 @@ const LogoutButtn = styled.button`
 
 const BtnWrap = styled.div``;
 
-const UserInfo = ({ onClickHandler }) => {
-  const users = JSON.parse(localStorage.getItem('userInfo'));
-  console.log(users);
+const UserInfo = (props) => {
+  const history = useHistory();
+  const dispatch = useDispatch();
+
+  const user = useSelector((state) => ({
+    user: state.user.user,
+  }));
+  const userInfo = user.user;
+
+  const logOutHandler = () => {
+    const request = {
+      user,
+      _id: userInfo._id,
+    };
+    dispatch(logoutUser(request)).then((res) => {
+      console.log(res);
+      if (res.payload.user) {
+        localStorage.removeItem('userInfo');
+        console.log('success');
+        history.push('/login');
+      }
+    });
+  };
 
   return (
     <>
-      {!!users && (
+      {!!userInfo && (
         <ContentsWrap>
           <UserPicture>
-            {users.image ? <img src={users.image} alt="profile_image" /> : null}
+            {userInfo.image ? (
+              <img src={userInfo.image} alt="profile_image" />
+            ) : null}
           </UserPicture>
           <UserDetail>
             <Nickname>
-              <strong> {users.name || users.nickname}</strong>
+              <strong> {userInfo.name || userInfo.nickname}</strong>
               <BtnWrap>
                 {/* <isAuth?.nickname === userInfo.nickname ? (
               <EditButton onClick={goEdit}>프로필 편집</EditButton>
             ) : null} */}
               </BtnWrap>
             </Nickname>
-            <Email>{users.email || users.id}</Email>
+            <Email>{userInfo.email || userInfo.id}</Email>
           </UserDetail>
           <ButtonWrap>
             <EditButton> 프로필 수정 </EditButton>
-            <LogoutButtn onClick={onClickHandler}>로그아웃하기</LogoutButtn>
+            <LogoutButtn onClick={logOutHandler}>로그아웃하기</LogoutButtn>
           </ButtonWrap>
         </ContentsWrap>
       )}

@@ -92,12 +92,6 @@ function LoginPage(props) {
     dispatch(openModal());
   };
 
-  // useEffect(() => {
-  //   axios.get('/auth/users')
-  //   .then(res => console.log(res))
-  //   .catch()
-  // }, []);
-
   return (
     <Container>
       <Form onSubmit={onSubmitHandler}>

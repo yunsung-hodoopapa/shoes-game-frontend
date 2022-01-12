@@ -13,6 +13,7 @@ import {
 import { request } from '../utils/axios';
 
 export async function registerUser(dataToSubmit) {
+  console.log('redux in!');
   const data = await request('post', '/auth/register', dataToSubmit);
   return {
     type: REGISTER_USER,
@@ -36,8 +37,8 @@ export async function socialLoginUser(dataToSubmit) {
   };
 }
 
-export const logoutUser = () => {
-  const data = request('post', '/auth/logout');
+export const logoutUser = (dataToSubmit) => {
+  const data = request('post', '/auth/logout', dataToSubmit);
   return {
     type: LOGOUT_USER,
     payload: data,
@@ -50,7 +51,7 @@ export const openModal = () => {
   };
 };
 
-export function closeModal() {
+export const closeModal = () => {
   return {
     type: CLOSE_MODAL,
   };

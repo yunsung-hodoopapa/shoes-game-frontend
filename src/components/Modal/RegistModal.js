@@ -13,7 +13,7 @@ const Container = styled.div`
   // height: 100vh;
 `;
 
-const Form = styled.form`
+const Form = styled.div`
   display: flex;
   flex-direction: Column;
 `;
@@ -69,14 +69,13 @@ function RegisterModal(props) {
         password: password,
       };
       dispatch(registerUser(body)).then((res) => {
-        alert('회원가입이 정상적으로 완료되었습니다!');
         console.log(res);
-        window.localStorage.setItem('userInfo', JSON.stringify(body));
+        alert('회원가입이 정상적으로 완료되었습니다!');
+        dispatch(closeModal());
       });
     } else {
       alert('비밀번호가 일치하지 않습니다.');
     }
-    // dispatch(closeModal());
   };
 
   return (
@@ -84,7 +83,7 @@ function RegisterModal(props) {
       <CloseBtnWrap>
         <AiOutlineClose onClick={onClickCloseModal} />
       </CloseBtnWrap>
-      <Form onSubmit={onSubmitHandler}>
+      <Form>
         <label>Email</label>
         <input type="email" value={email} onChange={onEmailHandler} />
 
@@ -101,7 +100,7 @@ function RegisterModal(props) {
           onChange={onConfirmPasswordHandler}
         />
         <br />
-        <button type="submit">회원가입</button>
+        <button onClick={onSubmitHandler}>회원가입</button>
       </Form>
     </Modal>
   );

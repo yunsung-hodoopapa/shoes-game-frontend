@@ -61,6 +61,7 @@ function SocialLogin(props) {
             };
             dispatch(socialLoginUser(request))
               .then((res) => {
+                console.log(res);
                 // setCookie.cookie('x_auth', setCookie);
                 if (res.payload.socialLoginSuccess) {
                   localStorage.setItem('userInfo', JSON.stringify(request));
@@ -71,40 +72,6 @@ function SocialLogin(props) {
                 console.log(err);
               });
           },
-          //     .then((res) => {
-          //       console.log(res.payload);
-          //       if (res.payload) {
-          //         props.history.push('/');
-          //       } else {
-          //         alert(res.payload.message);
-          //       }
-          //     })
-          //   .catch((err) => {
-          //     console.log(err);
-          //   });
-          // }
-          //   axios({
-          //     method: 'post',
-          //     url: 'http://localhost:3002/auth/kakao',
-          //     data: {
-          //       'id': email,
-          //       'nickname': profile.nickname,
-          //       'image': profile.profile_image_url,
-          //       'access_token': access_token,
-          //     },
-          //   })
-          //   .then((res) => {
-          //     console.log(res);
-          //     console.log('complete');
-          //   })
-          //   .catch((error) => {
-          //     console.error(error);
-          //     alert('카카오 로그인 에러');
-          //   });
-          // },
-          // fail: function (error) {
-          //   console.log(error);
-          // },
         });
       },
     });
