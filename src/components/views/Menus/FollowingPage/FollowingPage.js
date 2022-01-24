@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addFollowItems, isLoaded } from '../../../../actions/userAction';
+import Wrap from '../../../Layout/Shared/Wrap';
 import FollowingHeader from './FollowingHeader';
 import FollowingTable from './FollowingTable';
 import Loading from '../../../LoadingSpinner/LoadingPage';
@@ -84,25 +85,27 @@ const FollowingPage = (props) => {
 
   return (
     <Layout>
-      <FollowingHeader
-        isModalShown={isModalShown}
-        getFollowItemHandler={getFollowItemHandler}
-        storeHandler={storeHandler}
-        isDataLoaded={isDataLoaded}
-      />
-      <div style={{ height: '20px' }}></div>
-      {isDataLoaded ? (
-        <FollowingTable
-          items={items}
-          removeHandler={removeHandler}
-          storedShoesInfo={storedShoesInfo}
-          setStoredShoesInfo={setStoredShoesInfo}
-        >
-          {props.child}
-        </FollowingTable>
-      ) : (
-        <Loading />
-      )}
+      <Wrap>
+        <FollowingHeader
+          isModalShown={isModalShown}
+          getFollowItemHandler={getFollowItemHandler}
+          storeHandler={storeHandler}
+          isDataLoaded={isDataLoaded}
+        />
+        <div style={{ height: '20px' }}></div>
+        {isDataLoaded ? (
+          <FollowingTable
+            items={items}
+            removeHandler={removeHandler}
+            storedShoesInfo={storedShoesInfo}
+            setStoredShoesInfo={setStoredShoesInfo}
+          >
+            {props.child}
+          </FollowingTable>
+        ) : (
+          <Loading />
+        )}
+      </Wrap>
     </Layout>
   );
 };

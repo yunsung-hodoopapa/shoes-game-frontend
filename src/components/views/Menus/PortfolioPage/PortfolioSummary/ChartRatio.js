@@ -22,8 +22,8 @@ Chart.register(
 const ChartWrap = styled.div`
   display: flex;
   flex-wrap: wrap;
-  width: 340px;
-  height: 350px;
+  width: 25vw;
+  height: 49vh;
   background-color: #ffffff;
 `;
 
@@ -91,50 +91,3 @@ const ChartRatio = ({
 
 export default ChartRatio;
 
-// function SummeryBox ({ lengthOfData, getTotalAsset, getTotalShoePrice }) {
-//   const AssetBox = (props) => {
-//     return (
-//       <>
-//         <SectionBox>
-//           총 리셀 가격 : {props.totalAsset}
-//         </SectionBox>
-//       </>
-//     );
-//   }
-
-//   const PriceBox = (props) => {
-//     return (
-//       <>
-//         <SectionBox>
-//           총 구매가격 : {props.totalShoePrice}
-//         </SectionBox>
-//       </>
-//     );
-//   }
-
-//   const BenefitBox = (props) => {
-//     return (
-//       <>
-//         <SectionBox>
-//           이익 : {Number(props.totalAsset) - Number(props.totalShoePrice)}
-//         </SectionBox>
-//       </>
-//     )
-//   }
-
-//   return (
-//     <SummaryWrap>
-//       <AssetBox
-//         totalAsset={getTotalAsset()}
-//       />
-//       <SectionBox> 항목 수 : {lengthOfData} </SectionBox>
-//       <PriceBox
-//         totalShoePrice={getTotalShoePrice()}
-//       />
-//       <BenefitBox
-//         totalAsset={getTotalAsset()}
-//         totalShoePrice={getTotalShoePrice()}
-//       />
-//     </SummaryWrap>
-//   );
-// }

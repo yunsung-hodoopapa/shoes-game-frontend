@@ -8,9 +8,10 @@ const HeaderWrap = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 90.125em;
-  height: 100px;
+  width: 79vw;
+  height: 10%;
   background-color: #ccd9d3;
+  font-size: 1.5rem;
 `;
 
 const HeaderTag = styled.h2`
@@ -18,15 +19,16 @@ const HeaderTag = styled.h2`
 `;
 
 const EditButton = styled.button`
+  width: 10rem;
   background-color=#fff;
-  padding: 6px 6px;
-  margin-right: 20px;
+  padding: 0.5em 0.5em;
+  margin-right: 1em;
   border: solid 1px #bababa;
-  border-radius: 4px;
+  border-radius: 0.5rem;
   outline: none;
   cursor: pointer;
   font-weight: 600;
-  font-size: 14px
+  font-size: 1.5rem;
   &:hover {
     background-color: #efefef;
   }

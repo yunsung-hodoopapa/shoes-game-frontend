@@ -2,14 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 
 const FooterWrap = styled.footer`
-  position: absolute;
   width: 100%;
-  height: 7.5em;
-  left: 0px;
-  bottom: 0px;
+  height: 9rem;
   background-color: #004225;
-  width: 100%;
-  z-index: 0;
+  padding: 1em;
+  @media screen and (max-width: 500px) {
+    display: flex;
+    font-size: 0.5em;
+    align-items: center;
+    justify-content: flex-end;
+    height: 4rem;
+    padding: 1em;
+  }
 `;
 
 const P = styled.p`
@@ -19,6 +23,11 @@ const P = styled.p`
   color: #fee6ca;
   font-weight: 700;
   font-size: 1em;
+  @media screen and (max-width: 500px) {
+    display: flex;
+    font-size: 0.5em;
+    margin: 0;
+  }
 `;
 
 const Footer = () => {

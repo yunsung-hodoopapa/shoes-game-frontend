@@ -6,17 +6,21 @@ import ChartRatio from './ChartRatio';
 const ContentsWrap = styled.div`
   display: flex;
   background-color: #e6ece9;
-  width: 90.125em;
-  height: 24.3em;
+  width: 77vw;
+  height: 50vh;
+  padding: 1em 0.5em;
   margin-bottom: 2em;
   justify-content: center;
   align-items: center;
 `;
 
 const RatioWrap = styled.div`
-  width: 66em;
-  height: 22em;
-  margin: 10px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50vw;
+  height: 49vh;
+  margin: 0.8em 0.8em;
   background-color: #ffffff;
   align-items: center;
 `;
@@ -59,8 +63,7 @@ const Summary = ({
   return (
     <ContentsWrap>
       <RatioWrap>
-        <h2>내 포트폴리오</h2>
-        <SummeryRatio
+÷        <SummeryRatio
           storedShoesInfo={storedShoesInfo}
           getTotalAsset={getTotalAsset}
           getTotalShoePrice={getTotalShoePrice}

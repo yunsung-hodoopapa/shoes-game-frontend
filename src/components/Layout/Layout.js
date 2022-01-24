@@ -9,17 +9,26 @@ const Center = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
   width: 100%;
-  height: 46.5em;
-  left: 0px;
-  top: 142px;
-  background-color: #fafdf3;
+  height: 100vh;
+  margin: 1rem 0;
+  @media screen and (max-width: 500px) {
+    flex-direction: column;
+    height: 80vh;
+    align-items: stretch;
+  }
+`;
+
+const AppContainer = styled.div`
+  &,
+  & * {
+    box-sizing: border-box;
+  }
 `;
 
 const Layout = ({ children }) => {
   return (
-    <>
+    <AppContainer>
       <Header />
       <Center>
         <Sidebar />
@@ -28,7 +37,7 @@ const Layout = ({ children }) => {
         />
       </Center>
       <Footer />
-    </>
+    </AppContainer>
   );
 }
 

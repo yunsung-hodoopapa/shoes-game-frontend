@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import SearchTable from './PortfolioTable/SearchTable';
+import Wrap from '../../../Layout/Shared/Wrap';
 import Summary from './PortfolioSummary/Summary';
 import { SERVER_URL } from '../../../../constants/index';
 import Layout from '../../../Layout/Layout';
@@ -38,27 +39,29 @@ const Portfolio = (props) => {
 
   return (
     <Layout>
-      <Summary
-        storedShoesInfo={storedShoesInfo}
-        setStoredShoesInfo={setStoredShoesInfo}
-        checkItems={checkItems}
-        setCheckItems={setCheckItems}
-        lengthOfData={lengthOfData}
-        getTotalAsset={getTotalAsset}
-        getTotalShoePrice={getTotalShoePrice}
-      >
-        {' '}
-        {props.children}{' '}
-      </Summary>
-      <SearchTable
-        storedShoesInfo={storedShoesInfo}
-        setStoredShoesInfo={setStoredShoesInfo}
-        checkItems={checkItems}
-        setCheckItems={setCheckItems}
-      >
-        {' '}
-        {props.children}{' '}
-      </SearchTable>{' '}
+      <Wrap>
+        <Summary
+          storedShoesInfo={storedShoesInfo}
+          setStoredShoesInfo={setStoredShoesInfo}
+          checkItems={checkItems}
+          setCheckItems={setCheckItems}
+          lengthOfData={lengthOfData}
+          getTotalAsset={getTotalAsset}
+          getTotalShoePrice={getTotalShoePrice}
+        >
+          {' '}
+          {props.children}{' '}
+        </Summary>
+        <SearchTable
+          storedShoesInfo={storedShoesInfo}
+          setStoredShoesInfo={setStoredShoesInfo}
+          checkItems={checkItems}
+          setCheckItems={setCheckItems}
+        >
+          {' '}
+          {props.children}{' '}
+        </SearchTable>
+      </Wrap>
     </Layout>
   );
 };

@@ -2,35 +2,42 @@ import React from 'react';
 import styled from 'styled-components';
 import ResultRow from './ResultRow';
 
+const TableWrap = styled.div`
+  width: 79vw;
+`
 const Table = styled.table`
-  width: 90.125em;
-  height: 12.25em;
+  width: 100%;
+  height: 35vh;
   border-collapse: collapse;
 `;
 const Thead = styled.thead`
+  display: table;
   float: left;
-  width: 90.125em;
+  width: 100%;
+  height: 5vh;
   background-color: #ccd9d3;
   border-bottom: 1px solid #336851;
 `;
 const Tbody = styled.tbody`
-  overflow-y: auto;
+  overflow-y: scroll;
   overflow-x: hidden;
   background-color: #e6ece9;
   float: left;
-  width: 90.125em;
-  height: 9.3em;
+  width: 100%;
+  height: 32vh;
 `;
 const Th1 = styled.th`
-  width: 25em;
+  width: 39vw;
+  font-size: 1.5em;
 `;
 const Th2 = styled.th`
-  width: 8.1em;
+  width: 15vw;
   text-align: center;
+  font-size: 1.5em;
 `;
 const Trow = styled.tr`
-  display: table;
-  width: 90.125em;
+  display:table-cell;
+  vertical-align:middle;
   height: 3em;
   border-bottom: 1px solod grey;
 `;
@@ -73,7 +80,7 @@ const ResultTable = ({
   };
 
   return (
-    <>
+    <TableWrap>
       <Table>
         <Thead>
           <Trow>
@@ -114,7 +121,7 @@ const ResultTable = ({
           })}
         </Tbody>
       </Table>
-    </>
+    </TableWrap>
   );
 };
 

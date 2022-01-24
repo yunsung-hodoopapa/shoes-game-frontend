@@ -4,7 +4,7 @@ import ResultTable from './ResultTable';
 
 const InputWrap = styled.div`
   display: flex;
-  width: 90.125em;
+  width: 79vw;
   justify-content: flex-end;
 `;
 
@@ -21,7 +21,7 @@ function SearchTable({ storedShoesInfo, checkItems, setCheckItems }) {
   return (
     <>
       <ItemSearchBar keyword={keyword} onUserInput={handleUserInput} />
-      <div style={{ height: '10px' }}></div>
+      <div style={{ height: '1rem' }}></div>
       <ResultTable
         storedShoesInfo={storedShoesInfo}
         keyword={keyword}

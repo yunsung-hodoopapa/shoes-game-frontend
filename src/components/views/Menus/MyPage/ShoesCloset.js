@@ -18,21 +18,24 @@ const ContentsWrap = styled.div`
   flex-wrap: wrap;
   justify-content: space-evenly;
   background-color: #99b3a8;
-  width: 90.125em;
+  width: 100%;
   align-items: center;
+  overflow-y: scroll;
+  float: left;
 `;
+
 const Box = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  width: 15em;
-  height: 7em;
+  width: 32rem;
+  height: 26rem;
   background: no-repeat center;
   background-image: url(${(props) => props.thumbnail});
-  background-size: 15em;
-  margin: 4px 8px;
+  background-size: 32em;
+  margin: 0.5em 1em;
   object-fit: contain;
 `;
 const EmptyBox = styled.div`
@@ -40,15 +43,14 @@ const EmptyBox = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  width: 15em;
-  height: 7em;
+  width: 32rem;
+  height: 23rem;
   background: no-repeat center;
   background-color: white;
-  margin: 4px 8px;
+  margin: 0.5em 1em;
 `;
 const BoxInformation = styled.b`
-  font-size: 13px;
+  font-size: 1.5em;
   color: white;
   text-shadow: 4px 2px 2px black;
 `;

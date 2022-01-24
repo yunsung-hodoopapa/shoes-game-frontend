@@ -2,8 +2,13 @@ import { createGlobalStyle } from 'styled-components';
 // import GothicA1 from './GothicA1.woff';
 
 const GlobalStyle = createGlobalStyle`
+  html, body {
+    height: 100%;
+  }
   body {
     font-family: 'Noto Sans KR', sans-serif;
+    margin: 0;
+    padding: 0;
   }
 `;
 

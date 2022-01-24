@@ -2,43 +2,38 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Td = styled.td`
-  width: 8.1em;
+  width: 20vw;
   text-align: center;
 `;
 const Trow = styled.tr`
   display: table;
-  width: 90.125em;
-  height: 3.1em;
-  border-bottom: 1px solod grey;
+  width: 100%;
+  border-bottom: 1px solid grey;
+  word-break : break-all;
+  height : auto;
+  font-size: 1.5em;
 `;
 const TableData = styled.td`
-  width: 25em;
-  height: 3.1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25vw;
+  padding: 1em 1em;
 `;
 
 const ShoesTumbnail = styled.div`
-  display: inline-block;
-  margin-left: 10px;
-  margin-top: 10px;
-  width: 9.3em;
-  height: 5.6em;
   img {
-    width: 9.3em;
-    height: 5.6em;
-    display: inline-block;
+    width: 10em;
+    height: 8em;
   }
   object-fit: contain;
-`
+`;
 
 const ShoeNameInTd = styled.div`
-  width: 18.75em;
-  height: 3.75em;
+  width: 60%;
   margin-left: 1em;
-  display: inline-block;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-image: url(${(props) => props.thumbnail});
+  text-align: center;
 `;
 
 const subtraction = (a, b) => {
@@ -69,7 +64,7 @@ const ResultRow = ({
           <img
             src={shoesInfo.thumbnail}
             display={'inline-block'}
-            alt='shoes thumbnail'
+            alt="shoes thumbnail"
           />
         </ShoesTumbnail>
         <ShoeNameInTd>
@@ -78,10 +73,7 @@ const ResultRow = ({
           {shoesInfo.shoeSize}
         </ShoeNameInTd>
       </TableData>
-      <Td width={'200px'}>
-        {' '}
-        {new Date(shoesInfo.buyingDate).toLocaleDateString()}
-      </Td>
+      <Td>{new Date(shoesInfo.buyingDate).toLocaleDateString()}</Td>
       <Td>{shoesInfo.shoePrice}</Td>
       <Td>{shoesInfo.resellPrice} </Td>
       <Benefit

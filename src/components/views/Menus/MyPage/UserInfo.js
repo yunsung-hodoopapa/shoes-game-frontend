@@ -7,20 +7,20 @@ import styled from 'styled-components';
 const ContentsWrap = styled.div`
   display: flex;
   background-color: #e6ece9;
-  width: 90.125em;
-  height: 43.25em;
-  justify-content: center;
+  width: 100%;
+  height: 14vh;
   align-items: center;
 `;
 
 const UserPicture = styled.div`
-  width: 10em;
-  height: 10em;
+  width: 9em;
+  height: 9em;
+  margin-left: 1rem;
   background-position: 50% 50%;
   background-size: cover;
   img {
-    width: 10em;
-    height: 10em;
+    width: 9em;
+    height: 9em;
     border-radius: 50%;
   }
   object-fit: contain;
@@ -40,7 +40,7 @@ const UserDetail = styled.div`
 const Nickname = styled.span`
   display: flex;
   align-items: center;
-  font-size: 18px;
+  font-size: 1.5rem;
   font-weight: 400;
   strong {
     font-weight: 600;
@@ -48,37 +48,32 @@ const Nickname = styled.span`
   }
 `;
 const Email = styled.span`
-  font-size: 18px;
+  font-size: 1.5rem;
   font-weight: 600;
   color: black;
 `;
 
-const ButtonWrap = styled.div``;
-
-const EditButton = styled.button`
-  background-color=#fff;
-  padding: 6px 6px;
-  margin-left: 20px;
-  border: solid 1px #bababa;
-  border-radius: 4px;
-  outline: none;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 14px
-  &:hover {
-    background-color: #efefef;
-  }
+const ButtonWrap = styled.div`
+  display: flex;
+  margin-right: 1em;
+  justify-content: flex-end;
+  align-items: center;
+  width: 50%;
 `;
-const LogoutButtn = styled.button`
+
+const Button = styled.button`
+  width: 10em;
+  height: 4em;
+  margin-bottom: 1em;
   background-color: #fff;
-  padding: 6px 6px;
-  margin-left: 20px;
+  padding: 1em 1em;
+  margin-left: 1em;
   border: solid 1px #bababa;
-  border-radius: 4px;
+  border-radius: 0.4em;
   outline: none;
   cursor: pointer;
   font-weight: 600;
-  font-size: 14px
+  font-size: 1em;
   &:hover {
     background-color: #efefef;
   }
@@ -131,8 +126,8 @@ const UserInfo = (props) => {
             <Email>{userInfo.email || userInfo.id}</Email>
           </UserDetail>
           <ButtonWrap>
-            <EditButton> 프로필 수정 </EditButton>
-            <LogoutButtn onClick={logOutHandler}>로그아웃하기</LogoutButtn>
+            <Button> 프로필 수정 </Button>
+            <Button onClick={logOutHandler}>로그아웃하기</Button>
           </ButtonWrap>
         </ContentsWrap>
       )}

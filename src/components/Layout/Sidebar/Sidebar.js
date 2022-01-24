@@ -2,24 +2,38 @@ import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import SidebarItem from './SidebarItem';
+import { IoIosMenu } from "react-icons/io";
+
 
 const Side = styled.div`
   display: flex;
-  width: 18.75em;
-  height: 43.75em;
+  height: 100%;
   align-items: center;
   justify-content: center;
+  width: 25%;
+  float: left;
+  padding: 15px;
+  border: 0.5em solid #017865;
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    font-size: 0.5em;
+    height: 25%;
+  }
 `;
 
 const Menu = styled.div`
   display: flex;
   flex-direction: column;
-  height: 40.5em;
-  width: 18.25em;
+  width: 100%;
+  height: 100%;
   background-color: #ffffff;
-  border: 0.5em solid #017865;
   justify-content: center;
   align-items: center;
+  @media screen and (max-width: 500px) {
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+  }
 `;
 
 const Sidebar = () => {
@@ -39,7 +53,7 @@ const Sidebar = () => {
               exact
               style={{
                 color: '#004225',
-                fontSize: '1.8em',
+                fontSize: '2em',
                 textDecoration: 'none',
               }}
               to={menu.path}

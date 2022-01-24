@@ -1,8 +1,8 @@
 import React from 'react';
+import styled from 'styled-components';
 import GlobalStyle from '../src/static/fonts/fonts'
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import LoginPage from './components/views/LoginPage/LoginPage';
-import RegisterPage from './components/views/RegisterPage/RegisterPage';
 import PublicRoute from './components/AccessControl/PublicRoute';
 import PrivateRoute from './components/AccessControl/PrivateRoute';
 import Loading from './components/LoadingSpinner/LoadingPage';
@@ -21,7 +21,6 @@ const App = () => {
         <PrivateRoute restricted={true} component={Portfolio} path="/menu/portfolio" />
         <PrivateRoute restricted={true} component={FollowingPage} path="/menu/following" />
         <PublicRoute restricted={false} path="/login" component={LoginPage} />
-        {/* <PublicRoute restricted={false} path="/register" component={RegisterPage}/> */}
         <PrivateRoute component={Loading} path="/loading" />
       </Switch>
     </Router>

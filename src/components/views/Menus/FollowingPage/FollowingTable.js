@@ -4,41 +4,48 @@ import { useDispatch } from 'react-redux';
 import FollowingResultRow from './FollowingResultRow';
 import { removeItem } from '../../../../actions/userAction';
 
+const TableWrap = styled.div`
+  width: 79vw;
+  height: 85%;
+`
+
 const Table = styled.table`
-  width: 90.125em;
-  height: 12.25em;
+  width: 100%;
+  height: 100%;
   background-color: #e6ece9;
   border-collapse: collapse;
 `;
 
 const Thead = styled.thead`
+  display: table;
   float: left;
-  width: 90.125em;
+  width: 100%;
+  height: 5vh;
   background-color: #ccd9d3;
   border-bottom: 1px solid #336851;
 `;
 
 const Tbody = styled.tbody`
-  overflow-y: auto;
+  overflow-y: scroll;
   overflow-x: hidden;
   float: left;
-  width: 90.125em;
-  height: 28.125em;
+  width: 100%;
 `;
 
 const Th1 = styled.th`
-  width: 25em;
+  width: 35vw;
+  font-size: 1.5em;
 `;
 const Th2 = styled.th`
-  width: 9.375em;
+  width: 23vw;
   text-align: center;
+  font-size: 1.5em;
 `;
 
 const Trow = styled.tr`
-  display: table;
-  width: 90.125em;
+  display:table-cell;
+  vertical-align:middle;
   height: 3.125em;
-  border-bottom: 1px solod grey;
 `;
 
 const FollowingTable = ({ items, removeHandler }) => {
@@ -55,7 +62,7 @@ const FollowingTable = ({ items, removeHandler }) => {
   };
 
   return (
-    <>
+    <TableWrap>
       <Table>
         <Thead>
           <Trow>
@@ -77,7 +84,7 @@ const FollowingTable = ({ items, removeHandler }) => {
           })}
         </Tbody>
       </Table>
-    </>
+    </TableWrap>
   );
 };
 

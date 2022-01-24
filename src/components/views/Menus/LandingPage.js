@@ -5,8 +5,8 @@ import Layout from '../../Layout/Layout';
 const Pcontainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 90.125em;
-  height: 40.5em;
+  width: 100%;
+  height: 100%;
   background-color: #19553b;
   align-items: center;
   justify-content: center;
