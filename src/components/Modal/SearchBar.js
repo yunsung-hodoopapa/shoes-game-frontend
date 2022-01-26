@@ -10,6 +10,12 @@ const SearchWrap = styled.div`
   justify-content: space-evenly;
   align-items: center;
   background-color: #ffffff;
+  @media screen and (max-width: 500px) {
+    width: 10rem;
+    font-size: 0.5rem;
+    height: 2rem;
+    border: 0.2em solid #017865;
+  }
 `;
 const SearchInput = styled.input`
   text-align: center;

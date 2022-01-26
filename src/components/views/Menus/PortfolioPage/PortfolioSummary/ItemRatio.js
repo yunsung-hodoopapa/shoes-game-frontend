@@ -57,7 +57,7 @@ const ItemRatio = ({ getPricefromData, getLabelfromData, getRandomRgba }) => {
       <Pie
         data={chartData}
         options={options}
-        style={{ height: '20em', width: '40em' }}
+        style={{ height: '20vh', width: '40vw' }}
         />
     </>
   );

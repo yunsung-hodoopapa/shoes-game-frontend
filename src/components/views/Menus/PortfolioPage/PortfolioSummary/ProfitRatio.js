@@ -60,7 +60,7 @@ const ProfitRatio = ({
       <Pie
           data={chartData}
           options={options}
-          style={{ height: '20em', width: '40em' }}
+          style={{ height: '20vh', width: '40vw' }}
           />
     </>
   )

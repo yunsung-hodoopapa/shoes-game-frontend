@@ -29,6 +29,13 @@ const ContentsWrap = styled.div`
   border-radius: 10px;
   text-align: center;
   z-index: 1000;
+  @media screen and (max-width: 500px) {
+    width: 50%;
+    font-size: 0.5em;
+    height: 40%;
+    padding: 0.5rem 0.5rem;
+    max-height: 60rem;
+  }
 `;
 
 export default function Modal({ children }) {

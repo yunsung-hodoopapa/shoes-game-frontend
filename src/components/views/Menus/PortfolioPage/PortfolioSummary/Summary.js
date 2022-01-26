@@ -12,6 +12,12 @@ const ContentsWrap = styled.div`
   margin-bottom: 2em;
   justify-content: center;
   align-items: center;
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    font-size: 0.5em;
+    height: 50%;
+    padding: 0.5rem 0.5rem;
+  }
 `;
 
 const RatioWrap = styled.div`
@@ -23,6 +29,11 @@ const RatioWrap = styled.div`
   margin: 0.8em 0.8em;
   background-color: #ffffff;
   align-items: center;
+  @media screen and (max-width: 500px) {
+    width: 50rem;
+    height: 100%;
+    overflow-x: scroll;
+  }
 `;
 
 const Summary = ({

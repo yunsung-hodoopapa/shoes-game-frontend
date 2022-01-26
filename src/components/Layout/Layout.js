@@ -10,7 +10,7 @@ const Center = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100vh;
+  height: 80vh;
   margin: 1rem 0;
   @media screen and (max-width: 500px) {
     flex-direction: column;

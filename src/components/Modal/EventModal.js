@@ -19,11 +19,19 @@ const Size = styled.input`
   border: none;
   border-bottom: 2px solid #d3959b;
   font-size: 20px;
+  @media screen and (max-width: 500px) {
+    width: 10rem;
+    font-size: 0.5rem;
+    margin-top: 1em;
+  }
 `;
 
 const SizeLabel = styled.div`
   margin: 10px;
   color: white;
+  @media screen and (max-width: 500px) {
+    font-size: 0.5rem;
+  }
 `;
 
 const CloseBtnWrap = styled.div`
@@ -41,12 +49,21 @@ const CloseBtnWrap = styled.div`
   :hover {
     background-color: #d3959b;
   }
+  @media screen and (max-width: 500px) {
+    width: 30px;
+    height: 30px;
+    font-size: 0.8rem;
+    border: 0.2em solid #017865;
+  }
 `;
 
 const ButtonWrap = styled.div`
   display: flex;
   width: 17.5em
   align-items: center;
+  @media screen and (max-width: 500px) {
+    margin: 2em 1em;
+  }
 `;
 
 const SubmitButton = styled.button`
@@ -57,6 +74,11 @@ const SubmitButton = styled.button`
   background-color: #4CAF50;
   color: white;
   font-size: 16px;
+  @media screen and (max-width: 500px) {
+    width: 4.6rem;
+    font-size: 8px;
+    border: 0.2em solid #017865;
+  }
 `;
 
 const SizeWrap = styled.div`
@@ -66,6 +88,11 @@ const SizeWrap = styled.div`
   align-items: center;
   width: 17.5em;
   background-color: white;
+  @media screen and (max-width: 500px) {
+    width: 10rem;
+    font-size: 0.5em;
+    margin-bottom: 10px;
+  }
 `;
 
 const SelectOpt = styled.button`
@@ -77,6 +104,11 @@ const SelectOpt = styled.button`
   background-color: mint;
   &:hover {
     background: #339af0;
+  }
+  @media screen and (max-width: 500px) {
+    width: 18px;
+    height: 10px;
+    font-size: 7px;
   }
 `;
 

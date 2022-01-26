@@ -17,7 +17,8 @@ const Side = styled.div`
   @media screen and (max-width: 500px) {
     width: 100%;
     font-size: 0.5em;
-    height: 25%;
+    height: 10%;
+    border: 0.2em solid #017865;
   }
 `;
 

@@ -22,6 +22,12 @@ const ContentsWrap = styled.div`
   align-items: center;
   overflow-y: scroll;
   float: left;
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    font-size: 0.5em;
+    height: 75%;
+    padding: 0.5rem 0.5rem;
+  }
 `;
 
 const Box = styled.div`
@@ -37,6 +43,13 @@ const Box = styled.div`
   background-size: 32em;
   margin: 0.5em 1em;
   object-fit: contain;
+  @media screen and (max-width: 500px) {
+    width: 150px;
+    background-size: 150px;
+    font-size: 0.5em;
+    height: 25%;
+    object-fit: contain;
+  }
 `;
 const EmptyBox = styled.div`
   display: flex;
@@ -48,6 +61,11 @@ const EmptyBox = styled.div`
   background: no-repeat center;
   background-color: white;
   margin: 0.5em 1em;
+  @media screen and (max-width: 500px) {
+    width: 150px;
+    font-size: 0.5em;
+    height: 25%;
+  }
 `;
 const BoxInformation = styled.b`
   font-size: 1.5em;

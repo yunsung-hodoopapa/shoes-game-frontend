@@ -7,6 +7,11 @@ import { removeItem } from '../../../../actions/userAction';
 const TableWrap = styled.div`
   width: 79vw;
   height: 85%;
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    font-size: 0.5em;
+    height: 90%;
+  }
 `
 
 const Table = styled.table`
@@ -35,6 +40,9 @@ const Tbody = styled.tbody`
 const Th1 = styled.th`
   width: 35vw;
   font-size: 1.5em;
+  @media screen and (max-width: 500px) {
+    width: 15rem;
+  }
 `;
 const Th2 = styled.th`
   width: 23vw;

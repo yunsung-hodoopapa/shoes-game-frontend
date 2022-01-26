@@ -12,6 +12,11 @@ const HeaderWrap = styled.div`
   height: 10%;
   background-color: #ccd9d3;
   font-size: 1.5rem;
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    font-size: 0.5rem;
+    height: 10%;
+  }
 `;
 
 const HeaderTag = styled.h2`
@@ -31,6 +36,10 @@ const EditButton = styled.button`
   font-size: 1.5rem;
   &:hover {
     background-color: #efefef;
+  }
+  @media screen and (max-width: 500px) {
+    width: 8em;
+    font-size: 0.5rem;
   }
 `;
 

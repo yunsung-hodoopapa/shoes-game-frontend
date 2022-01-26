@@ -6,6 +6,11 @@ const InputWrap = styled.div`
   display: flex;
   width: 79vw;
   justify-content: flex-end;
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    font-size: 0.5em;
+    padding: 0.5rem 0.5rem;
+  }
 `;
 
 function SearchTable({ storedShoesInfo, checkItems, setCheckItems }) {

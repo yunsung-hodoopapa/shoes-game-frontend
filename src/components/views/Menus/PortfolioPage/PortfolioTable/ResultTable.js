@@ -4,6 +4,11 @@ import ResultRow from './ResultRow';
 
 const TableWrap = styled.div`
   width: 79vw;
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    font-size: 0.2rem;
+    height: 50%;
+  }
 `
 const Table = styled.table`
   width: 100%;

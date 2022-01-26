@@ -25,6 +25,9 @@ const ChartWrap = styled.div`
   width: 25vw;
   height: 49vh;
   background-color: #ffffff;
+  @media screen and (max-width: 500px) {
+    display: none;
+  }
 `;
 
 const ChartRatio = ({

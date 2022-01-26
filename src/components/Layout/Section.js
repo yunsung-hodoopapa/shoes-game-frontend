@@ -7,17 +7,16 @@ const ContentsWrap = styled.div`
   margin-left: 1em;
   width: 75%;
   float: left;
-  height: 100vh;
+  height: 100%;
   justify-content: center;
   align-items: center;
-  border: 1px solid red;
   @media screen and (max-width: 500px) {
     flex-direction: row;
     justify-content: space-around;
     width: 100%;
     font-size: 0.5rem;
     margin: 0;
-    height: 75%;
+    height: 90%;
   }
 `;
 
