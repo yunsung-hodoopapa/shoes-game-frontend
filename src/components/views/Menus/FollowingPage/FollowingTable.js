@@ -5,11 +5,11 @@ import FollowingResultRow from './FollowingResultRow';
 import { removeItem } from '../../../../actions/userAction';
 
 const TableWrap = styled.div`
-  width: 79vw;
+  width: 100%;
   height: 85%;
   @media screen and (max-width: 500px) {
     width: 100%;
-    font-size: 0.5em;
+    font-size: 0.5rem;
     height: 90%;
   }
 `
@@ -39,7 +39,7 @@ const Tbody = styled.tbody`
 
 const Th1 = styled.th`
   width: 35vw;
-  font-size: 1.5em;
+  font-size: 1em;
   @media screen and (max-width: 500px) {
     width: 15rem;
   }
@@ -47,7 +47,7 @@ const Th1 = styled.th`
 const Th2 = styled.th`
   width: 23vw;
   text-align: center;
-  font-size: 1.5em;
+  font-size: 1em;
 `;
 
 const Trow = styled.tr`

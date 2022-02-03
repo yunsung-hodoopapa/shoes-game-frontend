@@ -10,7 +10,7 @@ const Side = styled.div`
   height: 100%;
   align-items: center;
   justify-content: center;
-  width: 25%;
+  width: 15%;
   float: left;
   padding: 15px;
   border: 0.5em solid #017865;
@@ -54,7 +54,7 @@ const Sidebar = () => {
               exact
               style={{
                 color: '#004225',
-                fontSize: '2em',
+                fontSize: '1.3rem',
                 textDecoration: 'none',
               }}
               to={menu.path}

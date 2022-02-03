@@ -5,7 +5,7 @@ const ContentsWrap = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 1em;
-  width: 75%;
+  width: 80%;
   float: left;
   height: 100%;
   justify-content: center;

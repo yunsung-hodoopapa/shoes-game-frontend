@@ -19,6 +19,7 @@ const ContentsWrap = styled.div`
   justify-content: space-evenly;
   background-color: #99b3a8;
   width: 100%;
+  height: 90%;
   align-items: center;
   overflow-y: scroll;
   float: left;
@@ -36,11 +37,11 @@ const Box = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-  width: 32rem;
-  height: 26rem;
+  width: 12rem;
+  height: 9rem;
   background: no-repeat center;
   background-image: url(${(props) => props.thumbnail});
-  background-size: 32em;
+  background-size: 12em;
   margin: 0.5em 1em;
   object-fit: contain;
   @media screen and (max-width: 500px) {
@@ -56,8 +57,8 @@ const EmptyBox = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 32rem;
-  height: 23rem;
+  width: 12rem;
+  height: 8rem;
   background: no-repeat center;
   background-color: white;
   margin: 0.5em 1em;

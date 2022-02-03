@@ -22,9 +22,10 @@ Chart.register(
 const ChartWrap = styled.div`
   display: flex;
   flex-wrap: wrap;
-  width: 25vw;
-  height: 49vh;
+  width: 30%;
+  height: 100%;
   background-color: #ffffff;
+  margin-left: 1rem;
   @media screen and (max-width: 500px) {
     display: none;
   }
@@ -93,4 +94,3 @@ const ChartRatio = ({
 };
 
 export default ChartRatio;
-

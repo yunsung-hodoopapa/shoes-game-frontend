@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import ResultRow from './ResultRow';
 
 const TableWrap = styled.div`
-  width: 79vw;
+  width: 100%;
   @media screen and (max-width: 500px) {
     width: 100%;
     font-size: 0.2rem;
@@ -32,13 +32,16 @@ const Tbody = styled.tbody`
   height: 32vh;
 `;
 const Th1 = styled.th`
-  width: 39vw;
-  font-size: 1.5em;
+  width: 35vw;
+  font-size: 1em;
+  @media screen and (max-width: 500px) {
+    width: 15rem;
+  }
 `;
 const Th2 = styled.th`
   width: 15vw;
   text-align: center;
-  font-size: 1.5em;
+  font-size: 1em;
 `;
 const Trow = styled.tr`
   display:table-cell;

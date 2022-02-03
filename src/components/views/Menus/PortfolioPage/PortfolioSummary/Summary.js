@@ -5,13 +5,13 @@ import ChartRatio from './ChartRatio';
 
 const ContentsWrap = styled.div`
   display: flex;
-  background-color: #e6ece9;
-  width: 77vw;
-  height: 50vh;
-  padding: 1em 0.5em;
-  margin-bottom: 2em;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  height: 40%;
+  padding: 1rem 0.5rem;
+  margin-bottom: 1rem;
+  background-color: #e6ece9;
   @media screen and (max-width: 500px) {
     width: 100%;
     font-size: 0.5em;
@@ -24,13 +24,12 @@ const RatioWrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50vw;
-  height: 49vh;
+  width: 100%;
+  height: 100%;
   margin: 0.8em 0.8em;
   background-color: #ffffff;
   align-items: center;
   @media screen and (max-width: 500px) {
-    width: 50rem;
     height: 100%;
     overflow-x: scroll;
   }

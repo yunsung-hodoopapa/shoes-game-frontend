@@ -8,10 +8,10 @@ const HeaderWrap = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 79vw;
+  width: 100%;
   height: 10%;
   background-color: #ccd9d3;
-  font-size: 1.5rem;
+  font-size: 1rem;
   @media screen and (max-width: 500px) {
     width: 100%;
     font-size: 0.5rem;
@@ -24,8 +24,7 @@ const HeaderTag = styled.h2`
 `;
 
 const EditButton = styled.button`
-  width: 10rem;
-  background-color=#fff;
+  width: 5rem;
   padding: 0.5em 0.5em;
   margin-right: 1em;
   border: solid 1px #bababa;
@@ -33,7 +32,8 @@ const EditButton = styled.button`
   outline: none;
   cursor: pointer;
   font-weight: 600;
-  font-size: 1.5rem;
+  font-size: 1rem;
+  background-color=#fff;
   &:hover {
     background-color: #efefef;
   }

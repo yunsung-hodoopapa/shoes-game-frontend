@@ -11,7 +11,7 @@ const Trow = styled.tr`
   border-bottom: 1px solid grey;
   word-break : break-all;
   height : auto;
-  font-size: 1.5em;
+  font-size: 1em;
 `;
 const TableData = styled.td`
   display: flex;
@@ -23,8 +23,8 @@ const TableData = styled.td`
 
 const ShoesTumbnail = styled.div`
   img {
-    width: 10em;
-    height: 8em;
+    width: 5rem;
+    height: 4rem;
   }
   object-fit: contain;
 `;
@@ -32,6 +32,7 @@ const ShoesTumbnail = styled.div`
 const ShoeNameInTd = styled.div`
   width: 60%;
   margin-left: 1em;
+  font-size: 0.7rem;
   flex-direction: column;
   text-align: center;
 `;

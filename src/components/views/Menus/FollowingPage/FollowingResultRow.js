@@ -13,12 +13,18 @@ const Trow = styled.tr`
   height: 3.125em;
   word-break : break-all;
   height : auto;
-  font-size: 1.5em;
+  font-size: 1rem;
+  @media screen and (max-width: 500px) {
+    font-size: 0.5rem;
+  }
 `;
 const TableData = styled.td`
   display: flex;
-  width: 25vw;
+  width: 27vw;
   padding: 1em 1em;
+  @media screen and (max-width: 500px) {
+    width: 100%;
+  }
 `;
 const ShoeNameInTd = styled.div`
   display: flex;
@@ -32,10 +38,16 @@ const ShoeNameInTd = styled.div`
 const ShoesTumbnail = styled.div`
   margin: 1em 1em;
   img {
-    width: 9.3em;
-    height: 5.6em;
+    width: 8rem;
+    height: 6rem;
   }
   object-fit: contain;
+  @media screen and (max-width: 500px) {
+    img {
+      width: 4rem;
+      height: 3rem;
+    }
+  }
 `;
 
 const FollowingResultRow = ({ shoesInfo, key, onRemove }) => {

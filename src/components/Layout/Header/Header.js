@@ -7,7 +7,7 @@ import Heading from '../Shared/Heading';
 const HeaderWrap = styled.header`
   background-color: #004225;
   width: 100%;
-  height: 9rem;
+  height: 8rem;
   section {
     display: flex;
     background-color: #004225;
@@ -29,7 +29,7 @@ const HeaderWrap = styled.header`
 
 const Title = styled.div`
   margin: 0.5em 1rem;
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 700;
   @media screen and (max-width: 500px) {
     disply: flex;

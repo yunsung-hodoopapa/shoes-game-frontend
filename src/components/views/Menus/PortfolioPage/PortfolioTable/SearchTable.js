@@ -4,8 +4,9 @@ import ResultTable from './ResultTable';
 
 const InputWrap = styled.div`
   display: flex;
-  width: 79vw;
+  width: 100%;
   justify-content: flex-end;
+  padding: 0rem 0.5rem;
   @media screen and (max-width: 500px) {
     width: 100%;
     font-size: 0.5em;

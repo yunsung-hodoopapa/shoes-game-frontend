@@ -7,7 +7,6 @@ Chart.register(ArcElement, Tooltip, Legend, Title);
 const ItemRatio = ({ getPricefromData, getLabelfromData, getRandomRgba }) => {
   const data = getPricefromData();
   const labels = getLabelfromData();
-  const backgroundColor = getRandomRgba();
 
   const chartData = {
     labels: labels,
@@ -57,8 +56,8 @@ const ItemRatio = ({ getPricefromData, getLabelfromData, getRandomRgba }) => {
       <Pie
         data={chartData}
         options={options}
-        style={{ height: '20vh', width: '40vw' }}
-        />
+        style={{ height: '20vh', width: '50%' }}
+      />
     </>
   );
 };

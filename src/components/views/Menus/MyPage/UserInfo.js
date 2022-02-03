@@ -6,10 +6,9 @@ import styled from 'styled-components';
 
 const ContentsWrap = styled.div`
   display: flex;
-  background-color: #e6ece9;
   width: 100%;
-  height: 14vh;
-  align-items: center;
+  height: 15%;
+  background-color: #e6ece9;
 `;
 
 const UserPicture = styled.div`
@@ -55,25 +54,25 @@ const Email = styled.span`
 
 const ButtonWrap = styled.div`
   display: flex;
-  margin-right: 1em;
-  justify-content: flex-end;
+  margin-right: 0.5rem;
+  justify-content: center;
   align-items: center;
+  padding: 0.5rem;
   width: 50%;
 `;
 
 const Button = styled.button`
-  width: 10em;
-  height: 4em;
-  margin-bottom: 1em;
+  width: 6em;
+  height: 2.5em;
   background-color: #fff;
-  padding: 1em 1em;
+  padding: 0.1em 0.1em;
   margin-left: 1em;
   border: solid 1px #bababa;
   border-radius: 0.4em;
   outline: none;
   cursor: pointer;
   font-weight: 600;
-  font-size: 1em;
+  font-size: 1rem;
   &:hover {
     background-color: #efefef;
   }
@@ -127,7 +126,7 @@ const UserInfo = (props) => {
           </UserDetail>
           <ButtonWrap>
             <Button> 프로필 수정 </Button>
-            <Button onClick={logOutHandler}>로그아웃하기</Button>
+            <Button onClick={logOutHandler}>로그아웃</Button>
           </ButtonWrap>
         </ContentsWrap>
       )}
