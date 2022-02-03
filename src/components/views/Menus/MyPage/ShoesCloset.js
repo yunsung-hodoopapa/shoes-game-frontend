@@ -8,6 +8,7 @@ import {
   closeModal,
   addItems,
   isLoaded,
+  removeItem,
 } from '../../../../actions/userAction';
 import { fillingShoeObject } from '../../../../utils';
 import Loading from '../../../LoadingSpinner/LoadingPage';
@@ -154,7 +155,6 @@ const ShoesCloset = () => {
     }
   };
 
-  // 3. onCreate 함수가 실행되었을 때, 빈 배열에 'shoeName', 'shoeSize'를 키값으로 갖는 객체값이 추가된다.
   const onCreate = async (e) => {
     e.preventDefault();
     console.log('function operating');
@@ -193,9 +193,9 @@ const ShoesCloset = () => {
     onClickCloseModal();
   };
 
-  const onRemove = (e) => {
-    e.preventDefault();
-    removeHandler(inputValue);
+  const onRemove = (param) => {
+    dispatch(removeItem(param))
+    removeHandler(param);
     setInputValue({
       shoeName: '',
       shoeSize: '',
@@ -238,6 +238,7 @@ const ShoesCloset = () => {
   }, []);
 
   const storeHandler = (data) => {
+    dispatch(isLoaded(false));
     try {
       axios
         .post(`${SERVER_URL}/shoes/regist`, data)
@@ -273,9 +274,13 @@ const ShoesCloset = () => {
   const removeHandler = (data) => {
     try {
       axios
-        .delete(`${SERVER_URL}/shoes/shoesInfo/delete_by_id`, data, {
-          withCredentials: true,
-        })
+        .delete(
+          `${SERVER_URL}/shoes/shoesInfo/delete_by_id`,
+          { data: { data } },
+          {
+            withCredentials: true,
+          }
+        )
         .then((res) => {
           console.log(res);
           console.log('delete success');
@@ -325,7 +330,7 @@ const ShoesCloset = () => {
             onChange={onChange}
             onCreate={onCreate}
             onUpdate={onUpdate}
-            onRemove={onRemove}
+            onRemove={() => onRemove(inputValue._id)}
           />
         ) : null}
       </ContentsWrap>

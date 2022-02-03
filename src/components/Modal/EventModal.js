@@ -61,6 +61,7 @@ const ButtonWrap = styled.div`
   display: flex;
   width: 17.5em
   align-items: center;
+  padding: 0.5rem;
   @media screen and (max-width: 500px) {
     margin: 2em 1em;
   }
@@ -70,6 +71,7 @@ const SubmitButton = styled.button`
   width: 5em;
   height: 2em;
   border: none;
+  margin-left: 0.5rem;
   background: none;
   background-color: #4CAF50;
   color: white;
@@ -230,7 +232,9 @@ export default function AddShoesModal({
           {inputValue._id !== '' ? (
             <>
               <SubmitButton onClick={(e) => onUpdate(e)}>수정하기</SubmitButton>
-              <SubmitButton onClick={(e) => onRemove(e)}>삭제하기</SubmitButton>
+              <SubmitButton
+                onClick={(e) => onRemove(e)}
+              >삭제하기</SubmitButton>
             </>
           ) : (
             <SubmitButton onClick={(e) => onCreate(e)}>등록하기</SubmitButton>
