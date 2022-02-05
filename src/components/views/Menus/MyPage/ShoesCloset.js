@@ -20,7 +20,7 @@ const ContentsWrap = styled.div`
   justify-content: space-evenly;
   background-color: #99b3a8;
   width: 100%;
-  height: 90%;
+  height: 80%;
   align-items: center;
   overflow-y: scroll;
   float: left;

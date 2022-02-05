@@ -1,25 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { logoutUser } from '../../../../actions/userAction';
+import { logoutUser, loadUserData } from '../../../../actions/userAction';
 import styled from 'styled-components';
+import { SERVER_URL } from '../../../../constants/index';
+import { getCookie } from '../../../../utils/cookie';
+
 
 const ContentsWrap = styled.div`
   display: flex;
+  flex-direction: center;
+  justify-content: center;
+  padding: 1em;
   width: 100%;
-  height: 15%;
+  height: 20%;
   background-color: #e6ece9;
 `;
 
 const UserPicture = styled.div`
-  width: 9em;
-  height: 9em;
-  margin-left: 1rem;
+  width: 5rem;
+  height: 5rem;
   background-position: 50% 50%;
   background-size: cover;
   img {
-    width: 9em;
-    height: 9em;
+    width: 5rem;
+    height: 5rem;
     border-radius: 50%;
   }
   object-fit: contain;
@@ -28,8 +34,7 @@ const UserDetail = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 51.9em;
-  height: 11.8em;
+  width: 30%;
   color: white;
   button {
     width: 10em;
@@ -39,26 +44,37 @@ const UserDetail = styled.div`
 const Nickname = styled.span`
   display: flex;
   align-items: center;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 400;
   strong {
     font-weight: 600;
     color: black;
   }
+  @media screen and (max-width: 500px) {
+    font-size: 1rem;
+  }
 `;
 const Email = styled.span`
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 600;
   color: black;
+  @media screen and (max-width: 500px) {
+    font-size: 1rem;
+  }
 `;
 
 const ButtonWrap = styled.div`
   display: flex;
   margin-right: 0.5rem;
-  justify-content: center;
   align-items: center;
+  justify-content: flex-end;
   padding: 0.5rem;
   width: 50%;
+  @media screen and (max-width: 500px) {
+    display: flex;
+    align-items: center;
+    border: 1px solid blue;
+  }
 `;
 
 const Button = styled.button`
@@ -76,6 +92,12 @@ const Button = styled.button`
   &:hover {
     background-color: #efefef;
   }
+  @media screen and (max-width: 500px) {
+    width: 6em;
+    height: 2.5em;
+    font-size: 0.6rem;
+    padding: 0.2rem 0.2rem;
+  }
 `;
 
 const BtnWrap = styled.div``;
@@ -87,7 +109,10 @@ const UserInfo = (props) => {
   const user = useSelector((state) => ({
     user: state.user.user,
   }));
+
   const userInfo = user.user;
+  console.log('user', user);
+  console.log('userInfo', userInfo);
 
   const logOutHandler = () => {
     const request = {
@@ -103,6 +128,35 @@ const UserInfo = (props) => {
       }
     });
   };
+
+  const getUserInfoHandler = (user) => {
+    dispatch(loadUserData(user));
+  }
+
+  const authCheckHandler = () => {
+    const token = getCookie('x_auth');
+    try {
+      axios
+        .get(`${SERVER_URL}/auth/managed/userInfo`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          },
+        })
+        .then((res) => {
+          console.log('userData loading success');
+          getUserInfoHandler(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    authCheckHandler();
+  }, []);
 
   return (
     <>

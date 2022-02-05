@@ -2,6 +2,7 @@ import {
   REGISTER_USER,
   LOGIN_USER,
   KAKAO_LOGIN_USER,
+  LOAD_USER,
   OPEN_MODAL,
   CLOSE_MODAL,
   ADD_ITEMS,
@@ -13,7 +14,6 @@ import {
 import { request } from '../utils/axios';
 
 export async function registerUser(dataToSubmit) {
-  console.log('redux in!');
   const data = await request('post', '/auth/register', dataToSubmit);
   return {
     type: REGISTER_USER,
@@ -44,6 +44,13 @@ export const logoutUser = (dataToSubmit) => {
     payload: data,
   };
 };
+
+export const loadUserData = (data) => {
+  return {
+    type: LOAD_USER,
+    payload: data,
+  };
+}
 
 export const openModal = () => {
   return {
