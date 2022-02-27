@@ -10,8 +10,8 @@ import { getCookie } from '../../../../utils/cookie';
 
 const ContentsWrap = styled.div`
   display: flex;
-  flex-direction: center;
   justify-content: center;
+  align-items: center;
   padding: 1em;
   width: 100%;
   height: 20%;
@@ -34,12 +34,15 @@ const UserDetail = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 30%;
+  width: 15em;
   color: white;
   button {
     width: 10em;
   }
   margin-left: 3em;
+  @media screen and (max-width: 500px) {
+    padding: 0.5em;
+  }
 `;
 const Nickname = styled.span`
   display: flex;
@@ -51,7 +54,7 @@ const Nickname = styled.span`
     color: black;
   }
   @media screen and (max-width: 500px) {
-    font-size: 1rem;
+    font-size: 1.5em;
   }
 `;
 const Email = styled.span`
@@ -59,7 +62,7 @@ const Email = styled.span`
   font-weight: 600;
   color: black;
   @media screen and (max-width: 500px) {
-    font-size: 1rem;
+    font-size: 1.5em;
   }
 `;
 
@@ -72,8 +75,8 @@ const ButtonWrap = styled.div`
   width: 50%;
   @media screen and (max-width: 500px) {
     display: flex;
-    align-items: center;
-    border: 1px solid blue;
+    flex-direction: column;
+    align-items: flex-end;
   }
 `;
 
@@ -97,6 +100,7 @@ const Button = styled.button`
     height: 2.5em;
     font-size: 0.6rem;
     padding: 0.2rem 0.2rem;
+    margin-bottom: 5px;
   }
 `;
 
@@ -111,8 +115,6 @@ const UserInfo = (props) => {
   }));
 
   const userInfo = user.user;
-  console.log('user', user);
-  console.log('userInfo', userInfo);
 
   const logOutHandler = () => {
     const request = {

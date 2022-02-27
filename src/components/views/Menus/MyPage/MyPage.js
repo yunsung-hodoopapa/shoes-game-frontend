@@ -10,7 +10,7 @@ const MyPage = (props) => {
     <Layout>
       <Wrap>
         <UserInfo />
-        {/* <ShoesCloset>{props.children}</ShoesCloset> */}
+        <ShoesCloset>{props.children}</ShoesCloset>
       </Wrap>
     </Layout>
   );

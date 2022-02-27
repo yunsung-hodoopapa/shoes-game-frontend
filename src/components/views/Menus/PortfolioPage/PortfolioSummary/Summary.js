@@ -73,7 +73,7 @@ const Summary = ({
   return (
     <ContentsWrap>
       <RatioWrap>
-÷        <SummeryRatio
+        <SummeryRatio
           storedShoesInfo={storedShoesInfo}
           getTotalAsset={getTotalAsset}
           getTotalShoePrice={getTotalShoePrice}

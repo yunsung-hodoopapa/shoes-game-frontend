@@ -2,8 +2,6 @@ import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import SidebarItem from './SidebarItem';
-import { IoIosMenu } from "react-icons/io";
-
 
 const Side = styled.div`
   display: flex;

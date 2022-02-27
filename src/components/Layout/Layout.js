@@ -10,11 +10,14 @@ const Center = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
+  min-width: 1024px;
   height: 80vh;
   margin: 1rem 0;
   @media screen and (max-width: 500px) {
-    flex-direction: column;
+    max-width: 500px;
+    min-width : 320px;
     height: 80vh;
+    flex-direction: column;
     align-items: stretch;
   }
 `;

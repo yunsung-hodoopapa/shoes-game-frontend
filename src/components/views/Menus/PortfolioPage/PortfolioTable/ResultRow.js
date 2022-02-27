@@ -12,13 +12,19 @@ const Trow = styled.tr`
   word-break : break-all;
   height : auto;
   font-size: 1em;
+  @media screen and (max-width: 500px) {
+    font-size: 0.9em;
+  }
 `;
 const TableData = styled.td`
   display: flex;
-  justify-content: center;
   align-items: center;
   width: 25vw;
   padding: 1em 1em;
+  @media screen and (max-width: 500px) {
+    width: 27em;
+    padding: 1em 1em;
+  }
 `;
 
 const ShoesTumbnail = styled.div`
@@ -35,6 +41,11 @@ const ShoeNameInTd = styled.div`
   font-size: 0.7rem;
   flex-direction: column;
   text-align: center;
+  @media screen and (max-width: 500px) {
+    font-size: 0.9em;
+    border: 1px solid pink;
+    width: 15em;
+  }
 `;
 
 const subtraction = (a, b) => {

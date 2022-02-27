@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import GlobalStyle from '../src/static/fonts/fonts'
+import GlobalStyle from './static/GlobalStyle'
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import LoginPage from './components/views/LoginPage/LoginPage';
 import PublicRoute from './components/AccessControl/PublicRoute';

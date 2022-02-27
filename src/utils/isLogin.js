@@ -1,5 +1,11 @@
 // import Cookies from 'js-cookie';
+import { getCookie } from "./cookie";
 
-export const isLogin = () => (
-  !!localStorage.getItem('userInfo') ? true : false
-);
+const token = getCookie('x_auth');
+
+export const isLogin = () => {
+  console.log(token);
+  return {
+    token: token,
+  };
+};

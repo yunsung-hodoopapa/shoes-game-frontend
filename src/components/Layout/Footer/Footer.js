@@ -4,9 +4,11 @@ import styled from 'styled-components';
 const FooterWrap = styled.footer`
   width: 100%;
   height: 9rem;
-  background-color: #004225;
+  min-width: 1024px;
   padding: 1em;
+  background-color: #004225;
   @media screen and (max-width: 500px) {
+    min-width : 320px;
     display: flex;
     font-size: 0.5em;
     align-items: center;

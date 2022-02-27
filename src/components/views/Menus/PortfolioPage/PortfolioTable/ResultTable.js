@@ -6,7 +6,7 @@ const TableWrap = styled.div`
   width: 100%;
   @media screen and (max-width: 500px) {
     width: 100%;
-    font-size: 0.2rem;
+    font-size: 1em;
     height: 50%;
   }
 `
@@ -35,7 +35,7 @@ const Th1 = styled.th`
   width: 35vw;
   font-size: 1em;
   @media screen and (max-width: 500px) {
-    width: 15rem;
+    width: 30em;
   }
 `;
 const Th2 = styled.th`

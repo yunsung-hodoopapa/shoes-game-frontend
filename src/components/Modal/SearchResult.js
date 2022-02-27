@@ -50,16 +50,6 @@ const SearchResult = ({ keyword, setKeyword, getShoesInfo }) => {
     } catch (error) {
       console.log(error);
     }
-    // let searchData, data;
-    // try{
-    //   searchData = await fetch('http://localhost:3002/shoes/:search', {
-    //     mehtod: 'GET',
-    //   });
-    //   data = await searchData.json();
-    //   console.log(data);
-    // } catch (err) {
-    //   console.log(err.message);
-    // }
   };
 
   // 검색해야할 문자열을 키워드와 비교해 미칭이 되는지 체크한다.

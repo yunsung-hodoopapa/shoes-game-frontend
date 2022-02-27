@@ -76,7 +76,7 @@ function LoginPage(props) {
     dispatch(loginUser(requestBody))
       .then((res) => {
         if (res.payload.loginSuccess) {
-          localStorage.setItem('userInfo', JSON.stringify(res));
+          // localStorage.setItem('userInfo', JSON.stringify(res));
           props.history.push('/');
         } else {
           alert(res.payload.message);
